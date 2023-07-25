@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祝你中奖</title>
+    <style>
+        @media screen and (max-width: 992px) {
+            .box-random>div:nth-child(-n+6) {
+                width: 48%;
+            }
+
+            .box-random>div:nth-child(7) {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 210px) {
+            .container {
+                width: 184px !important;
+            }
+        }
+
+        @media screen and (min-width: 0px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            input,
+            button {
+                font-size: 16px;
+            }
+
+            .box-random div span {
+                margin: 4px 1px;
+            }
+
+            .box-reference li {
+                margin: 10px 4px;
+            }
+
+            .kuaile8 ul li {
+                margin: 10px 2px;
+            }
+
+        }
+
+        @media screen and (min-width: 576px) {
+            h1 {
+                font-size: 27px;
+            }
+
+            input,
+            button {
+                font-size: 17px;
+            }
+
+            .box-random div span {
+                margin: 4px 2px;
+            }
+
+            .box-reference li {
+                margin: 10px 8px;
+            }
+
+            .kuaile8 ul li {
+                margin: 10px 8px;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            input,
+            button {
+                font-size: 18px;
+            }
+
+            .box-random div span {
+                margin: 4px 4px;
+            }
+
+            .box-reference li {
+                margin: 10px 10px;
+            }
+
+            .kuaile8 ul li {
+                margin: 10px 10px;
+            }
+        }
+
+        @media screen and (min-width: 992px) {
+            h1 {
+                font-size: 29px;
+            }
+
+            input,
+            button {
+                font-size: 19px;
+            }
+
+            .box-random div span {
+                margin: 4px 6px;
+            }
+
+            .box-reference li {
+                margin: 10px 16px;
+            }
+
+            .kuaile8 ul li {
+                margin: 10px 16px;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            input,
+            button {
+                font-size: 20px;
+            }
+
+            .box-random div span {
+                margin: 4px 8px;
+            }
+
+            .box-reference li {
+                margin: 10px 20px;
+            }
+
+            .kuaile8 ul li {
+                margin: 10px 20px;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            margin: 10px;
+            list-style: none;
+            width: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            color: #fff;
+            background-color: #c02d2d;
+        }
+
+        button {
+            padding: 4px 8px 7px;
+            width: 100%;
+            border: 0;
+            border-bottom: 1px solid #111;
+            background-color: #dcdcdc;
+            color: #111;
+        }
+
+        .box-reference button {
+            border: 1px solid #111;
+        }
+
+        input {
+            margin: 7px 2px 7px;
+            padding-top: 1px;
+            outline: none;
+            border: 1px solid #111;
+            width: 32px;
+            height: 23px;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #d12626;
+            color: #fff;
+        }
+
+        .container {
+            width: 94%;
+            margin: 10px auto;
+            border: 1px solid #000;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: #d12626;
+            text-align: center;
+        }
+
+        .box-random {
+            display: flex;
+            margin: 20px 20px 0;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .box-random>div {
+            margin-bottom: 10px;
+            border: 1px solid #000;
+            border-radius: 2px;
+            /* background-color: pink; */
+        }
+
+        .box-random>div div {
+            padding: 4px;
+        }
+
+        .box-random span {
+            display: inline-block;
+            margin: 4px;
+            width: 30px;
+            line-height: 30px;
+            color: #fff;
+            background-color: #c02d2d;
+            border-radius: 50%;
+        }
+
+        .box-random>div:last-child {
+            width: 100%;
+        }
+
+        .red-line {
+            border-bottom: 2px dotted #c02d2d;
+        }
+
+        .box-reference {
+            margin: 10px 20px 20px;
+            text-align: center;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .daletou ul li:nth-child(n+6),
+        .shuangseqiu ul li:nth-child(n+7) {
+            background-color: #1948c0;
+        }
+
+        .box-random-result-auto div {
+            /* margin-bottom: 10px; */
+            padding: 0 10px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>祝您中奖</h1>
+        <div class="red-line"></div>
+        <div class="box-random">
+            <div>
+                <button class="btn-9">随机数0 ~ 09</button>
+                <div class="box-random-result-9">
+                    <span>0</span>
+                </div>
+            </div>
+            <div>
+                <button class="btn-35">随机数1 ~ 35</button>
+                <div class="box-random-result-35"><span>0</span></div>
+            </div>
+            <div>
+                <button class="btn-12">随机数1 ~ 12</button>
+                <div class="box-random-result-12"><span>0</span></div>
+            </div>
+            <div>
+                <button class="btn-33">随机数1 ~ 33</button>
+                <div class="box-random-result-33"><span>0</span></div>
+            </div>
+            <div>
+                <button class="btn-16">随机数1 ~ 16</button>
+                <div class="box-random-result-16"><span>0</span></div>
+            </div>
+            <div>
+                <button class="btn-80">随机数1 ~ 80</button>
+                <div class="box-random-result-80"><span>0</span></div>
+            </div>
+            <div>
+                <button class="btn-auto">任意随机数</button>
+
+                <div class="box-random-result-auto">
+                    <input type="text" name="" id="" value="0" maxlength="2" class="first-number">
+                    -
+                    <input type="text" name="" id="" value="80" maxlength="2" class="last-number">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="red-line"></div>
+        <div class="box-reference">
+            <div><button class="btn-daletou">大乐透</button></div>
+            <div class="daletou">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div><button class="btn-pailie5">排列5</button></div>
+            <div class="pailie5">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div><button class="btn-shuangseqiu">双色球</button></div>
+            <div class="shuangseqiu">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div>
+                <button class="btn-kuaile8">快乐8</button>
+                <div>
+                    选
+                    <input type="text" name="" id="" value="10" maxlength="2" class="kuaile8-input-number">
+                    个号码
+                </div>
+            </div>
+            <div class="kuaile8">
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // ------------------------------------------------------------------------大乐透
+        const daletou = document.querySelector('.daletou');
+        const btnDLT = document.querySelector('.btn-daletou');
+        const lis1 = daletou.children[0].children;
+        let daletouClickTimes = 0;
+
+        btnDLT.addEventListener('click', function () {
+            if (daletouClickTimes >= 2) {
+                alert('理性购彩');
+                return false;
+            }
+
+            daletouClickTimes++;
+
+            let lisNumbers1 = [];
+
+            for (let i = 0; i < 5; i++) {
+                let num1 = Math.floor(Math.random() * 35) + 1;
+                while (true) {
+                    if (lisNumbers1.indexOf(num1) === -1) {
+                        break;
+                    }
+                    num1 = Math.floor(Math.random() * 35) + 1;
+                }
+                lisNumbers1.push(num1);
+                // lis1[i].innerHTML = num1 < 10 ? '0' + num1 : num1;
+            }
+            lisNumbers1.sort(function (a, b) {
+                return a - b;
+            });
+
+            for (let j = 0; j < 5; j++) {
+                lis1[j].innerHTML = lisNumbers1[j] < 10 ? '0' + lisNumbers1[j] : lisNumbers1[j];
+            }
+
+
+            let lisNumbers2 = [];
+
+            for (let i = 5; i < 7; i++) {
+                let num2 = Math.floor(Math.random() * 12) + 1;
+                while (true) {
+                    if (lisNumbers2.indexOf(num2) === -1) {
+                        break;
+                    }
+                    num2 = Math.floor(Math.random() * 12) + 1;
+                }
+                lisNumbers2.push(num2);
+                // lis1[i].innerHTML = num2 < 10 ? '0' + num2 : num2;
+            }
+
+            lisNumbers2.sort(function (a, b) {
+                return a - b;
+            });
+
+            for (let i = 0; i < lisNumbers2.length; i++) {
+                lis1[i + 5].innerHTML = lisNumbers2[i] < 10 ? '0' + lisNumbers2[i] : lisNumbers2[i];
+            }
+
+            // 控制台查看记录
+            let str = '';
+            console.log('大乐透：');
+            for (let i = 0; i < lisNumbers1.length; i++) {
+                if (i === 0) {
+                    str += lisNumbers1[i];
+                } else {
+                    str += '\t' + lisNumbers1[i];
+                }
+            }
+            str += '\t+\t' + lisNumbers2[0] + '\t' + lisNumbers2[1];
+            console.log(str);
+        });
+
+        // ------------------------------------------------------------------------排列5
+        const pailie5 = document.querySelector('.pailie5');
+        const btnPL5 = document.querySelector('.btn-pailie5');
+        const lis2 = pailie5.children[0].children;
+        let pailie5ClickTimes = 0;
+
+        btnPL5.addEventListener('click', function () {
+            if (pailie5ClickTimes >= 2) {
+                alert('理性购彩');
+                return false;
+            }
+
+            pailie5ClickTimes++;
+
+            let lisNumbers1 = [];
+
+            for (let i = 0; i < 5; i++) {
+                let num1 = Math.floor(Math.random() * 9);
+                lisNumbers1.push(num1);
+                lis2[i].innerHTML = num1;
+            }
+
+            // 控制台查看记录
+            let str = '';
+            console.log('排列5：');
+            for (let i = 0; i < lisNumbers1.length; i++) {
+                if (i === 0) {
+                    str += lisNumbers1[i];
+                } else {
+                    str += '\t' + lisNumbers1[i];
+                }
+            }
+            console.log(str);
+        });
+
+        // ------------------------------------------------------------------------双色球
+        const shuangseqiu = document.querySelector('.shuangseqiu');
+        const btnSSQ = document.querySelector('.btn-shuangseqiu');
+        const lis3 = shuangseqiu.children[0].children;
+        let shuangseqiuClickTimes = 0;
+
+        btnSSQ.addEventListener('click', function () {
+            if (shuangseqiuClickTimes >= 2) {
+                alert('理性购彩');
+                return false;
+            }
+
+            shuangseqiuClickTimes++;
+
+            let lisNumbers1 = [];
+
+            for (let i = 0; i < 6; i++) {
+                let num1 = Math.floor(Math.random() * 33) + 1;
+                while (true) {
+                    if (lisNumbers1.indexOf(num1) === -1) {
+                        break;
+                    }
+                    num1 = Math.floor(Math.random() * 33) + 1;
+                }
+                lisNumbers1.push(num1);
+                // lis3[i].innerHTML = num1 < 10 ? '0' + num1 : num1;
+            }
+
+            lisNumbers1.sort(function (a, b) {
+                return a - b;
+            });
+
+            for (let j = 0; j < 6; j++) {
+                lis3[j].innerHTML = lisNumbers1[j] < 10 ? '0' + lisNumbers1[j] : lisNumbers1[j];
+            }
+
+            let lisNumbers2 = [];
+
+            for (let i = 6; i < 7; i++) {
+                let num2 = Math.floor(Math.random() * 16) + 1;
+                while (true) {
+                    if (lisNumbers2.indexOf(num2) === -1) {
+                        break;
+                    }
+                    num2 = Math.floor(Math.random() * 16) + 1;
+                }
+                lisNumbers2.push(num2);
+                lis3[i].innerHTML = num2 < 10 ? '0' + num2 : num2;
+            }
+
+            // 控制台查看记录
+            let str = '';
+            console.log('双色球：');
+            for (let i = 0; i < lisNumbers1.length; i++) {
+                if (i === 0) {
+                    str += lisNumbers1[i];
+                } else {
+                    str += '\t' + lisNumbers1[i];
+                }
+            }
+            str += '\t+\t' + lisNumbers2[0];
+            console.log(str);
+        });
+
+        // ------------------------------------------------------------------------快乐8
+        const kuaile8 = document.querySelector('.kuaile8');
+        const btnKL8 = document.querySelector('.btn-kuaile8');
+        const lis4 = kuaile8.children[0];
+        let k8Input = document.querySelector('.kuaile8-input-number');
+        let kuaile8ClickTimes = 0;
+
+        btnKL8.addEventListener('click', function () {
+            if (k8Input.value === '' || k8Input.value.trim() === '') {
+                alert('请补全条件');
+                return false;
+            }
+
+            let k8In = parseInt(k8Input.value.trim());
+
+            if (isNaN(k8In)) {
+                alert('请输入整数');
+                k8Input.value = '';
+                return false;
+            }
+
+            if (k8In < 1 || k8In > 10) {
+                alert('请输入整数1 ~ 10');
+                k8Input.value = '';
+                return false;
+            }
+
+            if (kuaile8ClickTimes >= 2) {
+                alert('理性购彩');
+                return false;
+            }
+
+            kuaile8ClickTimes++;
+
+            let lisNumbers1 = [];
+
+            for (let i = 0; i < k8In; i++) {
+                let num1 = Math.floor(Math.random() * 80) + 1;
+                while (true) {
+                    if (lisNumbers1.indexOf(num1) === -1) {
+                        break;
+                    }
+                    num1 = Math.floor(Math.random() * 80) + 1;
+                }
+                lisNumbers1.push(num1);
+            }
+            lisNumbers1.sort(function (a, b) {
+                return a - b;
+            });
+
+            lis4.innerHTML = '';
+            for (let j = 0; j < k8In; j++) {
+                let li = document.createElement('li');
+                li.innerHTML = lisNumbers1[j] < 10 ? '0' + lisNumbers1[j] : lisNumbers1[j];
+                lis4.appendChild(li);
+            }
+
+            // 控制台查看记录
+            let str = '';
+            console.log('快乐8：');
+            for (let i = 0; i < lisNumbers1.length; i++) {
+                if (i === 0) {
+                    str += lisNumbers1[i];
+                } else {
+                    str += '\t' + lisNumbers1[i];
+                }
+            }
+            console.log(str);
+        });
+
+    </script>
+
+    <script>
+        const btn9 = document.querySelector('.btn-9');
+        const boxRandomResult9 = document.querySelector('.box-random-result-9');
+        const random9Arr = [];
+        btn9.addEventListener('click', function () {
+            let num = Math.floor(Math.random() * 9);
+
+            // 生成一个随机数时，只要不和前面一个相同即可
+            while (true) {
+                if (random9Arr[random9Arr.length - 1] !== num) {
+                    break;
+                }
+                num = Math.floor(Math.random() * 9);
+            }
+            random9Arr.push(num);
+
+            boxRandomResult9.children[0].innerHTML = num;
+            // 控制台查看记录
+            let str = '';
+            str += '\t' + num;
+            console.log('随机数1-09：' + str);
+        });
+
+        const btn35 = document.querySelector('.btn-35');
+        const boxRandomResult35 = document.querySelector('.box-random-result-35');
+        const random35Arr = [];
+        btn35.addEventListener('click', function () {
+            let num = Math.floor(Math.random() * 35) + 1;
+
+            // 生成一个随机数时，只要不和前面一个相同即可
+            while (true) {
+                if (random35Arr[random35Arr.length - 1] !== num) {
+                    break;
+                }
+                num = Math.floor(Math.random() * 35) + 1;
+            }
+            random35Arr.push(num);
+
+            boxRandomResult35.children[0].innerHTML = num;
+            // 控制台查看记录
+            let str = '';
+            str += '\t' + num;
+            console.log('随机数1-35：' + str);
+        });
+
+        const btn12 = document.querySelector('.btn-12');
+        const boxRandomResult12 = document.querySelector('.box-random-result-12');
+        const random12Arr = [];
+        btn12.addEventListener('click', function () {
+            let num = Math.floor(Math.random() * 12) + 1;
+
+            // 生成一个随机数时，只要不和前面一个相同即可
+            while (true) {
+                if (random12Arr[random12Arr.length - 1] !== num) {
+                    break;
+                }
+                num = Math.floor(Math.random() * 12) + 1;
+            }
+            random12Arr.push(num);
+
+            boxRandomResult12.children[0].innerHTML = num;
+            // 控制台查看记录
+            let str = '';
+            str += '\t' + num;
+            console.log('随机数1-12：' + str);
+        });
+
+        const btn33 = document.querySelector('.btn-33');
+        const boxRandomResult33 = document.querySelector('.box-random-result-33');
+        const random33Arr = [];
+        btn33.addEventListener('click', function () {
+            let num = Math.floor(Math.random() * 33) + 1;
+
+            // 生成一个随机数时，只要不和前面一个相同即可
+            while (true) {
+                if (random33Arr[random33Arr.length - 1] !== num) {
+                    break;
+                }
+                num = Math.floor(Math.random() * 33) + 1;
+            }
+            random33Arr.push(num);
+
+            boxRandomResult33.children[0].innerHTML = num;
+            // 控制台查看记录
+            let str = '';
+            str += '\t' + num;
+            console.log('随机数1-33：' + str);
+        });
+
+        const btn16 = document.querySelector('.btn-16');
+        const boxRandomResult16 = document.querySelector('.box-random-result-16');
+        const random16Arr = [];
+        btn16.addEventListener('click', function () {
+            let num = Math.floor(Math.random() * 16) + 1;
+
+            // 生成一个随机数时，只要不和前面一个相同即可
+            while (true) {
+                if (random16Arr[random16Arr.length - 1] !== num) {
+                    break;
+                }
+                num = Math.floor(Math.random() * 16) + 1;
+            }
+            random16Arr.push(num);
+
+            boxRandomResult16.children[0].innerHTML = num;
+            // 控制台查看记录
+            let str = '';
+            str += '\t' + num;
+            console.log('随机数1-16：' + str);
+        });
+
+        const btn80 = document.querySelector('.btn-80');
+        const boxRandomResult80 = document.querySelector('.box-random-result-80');
+        const random80Arr = [];
+        btn80.addEventListener('click', function () {
+            let num = Math.floor(Math.random() * 80) + 1;
+
+            // 生成一个随机数时，只要不和前面一个相同即可
+            while (true) {
+                if (random80Arr[random80Arr.length - 1] !== num) {
+                    break;
+                }
+                num = Math.floor(Math.random() * 80) + 1;
+            }
+            random80Arr.push(num);
+
+            boxRandomResult80.children[0].innerHTML = num;
+            // 控制台查看记录
+            let str = '';
+            str += '\t' + num;
+            console.log('随机数1-80：' + str);
+        });
+
+        const btnAuto = document.querySelector('.btn-auto');
+        const boxRandomResultAuto = document.querySelector('.box-random-result-auto');
+        const firstNumber = document.querySelector('.first-number');
+        const lastNumber = document.querySelector('.last-number');
+        let nums = [];
+        let sp = boxRandomResultAuto.children[2];
+        let tempArr = [];
+
+        firstNumber.addEventListener('blur', function () {
+            let fn = firstNumber.value.trim();
+
+            tempArr = nums;
+            tempArr.sort(function (a, b) {
+                return a - b;
+            });
+
+            if (fn.indexOf('.') > -1) {
+                alert('请输入整数');
+                this.value = '';
+                this.focus();
+            }
+
+            if (tempArr !== [] && parseInt(fn) !== tempArr[0]) {
+                nums = [];
+                sp.innerHTML = '';
+            }
+        });
+
+        lastNumber.addEventListener('blur', function () {
+            let ln = lastNumber.value.trim();
+
+            tempArr = nums;
+            tempArr.sort(function (a, b) {
+                return a - b;
+            });
+
+            if (ln.indexOf('.') > -1) {
+                alert('请输入整数');
+                this.value = '';
+                this.focus();
+            }
+
+            if (tempArr !== [] && parseInt(ln) !== tempArr[tempArr.length - 1]) {
+                nums = [];
+                sp.innerHTML = '';
+            }
+        });
+
+        let btnAutoClickTimes = 0;
+        let tempStr = '';
+        btnAuto.addEventListener('click', function () {
+            if (btnAutoClickTimes === 10) {
+                sp.innerHTML = '';
+                tempStr = '';
+            }
+            btnAutoClickTimes++;
+            if (firstNumber.value === '' || lastNumber.value === '' || firstNumber.value.trim() === '' || lastNumber.value.trim() === '') {
+                alert('请补全条件');
+                return false;
+            }
+
+            let fn = firstNumber.value.trim();
+            let ln = lastNumber.value.trim();
+
+            fn = parseInt(fn);
+            ln = parseInt(ln);
+
+            if (isNaN(fn)) {
+                alert('请输入整数');
+                firstNumber.value = '';
+                return false;
+            }
+
+            if (fn < 0) {
+                alert('请输入大于0的整数');
+                firstNumber.value = '';
+                return false;
+            }
+
+            if (isNaN(ln)) {
+                alert('请输入整数');
+                lastNumber.value = '';
+                return false;
+            }
+
+            if (ln < 0) {
+                alert('请输入大于0的整数');
+                lastNumber.value = '';
+                return false;
+            }
+
+            if (fn < ln && nums.length < (ln - fn + 1)) {
+                let num = Math.floor(Math.random() * (ln - fn + 1)) + fn;
+                while (true) {
+                    if (nums.indexOf(num) === -1) {
+                        break;
+                    }
+                    num = Math.floor(Math.random() * (ln - fn + 1)) + fn;
+                }
+                nums.push(num);
+                num = num < 10 ? '0' + num : num;
+                if (sp.innerHTML == '') {
+                    sp.innerHTML += '<span>' + num + '</span>';
+                } else {
+                    sp.innerHTML += '<span>' + num + '</span>';
+                }
+
+                // 控制台查看记录
+                // tempStr += tempStr == '' ? num : '\t' + num;
+                tempStr += '\t' + num;
+                if (btnAutoClickTimes >= 10) {
+                    console.log('定义随机数：' + tempStr);
+                }
+            }
+        });
+
+
+    </script>
+
+    <script>
+        (function () {
+            btnDLT.click();
+            btnSSQ.click();
+            btnPL5.click();
+            btnKL8.click();
+            btn9.click();
+            btn12.click();
+            btn16.click();
+            btn33.click();
+            btn35.click();
+            btn80.click();
+            for (let i = 0; i < 10; i++) {
+                btnAuto.click();
+            }
+        })();
+    </script>
+</body>
+
+</html>
