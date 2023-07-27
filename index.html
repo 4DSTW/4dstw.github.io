@@ -707,7 +707,7 @@
         <!-- 随机数生成区域 ----------------------------------------------------------------------------------- -->
         <div class="box-random">
             <div>
-                <button class="btn-9">随机数0 ~ 09</button>
+                <button class="btn-9">随机数0 ~ 9</button>
                 <div class="box-random-result-9">
                     <span>0</span>
                 </div>
@@ -887,7 +887,7 @@
             //     str2 += '随机数0-09：' + '&emsp;' + num;
             // }
             str += '随机数0-09：' + '\t' + num;
-            str2 += num < 10 ? '0' + num : num;
+            str2 += num;
             // str += '随机数0-09：' + '\t' + (num < 10 ? '0' + num : num);
             console.log(str);
 
@@ -896,7 +896,7 @@
             const tableRecord = document.querySelector('.table-record');
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
-            td1.innerHTML = '00~09';
+            td1.innerHTML = '0~9';
             tr.appendChild(td1);
             const td2 = document.createElement('td');
             td2.innerHTML = str2;
@@ -923,8 +923,8 @@
             // 控制台查看记录
             let str = '';
             let str2 = '';
-            str += '随机数1-35：' + '\t' + (num < 10 ? '0' + num : num);
-            str2 += num < 10 ? '0' + num : num;
+            str += '随机数1-35：' + '\t' + num;
+            str2 += num;
             console.log(str);
 
             consoleRecord += str2 + '<br>';
@@ -932,7 +932,7 @@
             const tableRecord = document.querySelector('.table-record');
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
-            td1.innerHTML = '01~35';
+            td1.innerHTML = '1~35';
             tr.appendChild(td1);
             const td2 = document.createElement('td');
             td2.innerHTML = str2;
@@ -959,8 +959,8 @@
             // 控制台查看记录
             let str = '';
             let str2 = '';
-            str += '随机数1-12：' + '\t' + (num < 10 ? '0' + num : num);
-            str2 += num < 10 ? '0' + num : num;
+            str += '随机数1-12：' + '\t' + num;
+            str2 += num;
             console.log(str);
 
             consoleRecord += str2 + '<br>';
@@ -968,7 +968,7 @@
             const tableRecord = document.querySelector('.table-record');
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
-            td1.innerHTML = '01~12';
+            td1.innerHTML = '1~12';
             tr.appendChild(td1);
             const td2 = document.createElement('td');
             td2.innerHTML = str2;
@@ -995,8 +995,8 @@
             // 控制台查看记录
             let str = '';
             let str2 = '';
-            str += '随机数1-33：' + '\t' + (num < 10 ? '0' + num : num);
-            str2 += num < 10 ? '0' + num : num;
+            str += '随机数1-33：' + '\t' + num;
+            str2 += num;
             console.log(str);
 
             consoleRecord += str2 + '&emsp;<br>';
@@ -1004,7 +1004,7 @@
             const tableRecord = document.querySelector('.table-record');
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
-            td1.innerHTML = '01~33';
+            td1.innerHTML = '1~33';
             tr.appendChild(td1);
             const td2 = document.createElement('td');
             td2.innerHTML = str2;
@@ -1031,8 +1031,8 @@
             // 控制台查看记录
             let str = '';
             let str2 = '';
-            str += '随机数1-16：' + '\t' + (num < 10 ? '0' + num : num);
-            str2 += num < 10 ? '0' + num : num;
+            str += '随机数1-16：' + '\t' + num;
+            str2 += num;
             console.log(str);
 
             consoleRecord += str2 + '&emsp;<br>';
@@ -1040,7 +1040,7 @@
             const tableRecord = document.querySelector('.table-record');
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
-            td1.innerHTML = '01~16';
+            td1.innerHTML = '1~16';
             tr.appendChild(td1);
             const td2 = document.createElement('td');
             td2.innerHTML = str2;
@@ -1067,8 +1067,8 @@
             // 控制台查看记录
             let str = '';
             let str2 = '';
-            str += '随机数1-80：' + '\t' + (num < 10 ? '0' + num : num);
-            str2 += num < 10 ? '0' + num : num;
+            str += '随机数1-80：' + '\t' + num;
+            str2 += num;
             console.log(str);
 
             consoleRecord += str2 + '&emsp;<br>';
@@ -1076,7 +1076,7 @@
             const tableRecord = document.querySelector('.table-record');
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
-            td1.innerHTML = '01~80';
+            td1.innerHTML = '1~80';
             tr.appendChild(td1);
             const td2 = document.createElement('td');
             td2.innerHTML = str2;
@@ -1313,8 +1313,8 @@
                     //     tempStr += '定义随机数：' + '\t' + num;
                     //     tempStr2 += '定义随机数：' + '&emsp;' + num;
                     // }
-                    tempStr += '定义随机数：' + '\t' + num;
-                    tempStr2 += (num < 10 ? '0' + num : num) + ' ';
+                    tempStr += '定义随机数：' + '\t' + num + '\t';
+                    tempStr2 += num + ' ';
                 } else {
                     // if (num != 0 && num < 10) {
                     //     tempStr += '\t' + '0' + num;
@@ -1323,8 +1323,8 @@
                     //     tempStr += '\t' + num;
                     //     tempStr2 += '&emsp;' + num;
                     // }
-                    tempStr += '\t' + num;
-                    tempStr2 += (num < 10 ? '0' + num : num) + ' ';
+                    tempStr += num+'\t';
+                    tempStr2 += num + ' ';
                 }
 
 
@@ -1358,7 +1358,10 @@
                 return false;
             }
             // 将临时数组赋值为：自定义随机数的数组
-            tempArrAO = nums;
+            for (let i = 0; i < nums.length; i++) {
+                tempArrAO[i] = nums[i];
+            }
+            // tempArrAO = nums;
             // 升序
             tempArrAO.sort(function (a, b) {
                 return a - b;
@@ -1374,14 +1377,9 @@
                 // 将每个元素写入到：自定义随机数中的展示区域
                 sp.innerHTML += '<span>' + tempArrAO[i] + '</span>';
                 // 将每个元素写入到：用于记录自定义随机数的字符串
-                tempStr += (tempStr == '' ? tempArrAO[i] : tempArrAO[i] + '\t');
+                tempStr += tempArrAO[i] + '\t';
                 // tempStr2 += tempStr2 == '' ? tempArrAO[i] : ' ' + tempArrAO[i];
-
-                if (tempStr2 === '') {
-                    tempStr2 += (tempArrAO[i] < 10 ? '0' + tempArrAO[i] : tempArrAO[i]);
-                } else {
-                    tempStr2 += ' ' + (tempArrAO[i] < 10 ? '0' + tempArrAO[i] : tempArrAO[i]);
-                }
+                tempStr2 += tempArrAO[i] + ' ';
             }
             // 控制台查看记录
             console.log(tempStr);
@@ -1404,8 +1402,8 @@
             }
         });
 
-        // 自定义随机数中的升序按钮功能
-        // 获取升序按钮
+        // 自定义随机数中的降序按钮功能
+        // 获取降序按钮
         const btnRandomAutoDO = document.querySelector('.btn-DO');
         // 临时数组，点击后赋值为：自定义随机数的数组
         let tempArrDO = [];
@@ -1416,7 +1414,10 @@
             }
 
             // 将临时数组赋值为：自定义随机数的数组
-            tempArrDO = nums;
+            for (let i = 0; i < nums.length; i++) {
+                tempArrDO[i] = nums[i];
+            }
+            // tempArrDO = nums;
             // 升序
             tempArrDO.sort(function (a, b) {
                 return b - a;
@@ -1432,14 +1433,10 @@
                 // 将每个元素写入到：自定义随机数中的展示区域
                 sp.innerHTML += '<span>' + tempArrDO[i] + '</span>';
                 // 将每个元素写入到：用于记录自定义随机数的字符串
-                tempStr += (tempStr == '' ? tempArrDO[i] : tempArrDO[i] + '\t');
+                tempStr += tempArrDO[i] + '\t';
                 // tempStr2 += tempStr2 == '' ? tempArrDO[i] : ' ' + tempArrDO[i];
 
-                if (tempStr2 === '') {
-                    tempStr2 += (tempArrDO[i] < 10 ? '0' + tempArrDO[i] : tempArrDO[i]);
-                } else {
-                    tempStr2 += ' ' + (tempArrDO[i] < 10 ? '0' + tempArrDO[i] : tempArrDO[i]);
-                }
+                tempStr2 += tempArrDO[i] + ' ';
             }
             // 控制台查看记录
             console.log(tempStr);
@@ -1562,7 +1559,7 @@
                 }
             }
             str += '\t+\t' + (lisNumbers2[0] < 10 ? '0' + lisNumbers2[0] : lisNumbers2[0]) + '\t' + (lisNumbers2[1] < 10 ? '0' + lisNumbers2[1] : lisNumbers2[1]);
-            str2 += ' + ' + (lisNumbers2[0] < 10 ? '0' + lisNumbers2[0] : lisNumbers2[0]) + ', ' + (lisNumbers2[1] < 10 ? '0' + lisNumbers2[1] : lisNumbers2[1]);
+            str2 += ' + ' + (lisNumbers2[0] < 10 ? '0' + lisNumbers2[0] : lisNumbers2[0]) + ' ' + (lisNumbers2[1] < 10 ? '0' + lisNumbers2[1] : lisNumbers2[1]);
             console.log(str);
 
             consoleRecord += str2 + '<br>';
@@ -1615,7 +1612,8 @@
                 //     str2 += '&emsp;' + lisNumbers1[i];
                 // }
                 str += '\t' + lisNumbers1[i];
-                str2 += lisNumbers1[i] < 10 ? '0' + lisNumbers1[i] : lisNumbers1[i];
+                str2 += lisNumbers1[i];
+                // str2 += lisNumbers1[i] < 10 ? '0' + lisNumbers1[i] : lisNumbers1[i];
                 if (i < lisNumbers1.length - 1) {
                     str2 += ' ';
                 }
