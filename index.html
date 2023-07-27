@@ -10,6 +10,11 @@
             .title strong {
                 display: none;
             }
+
+            .box-random>div:nth-child(-n+6) button:hover {
+                transform: scale(1.1);
+                letter-spacing: 0px !important;
+            }
         }
 
         @media screen and (max-width:340px) {
@@ -18,23 +23,24 @@
             }
         }
 
-        @media screen and (min-width:340px) {
-            .box-random>div:nth-child(-n+6) button {
+        /* @media screen and (min-width:340px) {
+            .box-random>div:nth-child(-n+6) {
                 width: 150px !important;
             }
         }
 
         @media screen and (min-width:375px) {
-            .box-random>div:nth-child(-n+6) button {
+            .box-random>div:nth-child(-n+6) {
                 width: 140px !important;
+                margin: 0 30px;
             }
         }
 
         @media screen and (min-width:1200px) {
-            .box-random>div:nth-child(-n+6) button {
+            .box-random>div:nth-child(-n+6) {
                 width: 150px !important;
             }
-        }
+        } */
 
         @media screen and (min-width: 0px) {
             h1 {
@@ -184,6 +190,7 @@
 
         .box-random>div:nth-child(-n+6) {
             width: 148px;
+            margin: 0 10px !important;
         }
 
         .box-random>div:nth-child(7) .btn-auto {
