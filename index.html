@@ -18,6 +18,24 @@
             }
         }
 
+        @media screen and (min-width:340px) {
+            .box-random>div:nth-child(-n+6) button {
+                width: 150px !important;
+            }
+        }
+
+        @media screen and (min-width:375px) {
+            .box-random>div:nth-child(-n+6) button {
+                width: 140px !important;
+            }
+        }
+
+        @media screen and (min-width:1200px) {
+            .box-random>div:nth-child(-n+6) button {
+                width: 150px !important;
+            }
+        }
+
         @media screen and (min-width: 0px) {
             h1 {
                 font-size: 26px;
@@ -173,7 +191,13 @@
         }
 
         .box-random>div:nth-child(-n+6) button:hover {
+            transform: scale(1.1);
             letter-spacing: 2px;
+        }
+
+        .box-random>div:nth-child(-n+6) button:active {
+            transform: scale(1);
+            letter-spacing: 0px;
         }
 
         .container button.btn-refresh-page {
@@ -226,7 +250,7 @@
             /* border: 1px solid #000; */
             /* border: 1px solid #ff4c4c; */
             border-radius: 8px;
-            background-color: rgba(255, 255, 255, .7);
+            background-color: rgba(255, 255, 255, .6);
         }
 
         @keyframes wordRotate1 {
@@ -374,11 +398,14 @@
         }
 
         .container .box-random .btn-auto:hover {
-            letter-spacing: 5px;
+            transform: scale(1.1);
+            letter-spacing: 3px;
         }
 
         .container .box-random .btn-auto:active {
+            transform: scale(1);
             letter-spacing: 1px;
+            font-size: 18px;
         }
 
 
@@ -432,14 +459,17 @@
         .box-reference button {
             width: 150px;
             background-color: #ff4c4c;
+            letter-spacing: 6px;
         }
 
         .box-reference button:hover {
-            letter-spacing: 5px;
+            transform: scale(1.1);
+            letter-spacing: 8px;
         }
 
         .box-reference button:active {
-            letter-spacing: 1px;
+            transform: scale(1);
+            letter-spacing: 6px;
         }
 
         .box-tips {
@@ -1099,7 +1129,7 @@
         let daletouClickTimes = 0;
 
         btnDLT.addEventListener('click', function () {
-            if (daletouClickTimes % 2 === 0 && daletouClickTimes !== 0) {
+            if (daletouClickTimes % 5 === 0 && daletouClickTimes !== 0) {
                 // alert('购彩要节制！\n请理性购彩！');
                 boxTips.style.display = 'block';
                 allContentBox.style.display = 'block';
@@ -1174,7 +1204,7 @@
         let pailie5ClickTimes = 0;
 
         btnPL5.addEventListener('click', function () {
-            if (pailie5ClickTimes % 2 === 0 && pailie5ClickTimes !== 0) {
+            if (pailie5ClickTimes % 5 === 0 && pailie5ClickTimes !== 0) {
                 // alert('购彩要节制！\n请理性购彩！');
                 boxTips.style.display = 'block';
                 allContentBox.style.display = 'block';
@@ -1212,7 +1242,7 @@
         let shuangseqiuClickTimes = 0;
 
         btnSSQ.addEventListener('click', function () {
-            if (shuangseqiuClickTimes % 2 === 0 && shuangseqiuClickTimes !== 0) {
+            if (shuangseqiuClickTimes % 5 === 0 && shuangseqiuClickTimes !== 0) {
                 // alert('购彩要节制！\n请理性购彩！');
                 boxTips.style.display = 'block';
                 allContentBox.style.display = 'block';
@@ -1299,7 +1329,7 @@
                 return false;
             }
 
-            if (kuaile8ClickTimes % 2 === 0 && kuaile8ClickTimes !== 0) {
+            if (kuaile8ClickTimes % 5 === 0 && kuaile8ClickTimes !== 0) {
                 // alert('购彩要节制！\n请理性购彩！');
                 boxTips.style.display = 'block';
                 allContentBox.style.display = 'block';
