@@ -1,0 +1,235 @@
+/*
+    4DSTW 页面的 CSS 样式：
+    2023.08.01 创建
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*
+            设置盒子的滚动条样式
+        */
+.content_box::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 10px;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+.content_box::-webkit-scrollbar-thumb {
+  border: 0;
+  /*滚动条里面小方块*/
+  /* background-color: skyblue; */
+  background-color: rgba(46, 139, 134, 0.5);
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+}
+.content_box::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+li {
+  list-style: none;
+}
+a {
+  color: #eee;
+  text-decoration: none;
+}
+.p-fixed {
+  position: fixed;
+}
+.p-relative {
+  position: relative;
+}
+.p-absolute {
+  position: absolute;
+}
+.d-flex {
+  display: flex;
+}
+@media screen and (max-width: 3000px) {
+  @keyframes bgLetter4DMoveToCenter {
+    0% {
+      font-size: 0px;
+    }
+    100% {
+      font-size: 120px;
+    }
+  }
+  .bg-letter-stw {
+    font-size: 120px;
+  }
+}
+@media screen and (max-width: 992px) {
+  @keyframes bgLetter4DMoveToCenter {
+    0% {
+      font-size: 0px;
+    }
+    100% {
+      font-size: 100px;
+    }
+  }
+  .bg-letter-stw {
+    font-size: 100px;
+  }
+}
+@media screen and (max-width: 768px) {
+  @keyframes bgLetter4DMoveToCenter {
+    0% {
+      font-size: 0px;
+    }
+    100% {
+      font-size: 80px;
+    }
+  }
+  .bg-letter-stw {
+    font-size: 80px;
+  }
+}
+@media screen and (max-width: 500px) {
+  @keyframes bgLetter4DMoveToCenter {
+    0% {
+      font-size: 0px;
+    }
+    100% {
+      font-size: 60px;
+    }
+  }
+  .bg-letter-stw {
+    font-size: 60px;
+  }
+}
+.content-bg {
+  width: 100%;
+  height: 100%;
+  color: #eee;
+}
+@keyframes bgLetter4DMoveToCenterLeft {
+  100% {
+    top: 50%;
+    transform: translate(-133%, -50%);
+  }
+}
+@keyframes bgLetterSTWMoveToCenterRight {
+  100% {
+    right: 50%;
+    transform: translate(80%, -50%);
+  }
+}
+.bg-letter-4d,
+.bg-letter-stw {
+  font-weight: 700;
+  z-index: 99;
+  color: rgba(255, 255, 255, 0.7);
+}
+.bg-letter-4d {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: bgLetter4DMoveToCenter 0.3s linear forwards, bgLetter4DMoveToCenterLeft 0.1s 0.7s forwards;
+}
+.bg-letter-stw {
+  right: -150%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: bgLetterSTWMoveToCenterRight 0.2s 0.6s forwards;
+}
+.bg-image {
+  width: 3000px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.bg-image-mask {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.2;
+}
+.content-main {
+  display: none;
+  width: 98%;
+  background-color: lightseagreen;
+  cursor: default;
+}
+.logo {
+  color: #eee;
+  font-size: 40px;
+  font-weight: 700;
+}
+.logo h1 a {
+  font-size: 0;
+}
+.logo-letter-i,
+.logo-letter-c {
+  top: 10px;
+  transition: all 0.3s;
+  opacity: 0.8;
+}
+.logo-letter-i {
+  left: 20px;
+}
+.logo-letter-c {
+  left: 34px;
+}
+.logo:hover .logo-letter-i,
+.logo:hover .logo-letter-c,
+.logo:hover .logo-shape-circle {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+.logo-shape-circle {
+  top: 32px;
+  left: 48px;
+  width: 10px;
+  height: 10px;
+  background-color: #12997a;
+  border-radius: 50%;
+  transition: all 0.3s;
+  opacity: 0.8;
+}
+.nav-titles {
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 140px;
+  height: 30px;
+}
+.nav-title1 h4 {
+  font-size: 20px;
+  color: #eee;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+.nav-title1 h4:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+.content {
+  display: none;
+  overflow: auto;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 66px;
+  width: 90%;
+  height: 86%;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 999;
+  animation: contentShow 0.5s 7s forwards;
+}
+.content table {
+  margin: auto;
+  border: 1px solid #eee;
+  border-collapse: collapse;
+}
+.content table th,
+.content table td {
+  padding: 4px;
+  border: 1px solid #eee;
+}
+.content table th:nth-child(1),
+.content table td:nth-child(1),
+.content table td:nth-child(3) {
+  text-align: center;
+}
