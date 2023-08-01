@@ -118,7 +118,7 @@ a {
 }
 .bg-letter-4d,
 .bg-letter-stw {
-  font-weight: 700;
+  /* font-weight: 700; */
   z-index: 99;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -155,7 +155,7 @@ a {
 .logo {
   color: #eee;
   font-size: 40px;
-  font-weight: 700;
+  /* font-weight: 700; */
 }
 .logo h1 a {
   font-size: 0;
