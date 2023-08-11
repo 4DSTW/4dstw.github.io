@@ -2,6 +2,10 @@
     4DSTW 页面的 CSS 样式：
     2023.08.01 创建
 */
+button {
+    position:flex;
+    z-index:9999;
+}
 * {
   margin: 0;
   padding: 0;
