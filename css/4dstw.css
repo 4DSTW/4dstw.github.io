@@ -3,7 +3,7 @@
     2023.08.01 创建
 */
 button {
-    position:fixed;
+    position:fixed !important;
     z-index:9999;
 }
 * {
