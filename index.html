@@ -1,2 +1,1051 @@
-<!doctype html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/bootstrap.css"><title>ICAN</title><script defer="defer" src="/js/chunk-vendors.03c3ef33.js"></script><script defer="defer" src="/js/app.8a22f319.js"></script><link href="/css/app.01a1a9ab.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <!-- 
+        作者：ICAN
+        开始时间：20231006
+        结束时间：20231006
+     -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天使选择器</title>
+    <!-- 旋转数组 -->
+    <script>
+        /**
+         * 旋转数组 升索引(顺时针) 或者 降索引(逆时针)
+         * 
+         * create:  2023.7.30 15:17
+         * author:  ican
+         * funName: isIntegerStrict(number)
+         * args:    arr1In           传入需要旋转的数组
+         *          howmanyIndex    需要升/降多少索引
+         *          isUp            是否升序，true是升序(顺时针)，false是降序(逆时针)，不写则取false
+         * return:  Array           返回旋转后的数组
+         * version: v1.0
+         */
+        function rotateArr(arr1In, howmanyIndex, isUp) {
+            if (!Array.isArray(arr1In)) {
+                return false;
+            }
+
+            // 判断数字是不是整数
+            if (!Number.isInteger(howmanyIndex)) {
+                return false;
+            }
+
+            if (howmanyIndex < 0) {
+                return false;
+            }
+
+            // 如果 howmanyIndex > arr1In.length，howmanyIndex应该取多少？
+            // [1,2]      长度为2，降3次，相当于降1次  [2,1] [1,2] [2,1]
+            // [1,2,3,4]  长度为4，降4次，相当于没降   [2,3,4,1] [3,4,1,2] [4,1,2,3] [1,2,3,4]
+            // number % 0 = NaN
+            if (howmanyIndex % arr1In.length === 0 || arr1In.length === 0) {
+                return arr1In;
+            } else {
+                howmanyIndex = howmanyIndex % arr1In.length;
+            }
+
+            // 使用者可能不对当前数组降索引，所以要创建结果数组
+            let arr1Out = [];
+
+            if (isUp) {
+                // 数组前面的部分进行升序，排到后面
+                // 假设：
+                // howmanyIndex = 2  1  3
+                // [1,2,3,4,5]  [1,2,3,4,5]   [1,2,3,4,5]
+                // [4,5,1,2,3]  [5,1,2,3,4]   [3,4,5,1,2]
+                // [,,1,2,3]    [,1,2,3,4]    [,,,1,2]
+                for (let i = howmanyIndex, j = 0; i < arr1In.length; i++, j++) {
+                    // 2 = 0  1 = 0  3 = 0
+                    // 3 = 1  2 = 1  4 = 0
+                    // 4 = 2  3 = 2
+                    //        4 = 3
+                    arr1Out[i] = arr1In[j];
+                }
+
+                // 数组后面的部分进行降序，排到前面
+                // 假设：
+                // howmanyIndex = 2  1  4
+                // [1,2,3,4,5]  [1,2,3,4,5]  [1,2,3,4,5]
+                // [4,5,1,2,3]  [5,1,2,3,4]  [2,3,4,5,1]
+                // [4,5,,,]     [5,,,,]      [2,3,4,5,]
+                for (let i = 0; i < howmanyIndex; i++) {
+                    // 0 = 3  0 = 4  0 = 1
+                    // 1 = 4         1 = 2
+                    //               2 = 3
+                    //               3 = 4
+                    arr1Out[i] = arr1In[arr1In.length - howmanyIndex + i];
+                }
+            } else {
+                // 数组前面的部分进行升序，排到后面
+                // 假设：
+                // howmanyIndex = 2  1
+                // [1,2,3,4,5]  [1,2,3,4,5]
+                // [3,4,5,1,2]  [2,3,4,5,1]
+                // [,,,1,2]     [,,,,1]
+                for (let i = arr1In.length - howmanyIndex, j = 0; i < arr1In.length; i++, j++) {
+                    // 3 = 0  4 = 0
+                    // 4 = 1
+                    arr1Out[i] = arr1In[j];
+                }
+
+                // 数组后面的部分进行降序，排到前面
+                // 假设：
+                // howmanyIndex = 2  1
+                // [1,2,3,4,5]  [1,2,3,4,5]
+                // [3,4,5,1,2]  [2,3,4,5,1]
+                // [3,4,5,,]    [2,3,4,5,]
+                for (let i = 0; i < arr1In.length - howmanyIndex; i++) {
+                    // 0 = 2  0 = 1
+                    // 1 = 3  1 = 2
+                    // 2 = 4  2 = 3
+                    //        3 = 4
+                    arr1Out[i] = arr1In[i + howmanyIndex];
+                }
+            }
+
+            // 返回结果数组
+            return arr1Out;
+        }
+    </script>
+    <!-- 生成范围内的乱序数组、生成随机数、判断正整数、判断整数 -->
+    <script>
+        // 生成所有 [min, max] 之间的数值组成一个数组并返回
+        function randomNumberToArr(min, max) {
+            let arr1 = []
+            for (let i = 0; i < max - min + 1; i++) {
+                let n = getRandomNumber(min, max)
+                while (arr1.indexOf(n) >= 0) {
+                    // console.log('-------------------')
+                    n = getRandomNumber(min, max)
+                }
+                arr1[i] = n
+            }
+            return arr1
+        }
+
+        /**
+         * 生成一定范围内的随机整数，左右都包含
+         * 
+         * create:  2023.7.30 16:03
+         * author:  ican
+         * funName: randomNumber(min, max)
+         * args:    min             范围的最小值
+         *          max             范围的最大值
+         * return:  number          返回生成的随机整数
+         * version: v1.0
+         */
+        function getRandomNumber(min, max) {
+            if (min > max) {
+                return false;
+            }
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        /**
+         * 判断输入的字符串是否为正整数
+         * 
+         * create:  2023.7.30 14:28
+         * author:  ican
+         * funName: isIntegerStringPositive(str)
+         * args:    str             String字符串类型
+         * return:  Boolean         true/false
+         * version: v1.0
+         */
+        function isIntegerStringPositive(str) {
+            if (isNaN(Number(str))) {
+                return false;
+            }
+            if (str === 'null' || str === null) {
+                return false;
+            }
+            if (typeof parseInt(str) !== 'number') {
+                return false;
+            }
+            if (str.trim() === '' || str.indexOf('.') > -1) {
+                return false;
+            }
+            return true;
+        }
+
+        /**
+         * 判断所以类型是否为整数【严格模式】
+         * 
+         * create:  2023.7.30 13:30
+         * author:  ican
+         * funName: isIntegerStrict(number)
+         * args:    number          Integer整数类型
+         * return:  Boolean         true/false
+         * version: v1.0
+         */
+        function isIntegerAllStrict(number) {
+            if (Number.isInteger) {
+                return Number.isInteger(number);
+            } else {
+                return typeof number === 'number' && number % 1 === 0;
+            }
+        }
+    </script>
+
+    <style>
+        /*
+            设置盒子的滚动条样式
+        */
+        .content_box::-webkit-scrollbar {
+            /*滚动条整体样式*/
+            width: 9px;
+            /*高宽分别对应横竖滚动条的尺寸*/
+            height: 1px;
+        }
+
+        .content_box::-webkit-scrollbar-thumb {
+            border: 0;
+            /*滚动条里面小方块*/
+            border-radius: 9px;
+            /* background-color: skyblue; */
+            background-color: rgba(46, 139, 134, 0.7);
+            background-color: #225fc1;
+            background-image: -webkit-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.2) 25%,
+                    transparent 25%,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    rgba(255, 255, 255, 0.2) 75%,
+                    transparent 75%,
+                    transparent);
+        }
+
+        .content_box::-webkit-scrollbar-track {
+            /*滚动条里面轨道*/
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            background: #ededed80;
+            border-radius: 9px;
+        }
+
+        .content_box2::-webkit-scrollbar {
+            /*滚动条整体样式*/
+            width: 6px;
+            /*高宽分别对应横竖滚动条的尺寸*/
+            height: 1px;
+        }
+
+        .content_box2::-webkit-scrollbar-thumb {
+            border: 0;
+            /*滚动条里面小方块*/
+            border-radius: 6px;
+            /* background-color: skyblue; */
+            background-color: rgba(46, 139, 134, 0.7);
+            background-color: #225fc1;
+            background-image: -webkit-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.2) 25%,
+                    transparent 25%,
+                    transparent 50%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    rgba(255, 255, 255, 0.2) 75%,
+                    transparent 75%,
+                    transparent);
+        }
+
+        .content_box2::-webkit-scrollbar-track {
+            /*滚动条里面轨道*/
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            background: #ededed80;
+            border-radius: 6px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            cursor: default;
+        }
+
+        li {
+            position: relative;
+            list-style: none;
+            text-align: center;
+        }
+
+        div {
+            box-sizing: border-box;
+        }
+
+        li button {
+            position: absolute;
+            right: 50%;
+            top: 10px;
+            transform: translate(159px);
+            width: 52px;
+            height: 26px;
+            background-color: pink;
+            background-color: #111;
+            background-color: #EA4335;
+            border: 0;
+            font-size: 16px;
+            border-radius: 6px;
+            /* font-weight: 700; */
+            color: #222;
+            color: #fff;
+            line-height: 24px;
+            /* letter-spacing: 2px; */
+            transition: all .2s;
+        }
+
+        li button:hover {
+            background-color: #cd3325;
+        }
+
+        li button:active {
+            background-color: #cd3325;
+        }
+
+        input {
+            outline: none;
+            font-size: 17px;
+            padding: 0px 6px;
+            height: 30px;
+            line-height: 30px;
+            width: 324px;
+            width: 310px;
+            text-align: center;
+            transition: all .2s;
+            border-radius: 6px;
+            border: 2px solid pink;
+            border: 2px solid #111;
+            margin: 6px 0;
+        }
+
+        .question input {
+            border: 2px solid #EA4335;
+            border: 2px solid #33A351;
+        }
+
+        li input {
+            border: 2px solid #EA4335;
+        }
+
+        .main-content {
+            width: 96%;
+            margin: 10px auto;
+            /* background-color: pink; */
+        }
+
+        .top-line {
+            width: 100%;
+            height: 3px;
+            background-color: pink;
+            background-color: #111;
+            background-color: #3679e3;
+            margin: 0 0 10px;
+            /* animation: btnChange 6s linear infinite; */
+        }
+
+        .main-content h1 {
+            /* color: deeppink; */
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .main-content h3 {
+            /* color: deeppink; */
+            text-align: center;
+            margin: 20px 0 6px;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+        .question {
+            text-align: center;
+        }
+
+        .btn-add,
+        .btn-choose,
+        .btn-clear {
+            text-align: center;
+        }
+
+        .btn-add button,
+        .btn-choose button,
+        .btn-clear button {
+            font-size: 17px;
+            width: 100px;
+            /* word-spacing: 3px; */
+            text-align: center;
+            height: 30px;
+            line-height: 25px;
+            background-color: pink;
+            background-color: #111;
+            background-color: #3679e3;
+            border: none;
+            /* font-weight: 700; */
+            color: #222;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .btn-add button,
+        .btn-clear button {
+            border-radius: 6px;
+        }
+
+        .btn-clear button {
+            background-color: #3679e3;
+        }
+
+        .btn-clear button:hover {
+            background-color: #266bd9;
+        }
+
+        .btn-clear button:active {
+            background-color: #266bd9;
+        }
+
+        .btn-add button {
+            background-color: #EA4335;
+        }
+
+        .btn-add button:hover {
+            background-color: #e23323;
+        }
+
+        .btn-add button:active {
+            background-color: #e23323;
+        }
+
+        .btn-choose button {
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+            margin: 9px 0 0;
+            font-size: 18px;
+            /* animation: btnChange 6s linear infinite; */
+            transition: all .2s;
+            background-color: #3679e3;
+        }
+
+        .btn-choose button:hover {
+            /* animation-play-state: paused; */
+            background-color: #266bd9;
+        }
+
+        .btn-choose button:active {
+            background-color: #266bd9;
+        }
+
+        .tianshi {
+            width: 326px;
+            height: 210px;
+            /* background-color: skyblue; */
+            margin: 10px auto 0;
+            border-radius: 6px;
+            padding: 6px;
+            text-align: center;
+            border: 2px solid pink;
+            border: 2px solid #111;
+            border: 2px solid #3679e3;
+            overflow: auto;
+        }
+
+        .tianshi dt {
+            font-weight: 700;
+            background-color: pink;
+            background-color: #111;
+            background-color: #3679e3;
+            padding: 3px 0 4px;
+            color: #fff;
+            border-radius: 3px;
+        }
+
+        .tianshi dd {
+            margin: 3px 0;
+        }
+
+        .tianshi dl:nth-child(n+2) {
+            /* border-top: 1px solid #111; */
+            margin-top: 6px;
+        }
+
+        @media screen and (max-width:352px) {
+            body {
+                width: 342px;
+            }
+        }
+
+        /* 谷歌配色 */
+        .blue {
+            color: #3679e3;
+        }
+
+        .red {
+            color: #EA4335;
+        }
+
+        .orange {
+            color: #FBBC05;
+            color: #edb201;
+            /* color: #903ff4; */
+            /* color: deeppink; */
+        }
+
+        .green {
+            color: #33A351;
+        }
+
+        @keyframes btnChange {
+            0% {
+                background-color: #e13f30;
+            }
+
+            33% {
+                background-color: #2162ca;
+            }
+
+            66% {
+                background-color: #33A351;
+            }
+
+            100% {
+                background-color: #e13f30;
+            }
+        }
+
+        .today input {
+            border: none;
+            border-bottom: 2px solid #3679e3;
+            width: 24px;
+            border-radius: 0px;
+            background-color: #fff;
+        }
+
+        .today .maxlength-four {
+            width: 40px;
+        }
+
+        .today button {
+            width: 120px;
+            height: 30px;
+            background-color: #EA4335;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 17px;
+            transition: all .2s;
+            letter-spacing: 2px;
+        }
+
+        .today button:hover {
+            background-color: #e23323;
+        }
+
+        .box-good-number {
+            color: #33A351;
+            color: #3679e3;
+            margin: 20px 0 10px;
+        }
+
+        .date,
+        .time {
+            color: #33A351;
+            color: #3679e3;
+        }
+
+        /* .date input,
+        .time input {
+            border-color: #8133a3;
+        } */
+
+        .randoms input {
+            border-color: #EA4335;
+        }
+    </style>
+</head>
+
+<body class="content_box">
+    <div class="container">
+        <div class="main-content">
+            <!-- <h1>天使选择器</h1> -->
+            <h1>
+                <span class="blue">天</span>
+                <span class="red">使</span>
+                <span class="green">选</span>
+                <span class="orange">择</span>
+                <span class="red">器</span>
+            </h1>
+            <div class="top-line"></div>
+            <div class="btn-choose">
+                <button>寻求天使帮助</button>
+            </div>
+
+
+            <div class="today">
+                <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 幸运数模块 -->
+                <h4 style="text-align: center;" class="box-good-number">
+                    今日幸运数字：<span class="goodNumber"></span>
+                </h4>
+                <script>
+                    // 获取需要填入随机数的节点
+                    let goodNumber = document.querySelector('.goodNumber');
+                    // 自定义随机数的范围为 [1, 35]
+                    // 获取 [1, 35] 范围内的乱序数组
+                    let goodArr = randomNumberToArr(1, 80);
+                    console.log('&&&&&&&&&&&&&&&&&& 随机生成幸运数字');
+                    // 打印幸运数组
+                    console.log('幸运数组[1-35]：', goodArr);
+                    // 随机获取 [0, 34] 之间的一个索引值，用于生成幸运数
+                    let goodIndex = getRandomNumber(0, 79);
+                    // 打印索引值
+                    console.log('索引值：' + goodIndex);
+                    // 根据索引获取幸运数
+                    console.log('幸运数字：', goodArr[goodIndex]);
+                    // 将幸运数字填入页面
+                    goodNumber.innerHTML = goodArr[goodIndex] < 10 ? '0' + goodArr[goodIndex] : goodArr[goodIndex];
+                    console.log('&&&&&&&&&&&&&&&&&& 随机生成幸运数字');
+                </script>
+
+                <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 日期模块：年月日、时分秒 -->
+                <h4 style="text-align: center;" class="date">
+                    日期：
+                    <input type="text" maxlength="4" class="maxlength-four"> 年
+                    <input type="text" maxlength="2"> 月
+                    <input type="text" maxlength="2"> 日
+                </h4>
+                <h4 style="text-align: center;" class="time">
+                    时间：
+                    <input type="text" maxlength="2" class="maxlength-four"> 时
+                    <input type="text" maxlength="2"> 分
+                    <input type="text" maxlength="2"> 秒
+                </h4>
+                <script>
+                    // 获取日期盒子中所有的 input 框
+                    let myDateInputs = document.querySelectorAll('.date input');
+                    // 获取当前时间
+                    let date = new Date();
+                    // console.log(date);
+                    // 获取年月日
+                    let year = date.getFullYear();
+                    // console.log(year);
+                    let month = date.getMonth() + 1;
+                    // console.log(month);
+                    let day = date.getDate();
+                    // console.log(day);
+                    // 将日期盒子中所有的 input 框设为不可用
+                    for (let i = 0; i < myDateInputs.length; i++) {
+                        myDateInputs[i].disabled = true;
+                    }
+                    // 将年月日填入日期盒子中对应的 input 框
+                    myDateInputs[0].value = year;
+                    myDateInputs[1].value = month;
+                    myDateInputs[2].value = day;
+
+
+                    // 获取时间盒子中所有的 input 框
+                    let myTimeInputs = document.querySelectorAll('.time input');
+                    // 获取时分秒
+                    let hours = date.getHours();
+                    // console.log(hours);
+                    let minutes = date.getMinutes();
+                    // console.log(minutes);
+                    let seconds = date.getSeconds();
+                    // console.log(seconds);
+                    // 将时间盒子中所有的 input 框设为不可用
+                    for (let i = 0; i < myTimeInputs.length; i++) {
+                        myTimeInputs[i].disabled = true;
+                    }
+                    // 将时分秒填入时间盒子中对应的 input 框
+                    myTimeInputs[0].value = hours;
+                    myTimeInputs[1].value = minutes;
+                    myTimeInputs[2].value = seconds;
+                    // 设置定时器
+                    let timerForCurrentTime = setInterval(function () {
+                        // 每秒都需要重新获取一下时间
+                        date = new Date();
+                        hours = date.getHours();
+                        minutes = date.getMinutes();
+                        seconds = date.getSeconds();
+                        // 将重新获取的时分秒填入时间盒子中对应的 input 框
+                        myTimeInputs[0].value = hours;
+                        myTimeInputs[1].value = minutes;
+                        myTimeInputs[2].value = seconds;
+                    }, 1000);
+                </script>
+
+                <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 随机数模块 -->
+                <h3 style="color:#EA4335">随机数</h3>
+                <h4 style="text-align: center;margin-bottom: 20px;color:#EA4335" class="randoms">
+                    <span style="color:#EA4335">输入范围 [-999, 999]：</span>
+                    <input type="text" class="min" value="1" maxlength="4" style="width: 40px;">
+                    -
+                    <input type="text" class="max" value="3" maxlength="3" style="width: 40px;">
+                    <br>
+                    <button class="getRandom" style="margin: 0;">生成随机数</button>
+                    ：
+                    <input type="text" class="randomNum" value="" style="width: 60px;">
+                </h4>
+                <script>
+                    let getRandom = document.querySelector('.getRandom');
+                    let randomNum = document.querySelector('.randomNum');
+                    let min = document.querySelector('.min');
+                    let max = document.querySelector('.max');
+                    randomNum.disabled = true;
+                    min.disabled = false;
+                    max.disabled = false;
+
+                    min.addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter') {
+                            max.focus();
+                        }
+                        if (e.key === 'ArrowLeft') {
+                            return false;
+                        }
+                        if (e.key === 'ArrowRight') {
+                            max.focus();
+                        }
+                    });
+                    max.addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter') {
+                            this.blur();
+                            return false;
+                        }
+                        if (e.key === 'ArrowLeft') {
+                            min.focus();
+                        }
+                        if (e.key === 'ArrowRight') {
+                            return false;
+                        }
+                    });
+
+                    // 点击按钮生成随机数
+                    getRandom.addEventListener('click', function () {
+                        if (!isIntegerStringPositive(min.value) || !isIntegerStringPositive(max.value)) {
+                            alert('请输入正整数');
+                            return false;
+                        }
+                        if (parseInt(min.value) > parseInt(max.value)) {
+                            alert('请输入正确的范围');
+                            return false;
+                        }
+                        if (parseInt(max.value) > 999 || parseInt(min.value) < -999) {
+                            alert('请输入正确的范围[-999, 999]');
+                            return false;
+                        }
+                        this.disabled = true;
+                        min.disabled = true;
+                        max.disabled = true;
+                        let minNum = parseInt(min.value);
+                        let maxNum = parseInt(max.value);
+                        let randomArr = randomNumberToArr(minNum, maxNum)
+
+                        let index = getRandomNumber(0, maxNum - minNum)
+
+                        new Promise(function (resolve, reject) {
+                            // 自定义结束时间
+                            let time = getRandomNumber(10, 20);
+                            time *= 50;
+                            // console.log(time);
+                            let timer = setInterval(function () {
+                                index = getRandomNumber(0, maxNum - minNum);
+                                // if(randomArr[index] < 10&&randomArr[index]>0){
+                                //     randomNum.value =  '0' + randomArr[index]
+                                // }else{
+                                //     randomNum.value = randomArr[index];
+                                // }
+                                randomNum.value = randomArr[index];
+                                setTimeout(function () {
+                                    clearInterval(timer);
+                                    resolve(index);
+                                }, time);
+                            }, 50)
+                        }).then(function (v) {
+                            console.log('&&&&&&&&&&&& 生成任意范围内的随机数');
+                            console.log('随机数[' + minNum + ', ' + maxNum + ']系列：')
+                            console.log('随机数数组：', randomArr)
+                            console.log('随机数索引：', v);
+                            console.log('随机数：', randomArr[v]);
+                            getRandom.disabled = false;
+                            min.disabled = false;
+                            max.disabled = false;
+                            console.log('&&&&&&&&&&&& 生成任意范围内的随机数');
+                        });
+                    })
+                </script>
+            </div>
+
+
+
+            <h3 style="color:#33A351;">心中的问题(选填)</h3>
+            <div class="question">
+                <input type="text" name="" id="" value="" maxlength="18" placeholder="限 18 个字">
+            </div>
+            <h3 style="color:#EA4335;">心中的答案(必填)</h3>
+            <div class="answers">
+                <div class="btn-add">
+                    <button>添加答案</button>
+                </div>
+                <ul>
+                    <li>
+                        <input type="text" name="" id="" value="" maxlength="12" placeholder="限 12 个字">
+                        <button>删除</button>
+                    </li>
+                </ul>
+            </div>
+            <h3 style="color:#3679e3;">天使的建议(优选)</h3>
+            <div class="btn-clear">
+                <button>清空建议</button>
+            </div>
+            <div class="tianshi content_box2">
+                <div class="content">
+                    <!-- <dl>
+                        <dt>吃什么</dt>
+                        <dd>水果</dd>
+                    </dl>
+                    <dl>
+                        <dt>吃什么</dt>
+                        <dd>水果</dd>
+                    </dl> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+            让所有的 input 点击后清空内容
+        */
+        let inputs = document.querySelectorAll('input');
+        // for (let i = 0; i < inputs.length; i++) {
+        //     inputs[i].addEventListener('click', function () {
+        //         this.value = '';
+        //     });
+        // }
+
+
+        /*
+            点击 添加 按钮，在 "心中的答案" 区域添加一个输入框和一个删除按钮
+        */
+        // 获取添加按钮
+        let addBtn = document.querySelector('.btn-add button');
+        // 获取 ul
+        let ul = document.querySelector('.answers ul');
+        // 事件处理函数
+        let handle = function (e) {
+            if (e.key === 'Enter') {
+                addBtn.click();
+            }
+        };
+        // 给第一个 input 添加回车事件
+        ul.children[0].children[0].addEventListener('keydown', handle);
+        // 点击添加按钮
+        addBtn.addEventListener('click', function () {
+            // 创建 li
+            let li = document.createElement('li');
+            li.innerHTML = `
+                <input type="text" name="" id="" value="" maxlength="12" placeholder="限 12 个字">
+                <button>删除</button>
+            `;
+            // 添加 li
+            ul.appendChild(li);
+            // 获取删除按钮
+            for (let i = 0; i < ul.children.length; i++) {
+                ul.children[i].children[1].addEventListener('click', function () {
+                    // 删除父元素 li
+                    this.parentNode.remove();
+                    // 清除其它 input 中的回车事件，给最后一个 input 添加回车事件
+                    if (ul.children.length === 0) return;
+                    for (let i = 0; i < ul.children.length; i++) {
+                        ul.children[i].children[0].removeEventListener('keydown', handle);
+                    }
+                    ul.children[ul.children.length - 1].children[0].addEventListener('keydown', handle);
+                });
+            }
+
+            ul.children[ul.children.length - 1].children[0].focus();
+            // 清除其它 input 中的回车事件，给最后一个 input 添加回车事件
+            for (let i = 0; i < ul.children.length; i++) {
+                ul.children[i].children[0].removeEventListener('keydown', handle);
+            }
+            ul.children[ul.children.length - 1].children[0].addEventListener('keydown', handle);
+            inputs = document.querySelectorAll('input');
+            // for (let i = 0; i < inputs.length; i++) {
+            //     inputs[i].addEventListener('click', function () {
+            //         this.value = '';
+            //     });
+            // }
+            for (let i = 0; i < ul.children.length; i++) {
+                ul.children[i].children[0].addEventListener('keydown', function (e) {
+                    // console.log(e.key);
+                    if (e.key === 'ArrowUp') {
+                        if (i === 0) {
+                            return;
+                        }
+                        ul.children[i - 1].children[0].focus();
+                    }
+                    if (e.key === 'ArrowDown') {
+                        if (i === ul.children.length - 1) {
+                            return;
+                        }
+                        ul.children[i + 1].children[0].focus();
+                    }
+                });
+            }
+        });
+
+
+        /*
+            点击 删除 按钮，从 "心中的答案" 区域删除对应的答案
+        */
+        // 获取删除按钮
+        for (let i = 0; i < ul.children.length; i++) {
+            ul.children[i].children[1].addEventListener('click', function () {
+                // 删除父元素 li
+                this.parentNode.remove();
+                // 清除其它 input 中的回车事件，给最后一个 input 添加回车事件
+                if (ul.children.length === 0) return;
+                for (let i = 0; i < ul.children.length; i++) {
+                    ul.children[i].children[0].removeEventListener('keydown', handle);
+                }
+                ul.children[ul.children.length - 1].children[0].addEventListener('keydown', handle);
+            });
+        }
+        // 别忘了在新添加的 li 中给 删除 按钮添加点击事件
+
+
+
+        /*
+            点击 "寻求天使帮助" 按钮，从 "心中的答案" 区域随机选出一个答案
+        */
+        // 获取选择按钮 "寻求天使帮助"
+        let chooseBtn = document.querySelector('.btn-choose button');
+        // 存储问题的数组
+        let questionArr = [];
+        // 获取 "天使建议您" 区域
+        let tianshi = document.querySelector('.tianshi .content');
+        // 获取所有的按钮
+        let btns = document.querySelectorAll('button');
+        // 点击选择按钮随机
+        chooseBtn.addEventListener('click', function () {
+            if (ul.children.length === 0) {
+                alert('请添加答案');
+                return;
+            }
+            if (ul.children.length === 1 && ul.children[0].children[0].value.trim() === '') {
+                alert('请输入答案');
+                return;
+            }
+            // 可能出现后添加的输入框和按钮，需要重新获取一下
+            inputs = document.querySelectorAll('input');
+            btns = document.querySelectorAll('button');
+            // 让所有的 inputs 不可用
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = true;
+            }
+            // 让所有的按钮不可用
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].disabled = true;
+            }
+
+            // 随机索引
+            let randomNum = getRandomNumber(0, ul.children.length - 1);
+            // 每 0.09 秒选出一个结果
+            let smallTimer = setInterval(() => {
+                // 随机数数组
+                let temArr = randomNumberToArr(0, ul.children.length - 1);
+                // 随机索引
+                randomNum = getRandomNumber(0, ul.children.length - 1);
+                // 对随机索引进行加工，更加随机
+                randomNum = temArr[randomNum];
+                // 让其它输入框不变色
+                for (let i = 0; i < ul.children.length; i++) {
+                    ul.children[i].children[0].style.backgroundColor = '';
+                }
+                let ssTimer = setTimeout(() => {
+                    // 让当前输入框变色
+                    ul.children[randomNum].children[0].style.backgroundColor = '#FFCAC6';
+                    clearTimeout(ssTimer);
+                }, 100);
+            }, 90);
+            // 3 秒后选出最终结果
+            let bigTimer = setTimeout(() => {
+                clearInterval(smallTimer);
+                // 让其它输入框不变色
+                for (let i = 0; i < ul.children.length; i++) {
+                    ul.children[i].children[0].style.backgroundColor = '';
+                }
+
+                // 将问题添加到数组
+                let question = document.querySelector('.question input').value;
+                if (document.querySelector('.question input').value.trim() === '') {
+                    question = '未知问题';
+                }
+                let index = questionArr.indexOf(question);
+                // 如果没有就添加
+                if (index < 0) {
+                    questionArr.push(question);
+                }
+                console.log('index:', index);
+                console.log(questionArr);
+
+                // 将答案添加到 "天使建议您" 区域
+                // 如果问题未出现过，就添加，否则，就在对应的问题下添加答案即可
+                if (index < 0 || tianshi.innerHTML === '') {
+                    // 创建 dl
+                    let dl = document.createElement('dl');
+                    // 创建 dt
+                    let dt = document.createElement('dt');
+                    dt.innerHTML = question;
+                    // 创建 dd
+                    let dd = document.createElement('dd');
+                    dd.innerHTML = ul.children[randomNum].children[0].value;
+                    if (ul.children[randomNum].children[0].value.trim() === '') {
+                        dd.innerHTML = '未知答案';
+                    }
+                    dl.appendChild(dt);
+                    dl.appendChild(dd);
+                    tianshi.appendChild(dl);
+                    console.log(2);
+                } else {// 创建 dd
+                    let dd = document.createElement('dd');
+                    dd.innerHTML = ul.children[randomNum].children[0].value;
+                    if (ul.children[randomNum].children[0].value.trim() === '') {
+                        dd.innerHTML = '未知答案';
+                    }
+                    tianshi.children[index].appendChild(dd);
+                    console.log(1);
+                }
+
+                let ssTimer = setTimeout(() => {
+                    // 让当前输入框变色
+                    ul.children[randomNum].children[0].style.backgroundColor = '#FFCAC6';
+                    clearTimeout(ssTimer);
+                }, 100);
+
+                // 让所有的 inputs 可用
+                for (let i = 0; i < inputs.length; i++) {
+                    inputs[i].disabled = false;
+                }
+                // 让所有的按钮可用
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].disabled = false;
+                }
+                clearTimeout(bigTimer);
+            }, 2700);
+        });
+
+
+        /*
+            点击 清空答案 按钮，清空答案
+        */
+        // 获取 清空答案 按钮
+        let clearBtn = document.querySelector('.btn-clear button');
+        clearBtn.addEventListener('click', function () {
+            tianshi.innerHTML = '';
+            questionArr = [];
+        });
+    </script>
+</body>
+
+</html>
