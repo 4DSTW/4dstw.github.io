@@ -779,9 +779,9 @@
                 <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 随机数模块 -->
                 <h3 style="color:#f94444">随机数</h3>
                 <h4 style="text-align: center;margin-bottom: 20px;color:#ec3a3a" class="randoms">
-                    <span style="color:#ec3a3a">范围[-999,999] : </span>
+                    <span style="color:#ec3a3a">范围[-999,999]&nbsp; : &nbsp;</span>
                     <input type="text" class="min" value="1" maxlength="4" style="width: 40px;">
-                    —
+                    &nbsp;~&nbsp;
                     <input type="text" class="max" value="50" maxlength="3" style="width: 40px;">
                     <br>
                     <button class="getRandom" style="width: 60px;">生成</button>
@@ -1165,9 +1165,9 @@
                             ul.children[ul.children.length - 1].children[0].addEventListener('keydown', handle);
                             xuan1arr = [];
                             for (let i = 0; i < ul.children.length; i++) {
-                                if (ul.children[i].children[0].value != '') {
-                                    xuan1arr[i] = ul.children[i].children[0].value;
-                                }
+                                // if (ul.children[i].children[0].value != '') {
+                                xuan1arr[i] = ul.children[i].children[0].value;
+                                // }
                             }
                             console.log(xuan1arr);
                             localStorage.setItem('xuan1arr', JSON.stringify(xuan1arr));
@@ -1218,9 +1218,9 @@
                             ul2.children[ul2.children.length - 1].children[0].addEventListener('keydown', handle2);
                             xuan2arr = [];
                             for (let i = 0; i < ul2.children.length; i++) {
-                                if (ul2.children[i].children[0].value != '') {
-                                    xuan2arr[i] = ul2.children[i].children[0].value;
-                                }
+                                // if (ul2.children[i].children[0].value != '') {
+                                xuan2arr[i] = ul2.children[i].children[0].value;
+                                // }
                             }
                             console.log(xuan2arr);
                             localStorage.setItem('xuan2arr', JSON.stringify(xuan2arr));
