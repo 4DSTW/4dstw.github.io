@@ -435,7 +435,7 @@
             background-color: #111; */
             background-color: #b74fb7;
             /* background-color: rgba(219, 27, 101, 0.4); */
-            background-color: #a5a588;
+            background-color: #aaa;
             margin: 0 0 6px;
             /* animation: btnChange 6s linear infinite; */
         }
@@ -968,7 +968,7 @@
                 <button style="width: 100px;" onclick="location.reload()">刷新页面</button>
             </div> -->
 
-            <h3 style="text-align: center;margin: 10px 0;" class="box-good-number">
+            <h3 style="text-align: center;margin: 12px 0 16px;" class="box-good-number">
                 今日幸运数字:<span class="goodNumber"></span>
             </h3>
             <div class="today mod" style="padding: 10px;">
@@ -2376,9 +2376,9 @@
                 }
 
                 // 将问题添加到数组
-                let question = '********************* ' + document.querySelector('.question input').value + ' *********************';
+                let question = '********** ' + document.querySelector('.question input').value + ' **********';
                 if (document.querySelector('.question input').value.trim() === '') {
-                    question = '********************* 命1未录入的问题 *********************';
+                    question = '********** 命1未录入的问题 **********';
                 }
                 let index = questionArr.indexOf(question);
                 // 如果没有就添加
@@ -2512,9 +2512,9 @@
                 }
 
                 // 将问题添加到数组
-                let question = '********************* ' + document.querySelector('.question2 input').value + ' *********************';
+                let question = '********** ' + document.querySelector('.question2 input').value + ' **********';
                 if (document.querySelector('.question2 input').value.trim() === '') {
-                    question = '********************* 命2未录入的问题 *********************';
+                    question = '********** 命2未录入的问题 **********';
                 }
                 let index = questionArr.indexOf(question);
                 // 如果没有就添加
