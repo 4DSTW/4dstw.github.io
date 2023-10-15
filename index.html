@@ -5,7 +5,7 @@
     <!-- 
         作者：ICAN
         开始时间：20231007
-        结束时间：20231014
+        结束时间：20231015
         邮箱：1873063962@qq.com、17602640523@163.com
     -->
     <!-- 
@@ -405,6 +405,23 @@
             box-sizing: border-box;
         }
 
+        button[disabled],
+        .min[disabled],
+        .min2[disabled],
+        .min3[disabled],
+        .min4[disabled],
+        .max[disabled],
+        .max2[disabled],
+        .max3[disabled],
+        .max4[disabled],
+        .btn-choose-input1[disabled],
+        .btn-choose-input2[disabled] {
+            /* rgba(219, 27, 101, 0.7) */
+            /* background-color: pink !important; */
+            color: #bc96a8 !important;
+            /* color: #b39191 !important; */
+        }
+
         /* li button {
             position: absolute;
             right: 50%;
@@ -513,10 +530,11 @@
 
         .tianshi-btn {
             margin: auto;
-            width: 288px;
+            width: 335px;
             padding: 10px;
             border: 1px dashed #ccc;
             border-radius: 10px;
+            text-align: center;
         }
 
         .reset-page {
@@ -605,7 +623,8 @@
         }
 
         .btn-choose button {
-            width: 130px;
+            /* position: relative; */
+            width: 154px;
             height: 24px;
             line-height: 24px;
             border-radius: 6px;
@@ -887,7 +906,8 @@
         }
 
         /* 必填1 批量录入窗口 下面的遮罩层 */
-        .page-mask {
+        .page-mask,
+        .page-mask2 {
             display: none;
             position: fixed;
             left: 0;
@@ -901,11 +921,17 @@
             /* transition: all .2s; */
         }
 
+        .page-mask2 {
+            /* display: none; */
+            z-index: 888;
+        }
+
         /* 批量录入窗口中的按钮 */
         .input-box button,
         .input-box2 button,
         .tiqu-box1 button,
-        .tiqu-box2 button {
+        .tiqu-box2 button,
+        .common-tips button {
             width: 67px;
             height: 24px;
             line-height: 19px;
@@ -924,7 +950,8 @@
         .input-box button:hover,
         .input-box2 button:hover,
         .tiqu-box1 button:hover,
-        .tiqu-box2 button:hover {
+        .tiqu-box2 button:hover,
+        .common-tips button:hover {
             background-color: rgba(219, 27, 101, 0.7);
         }
 
@@ -932,7 +959,8 @@
         .input-box,
         .input-box2,
         .tiqu-box1,
-        .tiqu-box2 {
+        .tiqu-box2,
+        .common-tips {
             display: none;
             position: fixed;
             left: 50%;
@@ -957,17 +985,36 @@
             height: 403px;
         }
 
+        .common-tips {
+            z-index: 999;
+            /* display: block; */
+            height: 160px;
+        }
+
         /* 批量录入窗口中的标题 */
         .input-box h3,
         .input-box2 h3 {
-            margin: 7px auto 0;
+            margin: 10px auto 0px;
             color: #eee;
         }
 
         .tiqu-box1 h3,
-        .tiqu-box2 h3 {
+        .tiqu-box2 h3,
+        .common-tips h3 {
             margin: 7px auto;
             color: #eee;
+        }
+
+        .common-tips-content {
+            margin: 10px auto;
+            /* width: 100px; */
+            height: 60px;
+            line-height: 60px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            text-align: center;
+            color: #eee;
+            font-size: 18px;
         }
 
         /* 标题下面的说明文字 */
@@ -989,7 +1036,7 @@
         .input-box2-textarea,
         .tiqu-box1-textarea,
         .tiqu-box2-textarea {
-            margin: 7px 0;
+            margin: 6px 0;
             width: 100%;
             height: 303px;
             color: #eee;
@@ -1010,6 +1057,45 @@
             font-size: 18px;
             margin-top: 20px;
         }
+
+        /* 生成按钮中的输入框 */
+        .btn-choose-number {
+            /* position: relative; */
+            color: #eee;
+            margin-top: 6px;
+        }
+
+        .btn-choose-number span {
+            display: inline-block;
+            background-color: rgba(219, 27, 101, 0.5);
+            border-radius: 6px;
+            text-align: center;
+            width: 154px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 16px;
+        }
+
+        .btn-choose-input1,
+        .btn-choose-input2 {
+            /* position: absolute; */
+            /* top: 0;
+            right: 0; */
+            width: 36px;
+            /* background-color: pink; */
+            border: none;
+            border-bottom: 1px solid #eee;
+            border-radius: 0px;
+            height: 18px;
+            line-height: 17px;
+            margin: 0 2px;
+            font-size: 15px;
+        }
+
+        .btn-choose-line {
+            margin: 6px 0 0;
+            border-bottom: 1px dashed #eee;
+        }
     </style>
     <link rel="shortcut icon" href="./images/logo.ico">
 </head>
@@ -1017,6 +1103,38 @@
 <body class="content_box">
     <div class="container">
         <div class="main-content">
+            <!-- 页面遮罩层 -->
+            <div class="page-mask"></div>
+
+            <!-- 页面遮罩层2 -->
+            <div class="page-mask2"></div>
+
+            <!-- 通用提示框 -->
+            <div class="common-tips">
+                <!-- 标题 -->
+                <h3>提示信息</h3>
+                <div class="common-tips-content"></div>
+                <!-- 关闭窗口按钮 -->
+                <button class="common-tips-close">关闭窗口</button>
+            </div>
+            <script>
+                // 遮罩层2：顶层遮罩层
+                let pageMask2 = document.querySelector('.page-mask2');
+                // 通用提示框
+                let tipBox = document.querySelector('.common-tips');
+                // 提示框中的内容
+                let tipContent = document.querySelector('.common-tips-content');
+                // 关闭提示框
+                let tipClose = document.querySelector('.common-tips-close');
+                tipClose.addEventListener('click', function () {
+                    tipBox.style.display = 'none';
+                    pageMask2.style.display = 'none';
+                });
+            </script>
+
+
+
+
             <!-- <h1>天使选择器</h1> -->
             <h1>
                 <span class="blue">I</span>
@@ -1044,7 +1162,7 @@
                     let goodArr = randomNumberToArr(1, 80);
                     console.log('&&&&&&&&&&&&&&&&&& 随机生成幸运数字');
                     // 打印幸运数组
-                    console.log('幸运数组[1-35]：', goodArr);
+                    console.log('幸运数组[1-80]：', goodArr);
                     // 随机获取 [0, 34] 之间的一个索引值，用于生成幸运数
                     let goodIndex = getRandomNumber(0, 79);
                     // 打印索引值
@@ -1154,6 +1272,22 @@
                         <input type="text" class="randomNum" value="" style="width: 70px;">
                     </h4>
                     <script>
+                        function randomCheck(min, max) {
+                            if (!isIntegerStringPositive(min) || !isIntegerStringPositive(max)) {
+                                return false;
+                            }
+                            if (parseInt(min) > parseInt(max)) {
+                                return false;
+                            }
+                            if (parseInt(max) > 10000 || parseInt(min) < -10000) {
+                                return false;
+                            }
+                            return true;
+                        }
+
+                        let minArr = JSON.parse(localStorage.getItem('minArr')) || [1, 1, 1, 1];
+                        let maxArr = JSON.parse(localStorage.getItem('maxArr')) || [35, 12, 33, 16];
+
                         let getRandom = document.querySelector('.getRandom');
                         let randomNum = document.querySelector('.randomNum');
                         let min = document.querySelector('.min');
@@ -1161,6 +1295,9 @@
                         randomNum.disabled = true;
                         min.disabled = false;
                         max.disabled = false;
+
+                        min.value = minArr[0];
+                        max.value = maxArr[0];
 
                         min.addEventListener('keydown', function (e) {
                             if (e.key === 'Enter') {
@@ -1171,6 +1308,9 @@
                             }
                             if (e.key === 'ArrowRight') {
                                 max.focus();
+                            }
+                            if (e.key === 'Delete' || e.key === 'Backspace') {
+                                this.value = '';
                             }
                         });
                         max.addEventListener('keydown', function (e) {
@@ -1184,20 +1324,45 @@
                             if (e.key === 'ArrowRight') {
                                 return false;
                             }
+                            if (e.key === 'Delete' || e.key === 'Backspace') {
+                                this.value = '';
+                            }
+                        });
+
+                        min.addEventListener('blur', function (e) {
+                            if (randomCheck(this.value, max.value)) {
+                                minArr[0] = this.value;
+                                localStorage.setItem('minArr', JSON.stringify(minArr));
+                            }
+                        });
+                        max.addEventListener('blur', function (e) {
+                            if (randomCheck(min.value, this.value)) {
+                                maxArr[0] = this.value;
+                                localStorage.setItem('maxArr', JSON.stringify(maxArr));
+                            }
                         });
 
                         // 点击按钮生成随机数
                         getRandom.addEventListener('click', function () {
                             if (!isIntegerStringPositive(min.value) || !isIntegerStringPositive(max.value)) {
-                                alert('请输入正整数');
+                                // alert('请输入正整数');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '请输入正整数';
                                 return false;
                             }
                             if (parseInt(min.value) > parseInt(max.value)) {
-                                alert('请输入正确的范围');
+                                // alert('请输入正确的范围');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '请输入正确的范围';
                                 return false;
                             }
                             if (parseInt(max.value) > 10000 || parseInt(min.value) < -10000) {
-                                alert('请输入正确的范围[-10000, 10000]');
+                                // alert('请输入正确的范围[-10000, 10000]');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '输入范围为：[-10000, 10000]';
                                 return false;
                             }
                             this.disabled = true;
@@ -1205,13 +1370,13 @@
                             max.disabled = true;
                             let minNum = parseInt(min.value);
                             let maxNum = parseInt(max.value);
-                            let randomArr = randomNumberToArr(minNum, maxNum)
 
+                            let randomArr = randomNumberToArr(minNum, maxNum)
                             let index = getRandomNumber(0, maxNum - minNum)
 
                             new Promise(function (resolve, reject) {
                                 // 自定义结束时间
-                                let time = getRandomNumber(10, 20);
+                                let time = getRandomNumber(11, 30);
                                 time *= 50;
                                 // console.log(time);
                                 let timer = setInterval(function () {
@@ -1222,10 +1387,12 @@
                                     //     randomNum.value = randomArr[index];
                                     // }
                                     randomNum.value = randomArr[index];
+                                    // randomNum.value = getRandomNumber(minNum, maxNum);
                                     let tt = setTimeout(function () {
                                         clearInterval(timer);
                                         clearTimeout(tt);
-                                        resolve(index);
+                                        // resolve(index);
+                                        resolve(randomNum.value);
                                     }, time);
                                 }, 50)
                             }).then(function (v) {
@@ -1265,6 +1432,9 @@
                         min2.disabled = false;
                         max2.disabled = false;
 
+                        min2.value = minArr[1];
+                        max2.value = maxArr[1];
+
                         min2.addEventListener('keydown', function (e) {
                             if (e.key === 'Enter') {
                                 max2.focus();
@@ -1274,6 +1444,9 @@
                             }
                             if (e.key === 'ArrowRight') {
                                 max2.focus();
+                            }
+                            if (e.key === 'Delete' || e.key === 'Backspace') {
+                                this.value = '';
                             }
                         });
                         max2.addEventListener('keydown', function (e) {
@@ -1287,20 +1460,46 @@
                             if (e.key === 'ArrowRight') {
                                 return false;
                             }
+                            if (e.key === 'Delete' || e.key === 'Backspace') {
+                                this.value = '';
+                            }
+                        });
+
+
+                        min2.addEventListener('blur', function (e) {
+                            if (randomCheck(this.value, max2.value)) {
+                                minArr[1] = this.value;
+                                localStorage.setItem('minArr', JSON.stringify(minArr));
+                            }
+                        });
+                        max2.addEventListener('blur', function (e) {
+                            if (randomCheck(min2.value, this.value)) {
+                                maxArr[1] = this.value;
+                                localStorage.setItem('maxArr', JSON.stringify(maxArr));
+                            }
                         });
 
                         // 点击按钮生成随机数
                         getRandom2.addEventListener('click', function () {
                             if (!isIntegerStringPositive(min2.value) || !isIntegerStringPositive(max2.value)) {
-                                alert('请输入正整数');
+                                // alert('请输入正整数');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '请输入正整数';
                                 return false;
                             }
                             if (parseInt(min2.value) > parseInt(max2.value)) {
-                                alert('请输入正确的范围');
+                                // alert('请输入正确的范围');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '请输入正确的范围';
                                 return false;
                             }
                             if (parseInt(max2.value) > 10000 || parseInt(min2.value) < -10000) {
-                                alert('请输入正确的范围[-10000, 10000]');
+                                // alert('请输入正确的范围[-10000, 10000]');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '输入范围为：[-10000, 10000]';
                                 return false;
                             }
                             this.disabled = true;
@@ -1308,13 +1507,13 @@
                             max2.disabled = true;
                             let minNum = parseInt(min2.value);
                             let maxNum = parseInt(max2.value);
-                            let randomArr = randomNumberToArr(minNum, maxNum)
 
+                            let randomArr = randomNumberToArr(minNum, maxNum)
                             let index = getRandomNumber(0, maxNum - minNum)
 
                             new Promise(function (resolve, reject) {
                                 // 自定义结束时间
-                                let time = getRandomNumber(10, 20);
+                                let time = getRandomNumber(11, 30);
                                 time *= 50;
                                 // console.log(time);
                                 let timer = setInterval(function () {
@@ -1325,10 +1524,12 @@
                                     //     randomNum.value = randomArr[index];
                                     // }
                                     randomNum2.value = randomArr[index];
+                                    // randomNum2.value = getRandomNumber(minNum, maxNum);
                                     let tt = setTimeout(function () {
                                         clearInterval(timer);
                                         clearTimeout(tt);
-                                        resolve(index);
+                                        // resolve(index);
+                                        resolve(randomNum2.value);
                                     }, time);
                                 }, 50)
                             }).then(function (v) {
@@ -1368,6 +1569,9 @@
                         min3.disabled = false;
                         max3.disabled = false;
 
+                        min3.value = minArr[2];
+                        max3.value = maxArr[2];
+
                         min3.addEventListener('keydown', function (e) {
                             if (e.key === 'Enter') {
                                 max3.focus();
@@ -1377,6 +1581,9 @@
                             }
                             if (e.key === 'ArrowRight') {
                                 max3.focus();
+                            }
+                            if (e.key === 'Delete' || e.key === 'Backspace') {
+                                this.value = '';
                             }
                         });
                         max3.addEventListener('keydown', function (e) {
@@ -1390,20 +1597,47 @@
                             if (e.key === 'ArrowRight') {
                                 return false;
                             }
+                            if (e.key === 'Delete' || e.key === 'Backspace') {
+                                this.value = '';
+                            }
                         });
+
+
+                        min3.addEventListener('blur', function (e) {
+                            if (randomCheck(this.value, max3.value)) {
+                                minArr[2] = this.value;
+                                localStorage.setItem('minArr', JSON.stringify(minArr));
+                            }
+                        });
+                        max3.addEventListener('blur', function (e) {
+                            if (randomCheck(min3.value, this.value)) {
+                                maxArr[2] = this.value;
+                                localStorage.setItem('maxArr', JSON.stringify(maxArr));
+                            }
+                        });
+
 
                         // 点击按钮生成随机数
                         getRandom3.addEventListener('click', function () {
                             if (!isIntegerStringPositive(min3.value) || !isIntegerStringPositive(max3.value)) {
-                                alert('请输入正整数');
+                                // alert('请输入正整数');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '请输入正整数';
                                 return false;
                             }
                             if (parseInt(min3.value) > parseInt(max3.value)) {
-                                alert('请输入正确的范围');
+                                // alert('请输入正确的范围');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '请输入正确的范围';
                                 return false;
                             }
                             if (parseInt(max3.value) > 10000 || parseInt(min3.value) < -10000) {
-                                alert('请输入正确的范围[-10000, 10000]');
+                                // alert('请输入正确的范围[-10000, 10000]');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '输入范围为：[-10000, 10000]';
                                 return false;
                             }
                             this.disabled = true;
@@ -1411,13 +1645,13 @@
                             max3.disabled = true;
                             let minNum = parseInt(min3.value);
                             let maxNum = parseInt(max3.value);
-                            let randomArr = randomNumberToArr(minNum, maxNum)
 
+                            let randomArr = randomNumberToArr(minNum, maxNum)
                             let index = getRandomNumber(0, maxNum - minNum)
 
                             new Promise(function (resolve, reject) {
                                 // 自定义结束时间
-                                let time = getRandomNumber(10, 20);
+                                let time = getRandomNumber(11, 30);
                                 time *= 50;
                                 // console.log(time);
                                 let timer = setInterval(function () {
@@ -1428,10 +1662,12 @@
                                     //     randomNum.value = randomArr[index];
                                     // }
                                     randomNum3.value = randomArr[index];
+                                    // randomNum3.value = getRandomNumber(minNum, maxNum);
                                     let tt = setTimeout(function () {
                                         clearInterval(timer);
                                         clearTimeout(tt);
-                                        resolve(index);
+                                        // resolve(index);
+                                        resolve(randomNum3.value);
                                     }, time);
                                 }, 50)
                             }).then(function (v) {
@@ -1471,6 +1707,9 @@
                         min4.disabled = false;
                         max4.disabled = false;
 
+                        min4.value = minArr[3];
+                        max4.value = maxArr[3];
+
                         min4.addEventListener('keydown', function (e) {
                             if (e.key === 'Enter') {
                                 max4.focus();
@@ -1480,6 +1719,9 @@
                             }
                             if (e.key === 'ArrowRight') {
                                 max4.focus();
+                            }
+                            if (e.key === 'Delete' || e.key === 'Backspace') {
+                                this.value = '';
                             }
                         });
                         max4.addEventListener('keydown', function (e) {
@@ -1493,20 +1735,46 @@
                             if (e.key === 'ArrowRight') {
                                 return false;
                             }
+                            if (e.key === 'Delete' || e.key === 'Backspace') {
+                                this.value = '';
+                            }
+                        });
+
+
+                        min4.addEventListener('blur', function (e) {
+                            if (randomCheck(this.value, max4.value)) {
+                                minArr[3] = this.value;
+                                localStorage.setItem('minArr', JSON.stringify(minArr));
+                            }
+                        });
+                        max4.addEventListener('blur', function (e) {
+                            if (randomCheck(min4.value, this.value)) {
+                                maxArr[3] = this.value;
+                                localStorage.setItem('maxArr', JSON.stringify(maxArr));
+                            }
                         });
 
                         // 点击按钮生成随机数
                         getRandom4.addEventListener('click', function () {
                             if (!isIntegerStringPositive(min4.value) || !isIntegerStringPositive(max4.value)) {
-                                alert('请输入正整数');
+                                // alert('请输入正整数');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '请输入正整数';
                                 return false;
                             }
                             if (parseInt(min4.value) > parseInt(max4.value)) {
-                                alert('请输入正确的范围');
+                                // alert('请输入正确的范围');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '请输入正确的范围';
                                 return false;
                             }
                             if (parseInt(max4.value) > 10000 || parseInt(min4.value) < -10000) {
-                                alert('请输入正确的范围[-10000, 10000]');
+                                // alert('请输入正确的范围[-10000, 10000]');
+                                pageMask2.style.display = 'block';
+                                tipBox.style.display = 'block';
+                                tipContent.innerHTML = '输入范围为：[-10000, 10000]';
                                 return false;
                             }
                             this.disabled = true;
@@ -1514,13 +1782,13 @@
                             max4.disabled = true;
                             let minNum = parseInt(min4.value);
                             let maxNum = parseInt(max4.value);
-                            let randomArr = randomNumberToArr(minNum, maxNum)
 
+                            let randomArr = randomNumberToArr(minNum, maxNum)
                             let index = getRandomNumber(0, maxNum - minNum)
 
                             new Promise(function (resolve, reject) {
                                 // 自定义结束时间
-                                let time = getRandomNumber(10, 20);
+                                let time = getRandomNumber(11, 30);
                                 time *= 50;
                                 // console.log(time);
                                 let timer = setInterval(function () {
@@ -1531,11 +1799,14 @@
                                     //     randomNum.value = randomArr[index];
                                     // }
                                     randomNum4.value = randomArr[index];
+                                    // randomNum4.value = getRandomNumber(minNum, maxNum);
                                     let tt = setTimeout(function () {
                                         clearInterval(timer);
                                         clearTimeout(tt);
-                                        resolve(index);
+                                        // resolve(index);
+                                        resolve(randomNum4.value);
                                     }, time);
+                                    // console.log('随机数数组：', randomArr)
                                 }, 50)
                             }).then(function (v) {
                                 // console.log('&&&&&&&&&&&& 生成任意范围内的随机数');
@@ -1586,7 +1857,7 @@
                         */
                         // 选填1
                         let xuanInput1 = document.querySelector('.question input');
-                        xuanInput1.value = localStorage.getItem('xuan1') || '';
+                        xuanInput1.value = localStorage.getItem('xuan1') || '标题1';
                         xuanInput1.addEventListener('blur', function () {
                             localStorage.setItem('xuan1', this.value);
                         });
@@ -1619,7 +1890,7 @@
                         */
                         // 选填2
                         let xuanInput2 = document.querySelector('.question2 input');
-                        xuanInput2.value = localStorage.getItem('xuan2') || '';
+                        xuanInput2.value = localStorage.getItem('xuan2') || '标题2';
                         xuanInput2.addEventListener('blur', function () {
                             localStorage.setItem('xuan2', this.value);
                         });
@@ -1629,8 +1900,7 @@
 
 
 
-            <!-- 页面遮罩层 -->
-            <div class="page-mask"></div>
+
 
             <!-- 必填1 批量录入窗口 -->
             <div class="input-box">
@@ -1706,9 +1976,25 @@
 
             <div class="tianshi-btn">
                 <div class="btn-choose">
-                    <button>从内容1中生成</button>
-                    <button>从内容2中生成</button>
+                    <button>
+                        从内容1中生成
+                    </button>
+                    <button>
+                        从内容2中生成
+                    </button>
                 </div>
+                <div class="btn-choose-number">
+                    <span>
+                        生成
+                        <input type="text" class="btn-choose-input1" maxlength="3" value="1">个
+                    </span>
+                    <span>
+                        生成
+                        <input type="text" class="btn-choose-input2" maxlength="3" value="1">个
+                    </span>
+                </div>
+
+                <div class="btn-choose-line"></div>
 
                 <!-- <div class="btn-order">
                     <button style="margin-top: 0px;width: 40px;">升序</button>
@@ -1716,11 +2002,11 @@
                     <button style="margin-top: 0px;width: 40px;">还原</button>
                 </div> -->
                 <div class="btn-clear">
-                    <button style="margin-top: 6px;width: 40px;" class="order1">升序</button>
-                    <button style="margin-top: 6px;width: 40px;" class="order2">降序</button>
-                    <button style="margin-top: 6px;width: 40px;" class="order3">还原</button>
+                    <button style="margin-top: 6px;width: 48px;" class="order1">升序</button>
+                    <button style="margin-top: 6px;width: 48px;" class="order2">降序</button>
+                    <button style="margin-top: 6px;width: 48px;" class="order3">还原</button>
                     <!-- <button style="margin-top: 12px;width: 60px;" onclick="location.reload()">重置</button> -->
-                    <button style="margin-top: 0px;width: 130px;">清空生成的内容</button>
+                    <button style="margin-top: 0px;width: 154px;">清空生成的内容</button>
                 </div>
             </div>
 
@@ -2596,27 +2882,37 @@
         let btns2 = document.querySelectorAll('.xuan2 button');
 
 
+        // 生成按钮中的输入框
+        let chooseBtnInput1 = document.querySelector('.btn-choose-input1');
+        let chooseBtnInput2 = document.querySelector('.btn-choose-input2');
+        chooseBtnInput1.value = localStorage.getItem('chooseNum1') || '1';
+        chooseBtnInput2.value = localStorage.getItem('chooseNum2') || '1';
+
+
         let tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
         // console.log(tianshiArr);
 
 
-        // 点击选择按钮随机
-        chooseBtn.addEventListener('click', function () {
-            // 每次清除存储的问题数组后，都会删除本地存储中的 questionArr
-            // 但该全局变量还是原来的值
-            // 所以每次点击按钮时都要重新获取一次
-
-
+        /*
+            生成按钮点击一次所执行的函数
+        */
+        function chooseBtn1ClickOnce(resolve) {
             // chongzhi.disabled = true;
             if (ul.children.length === 0) {
-                alert('请添加必填内容');
+                // alert('请添加必填内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请添加必填内容';
                 // this.disabled = false;
                 // clearBtn.disabled = false;
                 // chongzhi.disabled = false;
                 return;
             }
             if (ul.children.length === 1 && ul.children[0].children[0].value.trim() === '') {
-                alert('请输入必填内容');
+                // alert('请输入必填内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请输入必填内容';
                 // this.disabled = false;
                 // clearBtn.disabled = false;
                 // chongzhi.disabled = false;
@@ -2624,7 +2920,10 @@
             }
             for (let i = 0; i < ul.children.length; i++) {
                 if (ul.children[i].children[0].value.trim() === '') {
-                    alert('请补全必填内容');
+                    // alert('请补全必填内容');
+                    pageMask2.style.display = 'block';
+                    tipBox.style.display = 'block';
+                    tipContent.innerHTML = '请补全必填内容';
                     // this.disabled = false;
                     // clearBtn.disabled = false;
                     // chongzhi.disabled = false;
@@ -2638,7 +2937,10 @@
             tianshi.innerHTML = localStorage.getItem('res') || '';
 
 
-            this.disabled = true;
+            chooseBtnInput1.disabled = true;
+            // chooseBtnInput2.disabled = true;
+            // this.disabled = true;
+            chooseBtn.disabled = true;
             clearBtn.disabled = true;
             order1.disabled = true;
             order2.disabled = true;
@@ -2654,6 +2956,7 @@
             // 可能出现后添加的输入框和按钮，需要重新获取一下
             inputs = document.querySelectorAll('.xuan1 input');
             btns = document.querySelectorAll('.xuan1 button');
+
             // 让所有的 inputs 不可用
             for (let i = 0; i < inputs.length; i++) {
                 inputs[i].disabled = true;
@@ -2665,25 +2968,35 @@
 
             // 随机索引
             let randomNum = getRandomNumber(0, ul.children.length - 1);
+            // 随机数数组
+            let temArr = randomNumberToArr(0, ul.children.length - 1);
+            // console.log(temArr);
             // 每 0.09 秒选出一个结果
             let smallTimer = setInterval(() => {
-                // 随机数数组
-                let temArr = randomNumberToArr(0, ul.children.length - 1);
                 // 随机索引
                 randomNum = getRandomNumber(0, ul.children.length - 1);
+                // console.log(randomNum);
                 // 对随机索引进行加工，更加随机
                 randomNum = temArr[randomNum];
+                // 原始随机数
+                // randomNum = getRandomNumber(0, ul.children.length - 1);
                 // 让其它输入框不变色
                 for (let i = 0; i < ul.children.length; i++) {
                     ul.children[i].children[0].style.backgroundColor = '';
                 }
-                let ssTimer = setTimeout(() => {
-                    // 让当前输入框变色
-                    ul.children[randomNum].children[0].style.backgroundColor = '#800B3E';
-                    clearTimeout(ssTimer);
-                }, 100);
-            }, 90);
+                // let ssTimer = setTimeout(() => {
+                // 让当前输入框变色
+                ul.children[randomNum].children[0].style.backgroundColor = '#8E0E49';
+                // clearTimeout(ssTimer);
+                // }, 100);
+
+                // console.log(randomNum);
+                // console.log(temArr);
+            }, 50);
+            // console.log(randomNum);
             // 3 秒后选出最终结果
+            let delayTime = 50 * getRandomNumber(11, 30);
+            // console.log(delayTime);
             let bigTimer = setTimeout(() => {
                 clearInterval(smallTimer);
                 // 让其它输入框不变色
@@ -2750,58 +3063,61 @@
                 // console.log(tianshiArr);
                 localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
 
-                let ssTimer = setTimeout(() => {
-                    // 让当前输入框变色
-                    ul.children[randomNum].children[0].style.backgroundColor = '#800B3E';
-                    clearTimeout(ssTimer);
-                }, 100);
+                // let ssTimer = setTimeout(() => {
+                // 让当前输入框变色
+                ul.children[randomNum].children[0].style.backgroundColor = '#8E0E49';
+                // clearTimeout(ssTimer);
+                // }, 100);
 
                 // 让所有的 inputs 可用
-                for (let i = 0; i < inputs.length; i++) {
-                    inputs[i].disabled = false;
-                }
+                // for (let i = 0; i < inputs.length; i++) {
+                //     inputs[i].disabled = false;
+                // }
                 // 让所有的按钮可用
-                for (let i = 0; i < btns.length; i++) {
-                    btns[i].disabled = false;
-                }
-                this.disabled = false;
-                clearBtn.disabled = false;
-                order1.disabled = false;
-                order2.disabled = false;
-                order3.disabled = false;
-                // chongzhi.disabled = false;
-                clearTimeout(bigTimer);
-            }, 2700);
-        });
+                // for (let i = 0; i < btns.length; i++) {
+                //     btns[i].disabled = false;
+                // }
 
-        chooseBtn2.addEventListener('click', function () {
-            // 每次清除存储的问题数组后，都会删除本地存储中的 questionArr
-            // 但该全局变量还是原来的值
-            // 所以每次点击按钮时都要重新获取一次
-
-            // this.disabled = true;
-            // clearBtn.disabled = true;
-            // chongzhi.disabled = true;
-            if (ul2.children.length === 0) {
-                alert('请添加必填内容');
+                // chooseBtnInput1.disabled = false;
+                // chooseBtnInput2.disabled = false;
                 // this.disabled = false;
                 // clearBtn.disabled = false;
+                // order1.disabled = false;
+                // order2.disabled = false;
+                // order3.disabled = false;
+
                 // chongzhi.disabled = false;
+                clearTimeout(bigTimer);
+
+                // 1秒后结束当前异步任务
+                // resolve();
+                let endTimer = setTimeout(() => {
+                    resolve();
+                }, 1000);
+            }, delayTime);
+        }
+
+        function chooseBtn2ClickOnce(resolve) {
+            if (ul2.children.length === 0) {
+                // alert('请添加必填内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请添加必填内容';
                 return;
             }
             if (ul2.children.length === 1 && ul2.children[0].children[0].value.trim() === '') {
-                alert('请输入必填内容');
-                // this.disabled = false;
-                // clearBtn.disabled = false;
-                // chongzhi.disabled = false;
+                // alert('请输入必填内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请输入必填内容';
                 return;
             }
             for (let i = 0; i < ul2.children.length; i++) {
                 if (ul2.children[i].children[0].value.trim() === '') {
-                    alert('请补全必填内容');
-                    // this.disabled = false;
-                    // clearBtn.disabled = false;
-                    // chongzhi.disabled = false;
+                    // alert('请补全必填内容');
+                    pageMask2.style.display = 'block';
+                    tipBox.style.display = 'block';
+                    tipContent.innerHTML = '请补全必填内容';
                     return;
                 }
             }
@@ -2812,7 +3128,10 @@
             tianshi.innerHTML = localStorage.getItem('res') || '';
 
 
-            this.disabled = true;
+            // chooseBtnInput1.disabled = true;
+            chooseBtnInput2.disabled = true;
+            // this.disabled = true;
+            chooseBtn2.disabled = true;
             clearBtn.disabled = true;
             order1.disabled = true;
             order2.disabled = true;
@@ -2839,25 +3158,29 @@
 
             // 随机索引
             let randomNum = getRandomNumber(0, ul2.children.length - 1);
+            // 随机数数组
+            let temArr = randomNumberToArr(0, ul2.children.length - 1);
             // 每 0.09 秒选出一个结果
             let smallTimer = setInterval(() => {
-                // 随机数数组
-                let temArr = randomNumberToArr(0, ul2.children.length - 1);
+
                 // 随机索引
                 randomNum = getRandomNumber(0, ul2.children.length - 1);
                 // 对随机索引进行加工，更加随机
                 randomNum = temArr[randomNum];
+                // 原始随机数
+                // randomNum = getRandomNumber(0, ul2.children.length - 1);
                 // 让其它输入框不变色
                 for (let i = 0; i < ul2.children.length; i++) {
                     ul2.children[i].children[0].style.backgroundColor = '';
                 }
-                let ssTimer = setTimeout(() => {
-                    // 让当前输入框变色
-                    ul2.children[randomNum].children[0].style.backgroundColor = '#800B3E';
-                    clearTimeout(ssTimer);
-                }, 100);
-            }, 90);
+                // let ssTimer = setTimeout(() => {
+                // 让当前输入框变色
+                ul2.children[randomNum].children[0].style.backgroundColor = '#8E0E49';
+                // clearTimeout(ssTimer);
+                // }, 100);
+            }, 50);
             // 3 秒后选出最终结果
+            let delayTime = 50 * getRandomNumber(11, 30);
             let bigTimer = setTimeout(() => {
                 clearInterval(smallTimer);
                 // 让其它输入框不变色
@@ -2929,30 +3252,180 @@
                 // console.log(tianshiArr);
                 localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
 
-                let ssTimer = setTimeout(() => {
-                    // 让当前输入框变色
-                    ul2.children[randomNum].children[0].style.backgroundColor = '#800B3E';
-                    clearTimeout(ssTimer);
-                }, 100);
+                // let ssTimer = setTimeout(() => {
+                // 让当前输入框变色
+                ul2.children[randomNum].children[0].style.backgroundColor = '#8E0E49';
+                // clearTimeout(ssTimer);
+                // }, 100);
 
                 // 让所有的 inputs 可用
-                for (let i = 0; i < inputs2.length; i++) {
-                    inputs2[i].disabled = false;
-                }
+                // for (let i = 0; i < inputs2.length; i++) {
+                //     inputs2[i].disabled = false;
+                // }
                 // 让所有的按钮可用
-                for (let i = 0; i < btns2.length; i++) {
-                    btns2[i].disabled = false;
-                }
-                this.disabled = false;
-                clearBtn.disabled = false;
-                order1.disabled = false;
-                order2.disabled = false;
-                order3.disabled = false;
+                // for (let i = 0; i < btns2.length; i++) {
+                //     btns2[i].disabled = false;
+                // }
+
+                // chooseBtnInput1.disabled = false;
+                // chooseBtnInput2.disabled = false;
+                // this.disabled = false;
+                // clearBtn.disabled = false;
+                // order1.disabled = false;
+                // order2.disabled = false;
+                // order3.disabled = false;
+
                 // chongzhi.disabled = false;
                 clearTimeout(bigTimer);
-            }, 2700);
+
+                // 1秒后结束当前异步任务
+                // resolve();
+                let endTimer = setTimeout(() => {
+                    resolve();
+                }, 1000);
+            }, delayTime);
+        }
+
+        // 点击选择按钮随机
+        chooseBtn.addEventListener('click', function () {
+            // 每次清除存储的问题数组后，都会删除本地存储中的 questionArr
+            // 但该全局变量还是原来的值
+            // 所以每次点击按钮时都要重新获取一次
+
+
+            if (!isIntegerStringPositive(chooseBtnInput1.value)) {
+                // alert('请输入正整数');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请输入正整数';
+                return false;
+            }
+            if (parseInt(chooseBtnInput1.value) > 100 || parseInt(chooseBtnInput1.value) < 1) {
+                // alert('只能请输入1~100');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '只能请输入1~100';
+                return false;
+            }
+
+            // 依次生成异步任务
+            let jsStr = `new Promise(function(resolve, reject){
+                resolve()
+            })`;
+            for (let i = 0; i < parseInt(chooseBtnInput1.value); i++) {
+                // chooseBtn1ClickOnce();
+                jsStr += `
+                    .then(function () {
+                        return new Promise((resolve, reject) => {
+                            chooseBtn1ClickOnce(resolve);
+                        });
+                    })
+                `;
+                if (i === parseInt(chooseBtnInput1.value) - 1) {
+                    jsStr += `
+                        .then(function () {
+                            // 让所有的 inputs 可用
+                            for (let i = 0; i < inputs.length; i++) {
+                                inputs[i].disabled = false;
+                            }
+                            // 让所有的按钮可用
+                            for (let i = 0; i < btns.length; i++) {
+                                btns[i].disabled = false;
+                            }
+                            chooseBtnInput1.disabled = false;
+                            chooseBtn.disabled = false;
+                            clearBtn.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            order1.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            order2.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            order3.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                        })
+                    `;
+                }
+            }
+            // console.log(jsStr);
+            // 执行字符串中的代码
+            eval(jsStr);
         });
 
+        chooseBtn2.addEventListener('click', function () {
+            // 每次清除存储的问题数组后，都会删除本地存储中的 questionArr
+            // 但该全局变量还是原来的值
+            // 所以每次点击按钮时都要重新获取一次
+
+            if (!isIntegerStringPositive(chooseBtnInput2.value)) {
+                // alert('请输入正整数');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请输入正整数';
+                return false;
+            }
+            if (parseInt(chooseBtnInput2.value) > 100 || parseInt(chooseBtnInput2.value) < 1) {
+                // alert('只能请输入1~100');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '只能请输入1~100';
+                return false;
+            }
+
+            // 依次生成异步任务
+            let jsStr = `new Promise(function(resolve, reject){
+                resolve()
+            })`;
+            for (let i = 0; i < parseInt(chooseBtnInput2.value); i++) {
+                // chooseBtn1ClickOnce();
+                jsStr += `
+                    .then(function () {
+                        return new Promise((resolve, reject) => {
+                            chooseBtn2ClickOnce(resolve);
+                        });
+                    })
+                `;
+
+                if (i === parseInt(chooseBtnInput2.value) - 1) {
+                    jsStr += `
+                        .then(function () {
+                            // 让所有的 inputs 可用
+                            for (let i = 0; i < inputs2.length; i++) {
+                                inputs2[i].disabled = false;
+                            }
+                            // 让所有的按钮可用
+                            for (let i = 0; i < btns2.length; i++) {
+                                btns2[i].disabled = false;
+                            }
+                            chooseBtnInput2.disabled = false;
+                            chooseBtn2.disabled = false;
+                            clearBtn.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            order1.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            order2.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            order3.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                        })
+                    `;
+                }
+            }
+            // console.log(jsStr);
+            // 执行字符串中的代码
+            eval(jsStr);
+        });
+
+        /*
+            生成按钮中的输入框：键盘删除功能
+        */
+        chooseBtnInput1.addEventListener('keydown', function (e) {
+            if (e.key === 'Delete' || e.key === 'Backspace') {
+                this.value = '';
+            }
+        });
+        chooseBtnInput1.addEventListener('blur', function (e) {
+            localStorage.setItem('chooseNum1', this.value);
+        });
+        chooseBtnInput2.addEventListener('keydown', function (e) {
+            if (e.key === 'Delete' || e.key === 'Backspace') {
+                this.value = '';
+            }
+        });
+        chooseBtnInput2.addEventListener('blur', function (e) {
+            localStorage.setItem('chooseNum2', this.value);
+        });
 
         /*
             点击 清空生成的结果 按钮，清空答案
@@ -2974,7 +3447,10 @@
         // 升序：清空生成区域，针对于 tianshiArr 进行升序，渲染到页面中
         order1.addEventListener('click', function () {
             if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
-                alert('没有需要排序的内容');
+                // alert('没有需要排序的内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '没有需要排序的内容';
                 return;
             }
             // 先清空页面
@@ -3009,7 +3485,10 @@
         // 降序：清空生成区域，针对于 tianshiArr 进行降序，渲染到页面中
         order2.addEventListener('click', function () {
             if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
-                alert('没有需要排序的内容');
+                // alert('没有需要排序的内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '没有需要排序的内容';
                 return;
             }
             // 先清空页面
@@ -3044,7 +3523,10 @@
         // 还原：清空生成区域，将 res 展示到页面中
         order3.addEventListener('click', function () {
             if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
-                alert('没有需要排序的内容');
+                // alert('没有需要排序的内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '没有需要排序的内容';
                 return;
             }
             // 先清空页面
@@ -3122,7 +3604,10 @@
             // 文本域
             let tempInputContent = inputBoxTextarea1.value;
             if (tempInputContent.trim() === '') {
-                alert('请输入内容');
+                // alert('请输入内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请输入内容';
                 return;
             }
 
@@ -3310,7 +3795,10 @@
             // 文本域
             let tempInputContent = inputBoxTextarea2.value;
             if (tempInputContent.trim() === '') {
-                alert('请输入内容');
+                // alert('请输入内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请输入内容';
                 return;
             }
 
@@ -3501,7 +3989,10 @@
             // 文本域
             let tempInputContent = inputBoxTextarea1.value;
             if (tempInputContent.trim() === '') {
-                alert('请输入内容');
+                // alert('请输入内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请输入内容';
                 return;
             }
 
@@ -3690,7 +4181,10 @@
             // 文本域
             let tempInputContent = inputBoxTextarea2.value;
             if (tempInputContent.trim() === '') {
-                alert('请输入内容');
+                // alert('请输入内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '请输入内容';
                 return;
             }
 
