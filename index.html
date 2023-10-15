@@ -251,8 +251,14 @@
         body {
             /* background: linear-gradient(to bottom right, #3b0063, #690000); */
             /* background: linear-gradient(to bottom right, #1a0057, #58003a); */
-            background: linear-gradient(to bottom right, #300055, #530000);
+            /* background: linear-gradient(to bottom right, #300055, #530000);
+            background-color: #222; */
+            background: linear-gradient(to bottom right, #300055, #530024);
             background-color: #222;
+            /* background: linear-gradient(to bottom right, #16004a, #50001f);
+            background-color: #222; */
+            /* background: linear-gradient(to bottom right, #003e29, #002c50);
+            background-color: #222; */
             /* animation: bodyBg 5s linear infinite; */
             /* transition: all .5s; */
         }
@@ -287,21 +293,24 @@
         .content_box::-webkit-scrollbar-thumb {
             border: 0;
             /*滚动条里面小方块*/
-            border-radius: 9px;
+            border-radius: 5px;
             /* background-color: skyblue; */
             /* background-color: rgba(46, 139, 134, 0.7); */
             /* background-color: #225fc1; */
-            background-color: #3c0026;
-            background-color: #610002;
+            /* background-color: #3c0026; */
+            /* background-color: #610002; */
             background-color: #5f0024;
+            background-color: #74002D;
+            background-color: #70003C;
+            /* background-color: #640037; */
             /* background-color: #7e0918; */
             /* background-color: #59097e; */
             background-image: -webkit-linear-gradient(45deg,
-                    rgba(255, 255, 255, 0.2) 25%,
+                    rgba(255, 255, 255, 0.3) 25%,
                     transparent 25%,
                     transparent 50%,
-                    rgba(255, 255, 255, 0.2) 50%,
-                    rgba(255, 255, 255, 0.2) 75%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0.3) 75%,
                     transparent 75%,
                     transparent);
         }
@@ -311,8 +320,8 @@
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
             /* background: #ededed80; */
             /* background: #989898; */
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 5px;
         }
 
         .content_box2::-webkit-scrollbar {
@@ -325,11 +334,12 @@
         .content_box2::-webkit-scrollbar-thumb {
             border: 0;
             /*滚动条里面小方块*/
-            border-radius: 6px;
+            border-radius: 3px;
             /* background-color: skyblue; */
             background-color: rgba(46, 139, 134, 0.7);
             background-color: #3c0026;
             background-color: #28005c;
+            background-color: #240054;
             background-image: -webkit-linear-gradient(45deg,
                     rgba(255, 255, 255, 0.2) 25%,
                     transparent 25%,
@@ -345,7 +355,7 @@
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
             /* background: #989898; */
             background: rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
+            border-radius: 3px;
         }
 
         .content_box3::-webkit-scrollbar {
@@ -358,15 +368,35 @@
         .content_box3::-webkit-scrollbar-thumb {
             border: 0;
             /*滚动条里面小方块*/
-            border-radius: 9px;
+            border-radius: 3px;
             /* background-color: skyblue; */
             /* background-color: rgba(46, 139, 134, 0.7); */
             /* background-color: #225fc1; */
-            background-color: #3c0026;
+            /* background-color: #3c0026;
             background-color: #610002;
             background-color: #74002d;
+            background-color: #720046; */
+            background-color: #70003c;
             /* background-color: #7e0918; */
             /* background-color: #59097e; */
+            /* background-image: -webkit-linear-gradient(45deg,
+                    transparent 0%,
+                    transparent 15%,
+                    rgba(255, 255, 255, 0.3) 15%,
+                    rgba(255, 255, 255, 0.3) 35%,
+                    transparent 35%,
+                    transparent 55%,
+                    rgba(255, 255, 255, 0.3) 55%,
+                    rgba(255, 255, 255, 0.3) 75%,
+                    transparent 75%,
+                    transparent 100%); */
+            /* background-image: -webkit-linear-gradient(45deg,
+                    transparent 0%,
+                    transparent 40%,
+                    rgba(255, 255, 255, 0.3) 40%,
+                    rgba(255, 255, 255, 0.3) 60%,
+                    transparent 60%,
+                    transparent 100%); */
             background-image: -webkit-linear-gradient(45deg,
                     rgba(255, 255, 255, 0.2) 25%,
                     transparent 25%,
@@ -382,8 +412,8 @@
             box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
             /* background: #ededed80; */
             /* background: #989898; */
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 3px;
         }
 
         * {
@@ -461,7 +491,7 @@
             width: 290px;
             text-align: center;
             transition: all .2s;
-            border-radius: 6px;
+            border-radius: 3px;
             /* border: 2px solid pink;
             border: 2px solid #111; */
             margin: 6px 0;
@@ -530,10 +560,10 @@
 
         .tianshi-btn {
             margin: auto;
-            width: 335px;
-            padding: 10px;
+            width: 336px;
+            padding: 6px;
             border: 1px dashed #ccc;
-            border-radius: 10px;
+            border-radius: 3px;
             text-align: center;
         }
 
@@ -566,7 +596,7 @@
         .btn-add button,
         .btn-clear button,
         .btn-add2 button {
-            border-radius: 6px;
+            border-radius: 3px;
         }
 
         .reset-page button,
@@ -624,10 +654,10 @@
 
         .btn-choose button {
             /* position: relative; */
-            width: 154px;
+            width: 158px;
             height: 24px;
             line-height: 24px;
-            border-radius: 6px;
+            border-radius: 3px;
             /* margin: 5px 0 0; */
             font-size: 16px;
             /* animation: btnChange 6s linear infinite; */
@@ -655,7 +685,7 @@
             height: 211px;
             /* background-color: skyblue; */
             margin: 6px auto 0;
-            border-radius: 6px;
+            border-radius: 3px;
             padding: 6px;
             text-align: center;
             /* border: 2px solid pink;
@@ -774,7 +804,7 @@
             height: 24px;
             background-color: rgba(219, 27, 101, 0.5);
             border: none;
-            border-radius: 6px;
+            border-radius: 3px;
             color: #eee;
             font-size: 16px;
             transition: all .2s;
@@ -877,7 +907,7 @@
             /* background-color: pink; */
             background-color: rgba(219, 27, 101, 0.5);
             border: none;
-            border-radius: 6px;
+            border-radius: 3px;
             color: #eee;
             /* color: #000; */
             font-size: 16px;
@@ -899,7 +929,7 @@
             font-size: 16px;
             border: 1px dashed #ccc;
             padding: 7px;
-            border-radius: 6px;
+            border-radius: 3px;
             box-sizing: border-box;
             background-color: rgba(255, 255, 255, 0);
             color: #eee;
@@ -974,7 +1004,7 @@
             /* background-color: rgba(255, 255, 255, 0.4); */
             /* background: linear-gradient(to bottom right, #a00b6c, #2b008e); */
             background: linear-gradient(to bottom right, #59001c, #1f0065);
-            border-radius: 6px;
+            border-radius: 3px;
             padding: 8px;
             text-align: center;
             /* transition: all .5s; */
@@ -988,7 +1018,8 @@
         .common-tips {
             z-index: 999;
             /* display: block; */
-            height: 160px;
+            height: 140px;
+            width: 260px;
         }
 
         /* 批量录入窗口中的标题 */
@@ -1008,13 +1039,13 @@
         .common-tips-content {
             margin: 10px auto;
             /* width: 100px; */
-            height: 60px;
-            line-height: 60px;
-            background-color: rgba(255, 255, 255, 0.1);
+            height: 40px;
+            line-height: 40px;
+            /* background-color: rgba(255, 255, 255, 0.1); */
             border-radius: 3px;
             text-align: center;
             color: #eee;
-            font-size: 18px;
+            font-size: 17px;
         }
 
         /* 标题下面的说明文字 */
@@ -1049,7 +1080,7 @@
         .mod {
             padding: 20px 10px;
             border: 1px dashed #ccc;
-            border-radius: 10px;
+            border-radius: 3px;
             margin-bottom: 20px;
         }
 
@@ -1068,9 +1099,9 @@
         .btn-choose-number span {
             display: inline-block;
             background-color: rgba(219, 27, 101, 0.5);
-            border-radius: 6px;
+            border-radius: 3px;
             text-align: center;
-            width: 154px;
+            width: 158px;
             height: 24px;
             line-height: 24px;
             font-size: 16px;
@@ -2002,11 +2033,11 @@
                     <button style="margin-top: 0px;width: 40px;">还原</button>
                 </div> -->
                 <div class="btn-clear">
-                    <button style="margin-top: 6px;width: 48px;" class="order1">升序</button>
-                    <button style="margin-top: 6px;width: 48px;" class="order2">降序</button>
-                    <button style="margin-top: 6px;width: 48px;" class="order3">还原</button>
+                    <button style="margin-top: 6px;width: 49px;" class="order1">升序</button>
+                    <button style="margin-top: 6px;width: 49px;" class="order2">降序</button>
+                    <button style="margin-top: 6px;width: 50px;" class="order3">还原</button>
                     <!-- <button style="margin-top: 12px;width: 60px;" onclick="location.reload()">重置</button> -->
-                    <button style="margin-top: 0px;width: 154px;">清空生成的内容</button>
+                    <button style="margin-top: 0px;width: 158px;">清空生成的内容</button>
                 </div>
             </div>
 
