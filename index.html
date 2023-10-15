@@ -445,7 +445,9 @@
         .max3[disabled],
         .max4[disabled],
         .btn-choose-input1[disabled],
-        .btn-choose-input2[disabled] {
+        .btn-choose-input2[disabled],
+        .xuan1 input[disabled],
+        .xuan2 input[disabled] {
             /* rgba(219, 27, 101, 0.7) */
             /* background-color: pink !important; */
             color: #bc96a8 !important;
@@ -3355,8 +3357,12 @@
                 if (i === parseInt(chooseBtnInput1.value) - 1) {
                     jsStr += `
                         .then(function () {
+                            // 注意代码执行顺序
+                            // 为避免标题冲突，标题 input 只能在全部释放后才能修改
+                            // inputs[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            // inputs2[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             // 让所有的 inputs 可用
-                            for (let i = 0; i < inputs.length; i++) {
+                            for (let i = 1; i < inputs.length; i++) {
                                 inputs[i].disabled = false;
                             }
                             // 让所有的按钮可用
@@ -3369,6 +3375,9 @@
                             order1.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             order2.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             order3.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            // 为避免标题冲突，标题 input 只能在全部释放后才能修改
+                            inputs[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            inputs2[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
                         })
                     `;
                 }
@@ -3415,8 +3424,8 @@
                 if (i === parseInt(chooseBtnInput2.value) - 1) {
                     jsStr += `
                         .then(function () {
-                            // 让所有的 inputs 可用
-                            for (let i = 0; i < inputs2.length; i++) {
+                            // 让其它所有的 inputs 可用
+                            for (let i = 1; i < inputs2.length; i++) {
                                 inputs2[i].disabled = false;
                             }
                             // 让所有的按钮可用
@@ -3429,6 +3438,9 @@
                             order1.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             order2.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             order3.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            // 为避免标题冲突，标题 input 只能在全部释放后才能修改
+                            inputs[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            inputs2[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
                         })
                     `;
                 }
