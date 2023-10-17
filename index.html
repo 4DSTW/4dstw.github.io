@@ -4,8 +4,8 @@
 <head>
     <!-- 
         作者：ICAN
-        开始时间：20231007
-        结束时间：20231015
+        开始时间：20231006
+        结束时间：20231016
         邮箱：1873063962@qq.com、17602640523@163.com
     -->
     <!-- 
@@ -58,6 +58,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICAN</title>
+    <!-- 统计数组中元素的个数 -->
+    <script>
+        // 返回一个新数组作为统计数组
+        function tongjiItemsTimes(arr) {
+            let objArr = [];
+            // 遍历源数组，一个一个对比、添加
+            for (let i = 0; i < arr.length; i++) {
+                // 找到就增加次数，找不到就添加
+                let addItem = true;
+                if (objArr.length > 0) {
+                    // 查看对象数组中是否有该元素了
+                    for (let j = 0; j < objArr.length; j++) {
+                        // 如果在对象数组中找到该元素的值，数量+1，且不添加新对象元素，退出循环
+                        if (objArr[j].title === arr[i]) {
+                            objArr[j].num++;
+                            addItem = false;
+                            break;
+                        }
+                    }
+                }
+                // 如果对象数组中没有该元素就添加新对象元素
+                if (addItem) {
+                    let obj = {
+                        title: arr[i],
+                        num: 1
+                    }
+                    objArr.push(obj);
+                }
+
+            }
+            // console.log(arr);
+            // console.log(objArr);
+            return objArr;
+        }
+    </script>
     <!-- 旋转数组 -->
     <script>
         /**
@@ -425,6 +460,30 @@
             cursor: default;
         }
 
+
+        /*
+            更改单选按钮的样式不起效
+        */
+        /* 1. 单选框背景颜色 */
+        /* input[type="radio"] {
+            background-color: #f5f5f5 !important;
+        } */
+
+        /* 2. 单选框圆圈颜色 */
+        /* input[type="radio"]:before {
+            border-color: pink !important;
+        } */
+
+        /* 3. 选中单选框后的圆圈颜色 */
+        /* input[type="radio"]:checked:before {
+            background-color: pink !important;
+        } */
+
+        /* 4. 选中单选框后的填充颜色 */
+        /* input[type="radio"]:checked:after {
+            background-color: pink !important;
+        } */
+
         li {
             position: relative;
             list-style: none;
@@ -684,7 +743,7 @@
         .tianshi {
             /* width: 326px; */
             width: 100%;
-            height: 211px;
+            height: 326px;
             /* background-color: skyblue; */
             margin: 6px auto 0;
             border-radius: 3px;
@@ -698,8 +757,37 @@
             overflow: auto;
         }
 
+        .tianshi dl {
+            position: relative;
+            padding: 5px 12px 13px;
+            /* padding-right: 12px; */
+            border-bottom: 1px dashed #ccc;
+        }
+
+        .tianshi .delete-item {
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 42px;
+            background-color: rgba(219, 27, 101, 0.5);
+            border: none;
+            /* border-radius: 3px; */
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            color: #eee;
+            opacity: .9;
+            font-size: 14px;
+        }
+
+        .tianshi .delete-item:hover {
+            background-color: rgba(219, 27, 101, 0.7);
+            opacity: 1;
+        }
+
         .tianshi dt {
-            font-size: 18px;
+            font-size: 17px;
             /* font-weight: 700; */
             /* background-color: pink; */
             /* background-color: #111; */
@@ -708,25 +796,30 @@
             padding: 3px 0 4px;
             color: #eee;
             /* border-radius: 3px; */
+            /* border-top: 1px dashed #ccc; */
+            font-weight: 400;
         }
 
         .tianshi dd {
-            margin: 3px 3px;
+            /* margin: 3px 3px; */
+            margin: 2px;
             display: inline-block;
             /* background-color: #bbd5ff; */
             border-bottom: 1px solid #c76ec7;
             border-bottom: 1px solid #ddd;
-            width: 72px;
+            width: 66px;
             height: 24px;
             line-height: 24px;
             text-align: center;
             color: #eee;
+            font-size: 16px;
         }
 
-        .tianshi dl:nth-child(n+2) {
-            /* border-top: 1px solid #111; */
-            margin-top: 6px;
-        }
+        /* .tianshi dl:nth-child(n+2) { */
+        /* border-top: 1px solid #111; */
+        /* margin-top: 6px; */
+        /* margin: 6px 0 8px; */
+        /* } */
 
         @media screen and (max-width:360px) {
             body {
@@ -925,16 +1018,18 @@
         textarea {
             resize: none;
             width: 100%;
-            height: 179px;
+            height: 449px;
             margin: 12px auto;
             outline: none;
             font-size: 16px;
             border: 1px dashed #ccc;
-            padding: 7px;
+            /* padding: 7px; */
+            padding: 4px 2px 4px 6px;
             border-radius: 3px;
             box-sizing: border-box;
             background-color: rgba(255, 255, 255, 0);
             color: #eee;
+            line-height: 22px;
         }
 
         /* 必填1 批量录入窗口 下面的遮罩层 */
@@ -963,6 +1058,9 @@
         .input-box2 button,
         .tiqu-box1 button,
         .tiqu-box2 button,
+        .tiqu-box-random button,
+        .tiqu-box-res button,
+        .fenxi-box-res button,
         .common-tips button {
             width: 67px;
             height: 24px;
@@ -975,7 +1073,10 @@
         }
 
         .tiqu-box1 button,
-        .tiqu-box2 button {
+        .tiqu-box2 button,
+        .tiqu-box-res button,
+        .fenxi-box-res button,
+        .tiqu-box-random button {
             margin: 0 20px;
         }
 
@@ -983,6 +1084,9 @@
         .input-box2 button:hover,
         .tiqu-box1 button:hover,
         .tiqu-box2 button:hover,
+        .tiqu-box-random button:hover,
+        .tiqu-box-res button:hover,
+        .fenxi-box-res button:hover,
         .common-tips button:hover {
             background-color: rgba(219, 27, 101, 0.7);
         }
@@ -992,6 +1096,9 @@
         .input-box2,
         .tiqu-box1,
         .tiqu-box2,
+        .tiqu-box-random,
+        .tiqu-box-res,
+        .fenxi-box-res,
         .common-tips {
             display: none;
             position: fixed;
@@ -1012,8 +1119,16 @@
             /* transition: all .5s; */
         }
 
+        .input-box,
+        .input-box2 {
+            line-height: 13px;
+        }
+
         .tiqu-box1,
-        .tiqu-box2 {
+        .tiqu-box2,
+        .tiqu-box-res,
+        .fenxi-box-res,
+        .tiqu-box-random {
             height: 403px;
         }
 
@@ -1027,12 +1142,16 @@
         /* 批量录入窗口中的标题 */
         .input-box h3,
         .input-box2 h3 {
-            margin: 10px auto 0px;
+            line-height: 20px;
+            margin: 10px auto 7px;
             color: #eee;
         }
 
         .tiqu-box1 h3,
         .tiqu-box2 h3,
+        .tiqu-box-random h3,
+        .tiqu-box-res h3,
+        .fenxi-box-res h3,
         .common-tips h3 {
             margin: 7px auto;
             color: #eee;
@@ -1053,7 +1172,7 @@
         /* 标题下面的说明文字 */
         .input-box-shuoming,
         .input-box2-shuoming {
-            font-size: 14px;
+            font-size: 12px;
             color: #eee;
         }
 
@@ -1068,22 +1187,61 @@
         .input-box-textarea,
         .input-box2-textarea,
         .tiqu-box1-textarea,
+        .tiqu-box-random-textarea,
+        .tiqu-box-res-textarea,
+        .fenxi-box-res-textarea,
         .tiqu-box2-textarea {
             margin: 6px 0;
             width: 100%;
-            height: 303px;
+            height: 306px;
             color: #eee;
             /* border: 1px solid #a35b74; */
             border: none;
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 6px;
+            padding: 3px 8px;
+            padding-right: 4px;
+        }
+
+        .input-box-textarea,
+        .input-box2-textarea {
+            height: 293px;
+            margin: 8px 0;
         }
 
         .mod {
+            position: relative;
             padding: 20px 10px;
             border: 1px dashed #ccc;
+            /* border: 1px dashed rgba(255, 255, 255, 0.6); */
             border-radius: 3px;
             margin-bottom: 20px;
+        }
+
+        /* .tiqu-box-random {
+            position: absolute;
+        } */
+
+        .showRandomBtn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 165px;
+            font-size: 16px;
+            border: none;
+            color: #eee;
+            background-color: rgba(219, 27, 101, 0.5);
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .showRandomBtn:hover {
+            background-color: rgba(219, 27, 101, 0.7);
+        }
+
+        .showRandomBtn:active {
+            background-color: rgba(219, 27, 101, 0.7);
         }
 
         .mod h3 {
@@ -1092,13 +1250,15 @@
         }
 
         /* 生成按钮中的输入框 */
-        .btn-choose-number {
+        .btn-choose-number,
+        .btn-choose-choice {
             /* position: relative; */
             color: #eee;
             margin-top: 6px;
         }
 
-        .btn-choose-number span {
+        .btn-choose-number span,
+        .btn-choose-choice span {
             display: inline-block;
             background-color: rgba(219, 27, 101, 0.5);
             border-radius: 3px;
@@ -1109,8 +1269,17 @@
             font-size: 16px;
         }
 
+        label {
+            height: 24px;
+            line-height: 24px;
+        }
+
         .btn-choose-input1,
-        .btn-choose-input2 {
+        .btn-choose-input2,
+        .res1-choice1,
+        .res1-choice2,
+        .res2-choice1,
+        .res2-choice2 {
             /* position: absolute; */
             /* top: 0;
             right: 0; */
@@ -1125,10 +1294,31 @@
             font-size: 15px;
         }
 
+        .res1-choice1,
+        .res1-choice2,
+        .res2-choice1,
+        .res2-choice2 {
+            margin-right: 3px;
+            /* border: 2px solid pink; */
+            height: 12px;
+            line-height: 12px;
+            width: 12px;
+        }
+
+        .res1-choice2,
+        .res2-choice2 {
+            margin-left: 5px;
+        }
+
         .btn-choose-line {
             margin: 6px 0 0;
             border-bottom: 1px dashed #eee;
         }
+
+        /* .mini-line {
+            margin: 6px 0 0;
+            border-bottom: 1px dashed #eee;
+        } */
     </style>
     <link rel="shortcut icon" href="./images/logo.ico">
 </head>
@@ -1151,6 +1341,9 @@
                 <button class="common-tips-close">关闭窗口</button>
             </div>
             <script>
+                // 获取遮罩层
+                // 遮罩层1：下层遮罩层
+                let pageMask = document.querySelector('.page-mask');
                 // 遮罩层2：顶层遮罩层
                 let pageMask2 = document.querySelector('.page-mask2');
                 // 通用提示框
@@ -1175,12 +1368,51 @@
                 <span class="green">A</span>
                 <span class="orange">N</span>
             </h1>
-            <div class="top-line"></div>
+            <!-- <div class="top-line"></div> -->
 
 
             <!-- <div class="reset-page">
                 <button style="width: 100px;" onclick="location.reload()">刷新页面</button>
             </div> -->
+
+            <!-- 幸运数字和随机数的提取窗口 历史记录 -->
+            <div class="tiqu-box-random">
+                <!-- 标题 -->
+                <h3>幸运数和随机数汇总</h3>
+                <!-- 分割线 -->
+                <!-- <div class="input-box-line"></div> -->
+                <!-- 录入框 -->
+                <textarea name="" id="" cols="" rows="" class="tiqu-box-random-textarea content_box2"
+                    disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="tiqu-box-random-btn-clear">清空内容</button>
+                <button class="tiqu-box-random-btn-close">关闭窗口</button>
+            </div>
+
+            <script>
+                // 历史记录盒子 提取随机数盒子
+                let tiquRandomBox = document.querySelector('.tiqu-box-random');
+                // 提取随机数的文本域
+                let tiquRandomTxt = document.querySelector('.tiqu-box-random-textarea');
+                // 提取随机数盒子的 清空内容 按钮
+                let tiquRandomClearBtn = document.querySelector('.tiqu-box-random-btn-clear');
+                // 提取随机数盒子的 关闭窗口 按钮
+                let tiquRandomCloseBtn = document.querySelector('.tiqu-box-random-btn-close');
+
+                // 存储提取的幸运数字历史记录
+                let tiquXingYun = JSON.parse(localStorage.getItem('tiquXingYun')) || [];
+                // 存储提取的随机数历史记录
+                let tiquRandom = JSON.parse(localStorage.getItem('tiquRandom')) || [];
+
+
+                // 关闭窗口
+                tiquRandomCloseBtn.addEventListener('click', function () {
+                    pageMask.style.display = 'none';
+                    tiquRandomBox.style.display = 'none';
+                });
+
+                // 显示内容写在随机数模块的后面
+            </script>
 
             <h3 style="text-align: center;margin: 12px 0 16px;height: 26px;line-height: 26px;" class="box-good-number">
                 当前幸运数字:<span class="goodNumber"></span>
@@ -1190,14 +1422,14 @@
                 <script>
                     // 获取需要填入随机数的节点
                     let goodNumber = document.querySelector('.goodNumber');
-                    // 自定义随机数的范围为 [1, 35]
-                    // 获取 [1, 35] 范围内的乱序数组
-                    let goodArr = randomNumberToArr(1, 80);
+                    // 自定义随机数的范围为 [1, 99]
+                    // 获取 [1, 99] 范围内的乱序数组
+                    let goodArr = randomNumberToArr(1, 99);
                     console.log('&&&&&&&&&&&&&&&&&& 随机生成幸运数字');
                     // 打印幸运数组
-                    console.log('幸运数组[1-80]：', goodArr);
+                    console.log('幸运数组[1-99]：', goodArr);
                     // 随机获取 [0, 34] 之间的一个索引值，用于生成幸运数
-                    let goodIndex = getRandomNumber(0, 79);
+                    let goodIndex = getRandomNumber(0, 98);
                     // 打印索引值
                     console.log('索引值：' + goodIndex);
                     // 根据索引获取幸运数
@@ -1205,6 +1437,12 @@
                     // 将幸运数字填入页面
                     goodNumber.innerHTML = goodArr[goodIndex] < 10 ? '0' + goodArr[goodIndex] : goodArr[goodIndex];
                     console.log('&&&&&&&&&&&&&&&&&& 随机生成幸运数字');
+
+                    // 存储幸运数字
+                    // 放在日期下面
+
+
+
                 </script>
 
                 <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 日期模块：年月日、时分秒 -->
@@ -1283,10 +1521,18 @@
                 </script>
             </div>
 
+            <script>
+                // 存储幸运数字
+                // 放在日期下面
+                tiquXingYun.push('幸运数：' + goodNumber.innerHTML + ' [' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']');
+                localStorage.setItem('tiquXingYun', JSON.stringify(tiquXingYun));
+            </script>
+
 
             <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 随机数模块 -->
             <h3 style="color:#eee">随机数</h3>
             <div class="mod">
+                <button class="showRandomBtn">幸运数和随机数</button>
                 <div class="random-box1">
                     <!-- <h3 style="color:#ec1616">随机数1</h3> -->
                     <!-- <h3 style="color:#bfba86">随机数1</h3> -->
@@ -1438,6 +1684,10 @@
                                 min.disabled = false;
                                 max.disabled = false;
                                 // console.log('&&&&&&&&&&&& 生成任意范围内的随机数');
+
+                                // 存储当前随机数
+                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min.value) + ', ' + parseInt(max.value) + '] -> ' + v + '\n\n');
+                                localStorage.setItem('tiquRandom', JSON.stringify(tiquRandom));
                             });
                         });
                         // 进入页面就会生成一个随机数
@@ -1575,6 +1825,11 @@
                                 min2.disabled = false;
                                 max2.disabled = false;
                                 // console.log('&&&&&&&&&&&& 生成任意范围内的随机数');
+
+
+                                // 存储当前随机数
+                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min2.value) + ', ' + parseInt(max2.value) + '] -> ' + v + '\n\n');
+                                localStorage.setItem('tiquRandom', JSON.stringify(tiquRandom));
                             });
                         });
                         // 进入页面就会生成一个随机数
@@ -1713,6 +1968,11 @@
                                 min3.disabled = false;
                                 max3.disabled = false;
                                 // console.log('&&&&&&&&&&&& 生成任意范围内的随机数');
+
+
+                                // 存储当前随机数
+                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min3.value) + ', ' + parseInt(max3.value) + '] -> ' + v + '\n\n');
+                                localStorage.setItem('tiquRandom', JSON.stringify(tiquRandom));
                             });
                         });
                         // 进入页面就会生成一个随机数
@@ -1851,6 +2111,11 @@
                                 min4.disabled = false;
                                 max4.disabled = false;
                                 // console.log('&&&&&&&&&&&& 生成任意范围内的随机数');
+
+
+                                // 存储当前随机数
+                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min4.value) + ', ' + parseInt(max4.value) + '] -> ' + v + '\n\n');
+                                localStorage.setItem('tiquRandom', JSON.stringify(tiquRandom));
                             });
                         });
                         // 进入页面就会生成一个随机数
@@ -1860,6 +2125,65 @@
             </div>
 
 
+            <script>
+                // 显示幸运数字和随机数的历史记录 tiquRandomTxt.value
+                // 点击按钮才能触发当下时间下的显示 showRandomBtn
+                let showRandomBtn = document.querySelector('.showRandomBtn');
+                showRandomBtn.addEventListener('click', function () {
+                    // 存储提取的幸运数字历史记录
+                    tiquXingYun = JSON.parse(localStorage.getItem('tiquXingYun')) || [];
+                    // 存储提取的随机数历史记录
+                    tiquRandom = JSON.parse(localStorage.getItem('tiquRandom')) || [];
+
+                    pageMask.style.display = 'block';
+                    tiquRandomBox.style.display = 'block';
+
+                    if (tiquXingYun.length === 0 && tiquRandom.length === 0) {
+                        return;
+                    }
+
+                    let str = '------------- 幸运数汇总 ------------' + '\n\n';
+
+                    if (tiquXingYun.length === 0) {
+                        str = '';
+                    }
+
+                    // 遍历幸运数字数组
+                    for (let i = 0; i < tiquXingYun.length; i++) {
+                        str += tiquXingYun[i] + '\n';
+                    }
+                    // str += '\n'+'<div class="mini-line"></div>';
+                    // if (tiquRandom.length === 0) {
+                    //     return;
+                    // }
+                    if (tiquXingYun.length === 0) {
+                        str += '------------- 随机数汇总 ------------' + '\n\n';
+                    } else {
+                        str += '\n' + '------------- 随机数汇总 ------------' + '\n\n';
+                    }
+
+                    // 遍历随机数数组
+                    for (let i = 0; i < tiquRandom.length; i++) {
+                        str += tiquRandom[i];
+                    }
+
+                    tiquRandomTxt.value = str;
+
+                    // pageMask.style.display = 'block';
+                    // tiquRandomBox.style.display = 'block';
+                });
+
+
+                // 清空文本域、本地幸运数、本地随机数
+                tiquRandomClearBtn.addEventListener('click', function () {
+                    tiquRandomTxt.value = '';
+                    localStorage.removeItem('tiquXingYun');
+                    localStorage.removeItem('tiquRandom');
+                });
+
+            </script>
+
+
 
 
             <h3 style="color:#eee">抉择利器</h3>
@@ -1867,7 +2191,7 @@
                 <div class="xuan1">
                     <h3 style="color:#eee;margin-top: 0px;">标题1(选填)</h3>
                     <div class="question">
-                        <input type="text" name="" id="" value="" maxlength="18" placeholder="限18个字">
+                        <input type="text" name="" id="" value="" maxlength="17" placeholder="限17个字">
                     </div>
                     <h3 style="color:#eee;">内容1(必填)</h3>
                     <div class="answers">
@@ -1884,23 +2208,13 @@
                             </li>
                         </ul>
                     </div>
-                    <script>
-                        /*
-                            增加本地存储功能
-                        */
-                        // 选填1
-                        let xuanInput1 = document.querySelector('.question input');
-                        xuanInput1.value = localStorage.getItem('xuan1') || '标题1';
-                        xuanInput1.addEventListener('blur', function () {
-                            localStorage.setItem('xuan1', this.value);
-                        });
-                    </script>
+
                 </div>
 
                 <div class="xuan2">
                     <h3 style="color:#eee;">标题2(选填)</h3>
                     <div class="question2">
-                        <input type="text" name="" id="" value="" maxlength="18" placeholder="限18个字">
+                        <input type="text" name="" id="" value="" maxlength="17" placeholder="限17个字">
                     </div>
                     <h3 style="color:#eee;">内容2(必填)</h3>
                     <div class="answers2">
@@ -1917,17 +2231,7 @@
                             </li>
                         </ul>
                     </div>
-                    <script>
-                        /*
-                            增加本地存储功能
-                        */
-                        // 选填2
-                        let xuanInput2 = document.querySelector('.question2 input');
-                        xuanInput2.value = localStorage.getItem('xuan2') || '标题2';
-                        xuanInput2.addEventListener('blur', function () {
-                            localStorage.setItem('xuan2', this.value);
-                        });
-                    </script>
+
                 </div>
             </div>
 
@@ -1940,7 +2244,10 @@
                 <!-- 标题 -->
                 <h3>批量录入内容1</h3>
                 <!-- 标题下面的说明文字 -->
-                <span class="input-box-shuoming">(可从Excel中粘入或统一使用空格隔开)</span>
+                <span class="input-box-shuoming" style="color: #e0c6e3;">
+                    可从Excel中粘入或使用以下符号分隔<br>
+                    空格 换行符 制表符 逗号 分号 & 、| / \
+                </span>
                 <!-- 分割线 -->
                 <!-- <div class="input-box-line"></div> -->
                 <!-- 录入框 -->
@@ -1960,7 +2267,10 @@
                 <!-- 标题 -->
                 <h3>批量录入内容2</h3>
                 <!-- 标题下面的说明文字 -->
-                <span class="input-box2-shuoming">(可从Excel中粘入或统一使用空格隔开)</span>
+                <span class="input-box2-shuoming" style="color: #e0c6e3;">
+                    可从Excel中粘入或使用以下符号分隔<br>
+                    空格 换行符 制表符 逗号 分号 & 、| / \
+                </span>
                 <!-- 分割线 -->
                 <!-- <div class="input-box2-line"></div> -->
                 <!-- 录入框 -->
@@ -1983,7 +2293,7 @@
                 <!-- 分割线 -->
                 <!-- <div class="input-box-line"></div> -->
                 <!-- 录入框 -->
-                <textarea name="" id="" cols="" rows="" class="tiqu-box1-textarea content_box2"></textarea>
+                <textarea name="" id="" cols="" rows="" class="tiqu-box1-textarea content_box2" disabled></textarea>
                 <!-- 关闭窗口按钮 -->
                 <button class="tiqu-box1-btn-clear">清空内容</button>
                 <button class="tiqu-box1-btn-close">关闭窗口</button>
@@ -1996,7 +2306,7 @@
                 <!-- 分割线 -->
                 <!-- <div class="input-box-line"></div> -->
                 <!-- 录入框 -->
-                <textarea name="" id="" cols="" rows="" class="tiqu-box2-textarea content_box2"></textarea>
+                <textarea name="" id="" cols="" rows="" class="tiqu-box2-textarea content_box2" disabled></textarea>
                 <!-- 关闭窗口按钮 -->
                 <button class="tiqu-box2-btn-clear">清空内容</button>
                 <button class="tiqu-box2-btn-close">关闭窗口</button>
@@ -2006,6 +2316,27 @@
 
             <h3 style="color:#eee;">结果生成区域</h3>
             <!-- <h3 style="color:#3679e3;">天使的建议(优选)</h3> -->
+
+            <!-- 幸运数字和随机数的提取窗口 历史记录 -->
+            <div class="tiqu-box-res">
+                <!-- 标题 -->
+                <h3>生成结果汇总</h3>
+                <!-- 录入框 -->
+                <textarea name="" id="" cols="" rows="" class="tiqu-box-res-textarea content_box2" disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="tiqu-box-res-btn-clear">清空内容</button>
+                <button class="tiqu-box-res-btn-close">关闭窗口</button>
+            </div>
+
+            <div class="fenxi-box-res">
+                <!-- 标题 -->
+                <h3>生成结果分析</h3>
+                <!-- 录入框 -->
+                <textarea name="" id="" cols="" rows="" class="fenxi-box-res-textarea content_box2" disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="fenxi-box-res-btn-clear">清空内容</button>
+                <button class="fenxi-box-res-btn-close">关闭窗口</button>
+            </div>
 
             <div class="tianshi-btn">
                 <div class="btn-choose">
@@ -2026,7 +2357,87 @@
                         <input type="text" class="btn-choose-input2" maxlength="3" value="1">个
                     </span>
                 </div>
+                <div class="btn-choose-choice">
+                    <span>
+                        <label>
+                            <input type="radio" name="res1" id="" class="res1-choice1" value="choice11" checked>追加
+                        </label>
+                        <label>
+                            <input type="radio" name="res1" id="" class="res1-choice2" value="choice12">重新生成
+                        </label>
+                    </span>
+                    <span>
+                        <label>
+                            <input type="radio" name="res2" id="" class="res2-choice1" value="choice21" checked>追加
+                        </label>
+                        <label>
+                            <input type="radio" name="res2" id="" class="res2-choice2" value="choice22">重新生成
+                        </label>
+                    </span>
+                </div>
 
+                <script>
+                    // 放在上方
+                    // 生成1：追加单选框
+                    // 生成1：重新生成单选框
+                    let res1choice1 = document.querySelector('.res1-choice1');
+                    let res1choice2 = document.querySelector('.res1-choice2');
+
+                    // 生成2：追加单选框
+                    // 生成2：重新生成单选框
+                    let res2choice1 = document.querySelector('.res2-choice1');
+                    let res2choice2 = document.querySelector('.res2-choice2');
+
+                    // 内容1的生成状态
+                    let res1choice = res1choice1.value;
+                    // 内容1是否打开 重新生成 功能
+                    let isCreate1 = true;
+                    // 内容2的生成状态
+                    let res2choice = res2choice1.value;
+                    // 内容2是否打开 重新生成 功能
+                    let isCreate2 = true;
+
+                    res1choice1.addEventListener('click', function () {
+                        res1choice = this.value;
+                        // console.log(this.value);
+                        // console.log(this.checked);
+                        // this.disabled=true;
+                    });
+                    res1choice2.addEventListener('click', function () {
+                        res1choice = this.value;
+                    });
+                    res2choice1.addEventListener('click', function () {
+                        res2choice = this.value;
+                    });
+                    res2choice2.addEventListener('click', function () {
+                        res2choice = this.value;
+                    });
+                </script>
+
+                <script>
+                    /*
+                        标题1 增加本地存储功能
+                    */
+                    // 选填1
+                    let xuanInput1 = document.querySelector('.question input');
+                    xuanInput1.value = localStorage.getItem('xuan1') || '标题1';
+                    xuanInput1.addEventListener('blur', function () {
+                        res1choice2.disabled = this.value.trim() === xuanInput2.value.trim();
+                        res2choice2.disabled = this.value.trim() === xuanInput2.value.trim();
+                        localStorage.setItem('xuan1', this.value);
+                    });
+                </script>
+                <script>
+                    /*
+                        标题2 增加本地存储功能
+                    */
+                    // 选填2
+                    let xuanInput2 = document.querySelector('.question2 input');
+                    xuanInput2.value = localStorage.getItem('xuan2') || '标题2';
+                    xuanInput2.addEventListener('blur', function () {
+                        localStorage.setItem('xuan2', this.value);
+                    });
+                </script>
                 <div class="btn-choose-line"></div>
 
                 <!-- <div class="btn-order">
@@ -2036,10 +2447,12 @@
                 </div> -->
                 <div class="btn-clear">
                     <button style="margin-top: 6px;width: 49px;" class="order1">升序</button>
-                    <button style="margin-top: 6px;width: 49px;" class="order2">降序</button>
-                    <button style="margin-top: 6px;width: 50px;" class="order3">还原</button>
+                    <button style="margin-top: 6px;width: 50px;" class="order2">降序</button>
+                    <button style="margin-top: 6px;width: 49px;" class="order3">还原</button>
+                    <button style="margin-top: 6px;width: 49px;" class="res-tiqu-btn">提取</button>
+                    <button style="margin-top: 6px;width: 50px;" class="res-fenxi-btn">分析</button>
                     <!-- <button style="margin-top: 12px;width: 60px;" onclick="location.reload()">重置</button> -->
-                    <button style="margin-top: 0px;width: 158px;">清空生成的内容</button>
+                    <button style="margin-top: 0px;width: 50px;">清空</button>
                 </div>
             </div>
 
@@ -2901,9 +3314,14 @@
         let resArr = [];
         // 获取 "天使建议您" 区域
         let tianshi = document.querySelector('.tianshi .content');
-        tianshi.innerHTML = localStorage.getItem('res') || '';
+
+
+        // res 字符串存储方式被淘汰，改为存储对象数组 tianshiArr
+        // tianshi.innerHTML = localStorage.getItem('res') || '';
+
+
         // 获取 清空答案 按钮
-        let clearBtn = document.querySelectorAll('.btn-clear button')[3];
+        let clearBtn = document.querySelectorAll('.btn-clear button')[5];
         // 获取升序按钮
         let order1 = document.querySelector('.order1');
         let order2 = document.querySelector('.order2');
@@ -2924,6 +3342,112 @@
 
         let tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
         // console.log(tianshiArr);
+
+
+        // 结果 提取 按钮
+        let resTiquBtn = document.querySelector('.res-tiqu-btn');
+        // 结果 分析 按钮
+        let resFenxiBtn = document.querySelector('.res-fenxi-btn');
+
+
+        // 所有的删除按钮
+        let delbtns = document.querySelectorAll('.delete-item');
+        // console.log(delbtns);
+
+
+        /*
+            添加删除条目的按钮
+        */
+        function delBtnClick(btn) {
+            btn.addEventListener('click', function () {
+                tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+                questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+                let index = this.getAttribute('item-index');
+                // console.log('btn-click-index', index);
+                // console.log(tianshiArr[index].title);
+                let tianshiArr0 = tianshiArr.filter((v, i) => i != index);
+                let questionArr0 = questionArr.filter((v, i) => i != index);
+                // console.log(title);
+                localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr0));
+                localStorage.setItem('questionArr', JSON.stringify(questionArr0));
+                order3.click();
+
+                delbtns = document.querySelectorAll('.delete-item');
+
+                // 让所有的 btn 重排索引值
+                for (let i = 0; i < delbtns.length; i++) {
+                    delbtns[i].setAttribute('item-index', i);
+                }
+
+                // console.log(delbtns);
+                // for (let i = 0; i < delbtns.length; i++) {
+                //     delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                // }
+
+                // index = questionArr.indexOf(title);
+                // console.log('btn-click-index', index);
+                // btn.setAttribute('item-index', index);
+            });
+        }
+        function deleteItemBtn(title) {
+            // 给每个条目添加删除按钮
+            let btn = document.createElement('button');
+            btn.innerHTML = '删除';
+            btn.className = 'delete-item';
+            btn.disabled = true;
+
+            // tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+            // questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+
+
+            let index = questionArr.indexOf(title);
+            // console.log('btn-item0', index);
+            btn.setAttribute('item-index', index);
+
+            delBtnClick(btn);
+
+
+            /*
+                questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+                // tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+
+                // let titleArr=[]; // 提取 title
+                // for (let i = 0; i < tianshiArr.length; i++) {
+                //     titleArr.push(tianshiArr[i].title);
+                // }
+                // let index =titleArr.indexOf(title);
+
+                let index = questionArr.indexOf(title);
+
+
+                // btn.setAttribute('item', index);
+                btn.addEventListener('click', function () {
+                    tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+                    questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+
+                    let index = this.getAttribute('item');
+                    // console.log(tianshiArr[index].title);
+                    tianshiArr = tianshiArr.filter((v, i) => i != index);
+                    questionArr = questionArr.filter((v, i) => v != title);
+                    // console.log(title);
+                    localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
+                    localStorage.setItem('questionArr', JSON.stringify(questionArr));
+                    order3.click();
+
+                    delbtns = document.querySelectorAll('.delete-item');
+                    // console.log(delbtns);
+                    for (let i = 0; i < delbtns.length; i++) {
+                        delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                    }
+                });
+            */
+
+            // dl.appendChild(btn);
+            return btn;
+        }
+
+
+
 
 
         /*
@@ -2967,7 +3491,16 @@
 
             questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
             tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
-            tianshi.innerHTML = localStorage.getItem('res') || '';
+            // tianshi.innerHTML = localStorage.getItem('res') || '';
+
+
+            if (xuanInput1.value.trim() === xuanInput2.value.trim()) {
+                // 重新生成按钮不能选
+                res1choice = false;
+                res2choice = false;
+                res1choice1.checked = true;
+                res2choice1.checked = true;
+            }
 
 
             chooseBtnInput1.disabled = true;
@@ -2978,6 +3511,21 @@
             order1.disabled = true;
             order2.disabled = true;
             order3.disabled = true;
+            resTiquBtn.disabled = true;
+            resFenxiBtn.disabled = true;
+            res1choice1.disabled = true;
+            res1choice2.disabled = true;
+
+
+
+
+
+
+            delbtns = document.querySelectorAll('.delete-item');
+            for (let i = 0; i < delbtns.length; i++) {
+                delbtns[i].disabled = true;
+            }
+
 
 
             let tianshiObj = {
@@ -3039,9 +3587,9 @@
                 }
 
                 // 将问题添加到数组
-                let question = '********** ' + document.querySelector('.question input').value + ' **********';
+                let question = document.querySelector('.question input').value;
                 if (document.querySelector('.question input').value.trim() === '') {
-                    question = '********** 命1未录入的问题 **********';
+                    question = '未录入的标题1';
                 }
 
                 tianshiObj.title = question;
@@ -3052,12 +3600,17 @@
                     questionArr.push(question);
                     localStorage.setItem('questionArr', JSON.stringify(questionArr));
                 }
-                // console.log('index:', index);
+                // console.log('index----', index);
                 // console.log(questionArr);
 
                 // 将答案添加到 "天使建议您" 区域
                 // 如果问题未出现过，就添加，否则，就在对应的问题下添加答案即可
                 if (index < 0 || tianshi.innerHTML === '') {
+                    // 说明需要新增模块：标题、内容
+                    // 下次循环不需要开启 重新生成
+                    isCreate1 = false;
+
+
                     // 创建 dl
                     let dl = document.createElement('dl');
                     // 创建 dt
@@ -3071,31 +3624,106 @@
                     }
 
                     tianshiObj.content.push(dd.innerHTML);
+                    // console.log('+++', tianshiObj);
                     tianshiArr.push(tianshiObj);
+                    // console.log('+++', tianshiArr);
+
+
+
+
+                    let btn = deleteItemBtn(dt.innerHTML);
+
+
+                    // console.log('+++', tianshiArr);
+                    // 给每个条目添加删除按钮
+                    // let btn = document.createElement('button');
+                    // btn.innerHTML = '删除';
+                    // btn.className = 'delete-item';
+                    // btn.disabled = true;
+
+                    // tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+                    // questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+
+                    // let index = questionArr.indexOf(title);
+                    // btn.setAttribute('item', index);
+
+                    dl.appendChild(btn);
+
+
 
                     dl.appendChild(dt);
                     dl.appendChild(dd);
                     tianshi.appendChild(dl);
                     // console.log(2);
-                    localStorage.setItem('res', tianshi.innerHTML);
-                } else {// 创建 dd
+                    // localStorage.setItem('res', tianshi.innerHTML);
+                } else {
+                    // 创建 dd
                     let dd = document.createElement('dd');
                     dd.innerHTML = ul.children[randomNum].children[0].value;
                     if (ul.children[randomNum].children[0].value.trim() === '') {
                         dd.innerHTML = '未知答案';
                     }
 
+                    // 追加生成，每回合只打开一次
+                    // 追加生成，每回合只打开一次
+                    // 追加生成，每回合只打开一次
+                    // console.log(tianshiArr[index].title);
+                    if (res1choice === 'choice12' && isCreate1) {
+                        // console.log('@@@@@@1-2');
+                        isCreate1 = false;
+                        tianshiArr[index].content = [];
+
+                        let btn = deleteItemBtn(tianshiArr[index].title);
+
+                        // 给每个条目添加删除按钮
+                        // let btn = document.createElement('button');
+                        // btn.innerHTML = '删除';
+                        // btn.className = 'delete-item';
+                        // btn.disabled = true;
+
+                        // tianshi.children[index].innerHTML = '';
+                        // tianshi.children[index].appendChild(btn);
+                        // console.log(index);
+                        tianshi.children[index].innerHTML = '<dt>' + tianshiArr[index].title + '</dt>';
+                        tianshi.children[index].insertBefore(btn, tianshi.children[index].children[0]);
+                    }
+                    // if(res1choice === 'choice12') {
+                    //     let btn = deleteItemBtn(tianshiArr[index].title);
+                    //     tianshi.children[index].insertBefore(btn,tianshi.children[index].children[0]);
+                    //     // index++;
+                    // }
+
                     // tianshiObj.content.push(dd.innerHTML);
                     tianshiArr[index].content.push(dd.innerHTML);
-
                     tianshi.children[index].appendChild(dd);
                     // console.log(1);
-                    localStorage.setItem('res', tianshi.innerHTML);
+                    // localStorage.setItem('res', tianshi.innerHTML);
                 }
 
                 // console.log(tianshiObj);
                 // console.log(tianshiArr);
                 localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
+
+                // console.log('index',index);
+                // tianshi.children[index].children[0].addEventListener('click', function () {
+                //     tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+                //     questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+                //     // let itemIndex = this.getAttribute('item');
+                //     // let itemIndex =questionArr.indexOf(question);
+                //     // console.log(tianshiArr[index].title);
+                //     tianshiArr = tianshiArr.filter((v, i) => i != index);
+                //     questionArr = questionArr.filter((v, i) => i != index);
+                //     // console.log(title);
+                //     localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
+                //     localStorage.setItem('questionArr', JSON.stringify(questionArr));
+                //     order3.click();
+
+                //     delbtns = document.querySelectorAll('.delete-item');
+                //     // console.log(delbtns);
+                //     for (let i = 0; i < delbtns.length; i++) {
+                //         delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                //     }
+                // });
 
                 // let ssTimer = setTimeout(() => {
                 // 让当前输入框变色
@@ -3131,6 +3759,9 @@
             }, delayTime);
         }
 
+
+
+
         function chooseBtn2ClickOnce(resolve) {
             if (ul2.children.length === 0) {
                 // alert('请添加必填内容');
@@ -3159,7 +3790,16 @@
 
             questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
             tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
-            tianshi.innerHTML = localStorage.getItem('res') || '';
+            // tianshi.innerHTML = localStorage.getItem('res') || '';
+
+
+            if (xuanInput1.value.trim() === xuanInput2.value.trim()) {
+                // 重新生成按钮不能选
+                res1choice = false;
+                res2choice = false;
+                res1choice1.checked = true;
+                res2choice1.checked = true;
+            }
 
 
             // chooseBtnInput1.disabled = true;
@@ -3170,6 +3810,17 @@
             order1.disabled = true;
             order2.disabled = true;
             order3.disabled = true;
+            resTiquBtn.disabled = true;
+            resFenxiBtn.disabled = true;
+            res2choice1.disabled = true;
+            res2choice2.disabled = true;
+
+            delbtns = document.querySelectorAll('.delete-item');
+            for (let i = 0; i < delbtns.length; i++) {
+                delbtns[i].disabled = true;
+            }
+
+
 
 
             let tianshiObj = {
@@ -3224,9 +3875,9 @@
                 }
 
                 // 将问题添加到数组
-                let question = '********** ' + document.querySelector('.question2 input').value + ' **********';
+                let question = document.querySelector('.question2 input').value;
                 if (document.querySelector('.question2 input').value.trim() === '') {
-                    question = '********** 命2未录入的问题 **********';
+                    question = '未录入的标题2';
                 }
 
                 tianshiObj.title = question;
@@ -3243,6 +3894,11 @@
                 // 将答案添加到 "天使建议您" 区域
                 // 如果问题未出现过，就添加，否则，就在对应的问题下添加答案即可
                 if (index < 0 || tianshi.innerHTML === '') {
+                    // 说明需要新增模块：标题、内容
+                    // 下次循环不需要开启 重新生成
+                    isCreate2 = false;
+
+
                     // 创建 dl
                     let dl = document.createElement('dl');
                     // 创建 dt
@@ -3260,11 +3916,22 @@
                     tianshiArr.push(tianshiObj);
 
 
+                    let btn = deleteItemBtn(dt.innerHTML);
+
+                    // 给每个条目添加删除按钮
+                    // let btn = document.createElement('button');
+                    // btn.innerHTML = '删除';
+                    // btn.className = 'delete-item';
+                    // btn.disabled = true;
+
+                    dl.appendChild(btn);
+
+
                     dl.appendChild(dt);
                     dl.appendChild(dd);
                     tianshi.appendChild(dl);
                     // console.log(2);
-                    localStorage.setItem('res', tianshi.innerHTML);
+                    // localStorage.setItem('res', tianshi.innerHTML);
                 } else {
                     // 创建 dd
                     let dd = document.createElement('dd');
@@ -3274,18 +3941,61 @@
                     }
 
 
+                    // 追加生成，每回合只打开一次
+                    // 追加生成，每回合只打开一次
+                    // 追加生成，每回合只打开一次
+                    if (res2choice === 'choice22' && isCreate2) {
+                        isCreate2 = false;
+                        tianshiArr[index].content = [];
+
+
+                        let btn = deleteItemBtn(tianshiArr[index].title);
+
+                        // 给每个条目添加删除按钮
+                        // let btn = document.createElement('button');
+                        // btn.innerHTML = '删除';
+                        // btn.className = 'delete-item';
+                        // btn.disabled = true;
+
+                        // tianshi.children[index].innerHTML = '';
+                        // tianshi.children[index].appendChild(btn);
+
+
+                        tianshi.children[index].innerHTML = '<dt>' + tianshiArr[index].title + '</dt>';
+                        tianshi.children[index].insertBefore(btn, tianshi.children[index].children[0]);
+                    }
+
+
                     // tianshiObj.content.push(dd.innerHTML);
                     tianshiArr[index].content.push(dd.innerHTML);
-
-
                     tianshi.children[index].appendChild(dd);
                     // console.log(1);
-                    localStorage.setItem('res', tianshi.innerHTML);
+                    // localStorage.setItem('res', tianshi.innerHTML);
                 }
 
                 // console.log(tianshiObj);
                 // console.log(tianshiArr);
                 localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
+
+                // tianshi.children[index].children[0].addEventListener('click', function () {
+                //     tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+                //     questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+                //     // let itemIndex = this.getAttribute('item');
+                //     // let itemIndex =questionArr.indexOf(question);
+                //     // console.log(tianshiArr[index].title);
+                //     tianshiArr = tianshiArr.filter((v, i) => i != index);
+                //     questionArr = questionArr.filter((v, i) => i != index);
+                //     // console.log(title);
+                //     localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
+                //     localStorage.setItem('questionArr', JSON.stringify(questionArr));
+                //     order3.click();
+
+                //     delbtns = document.querySelectorAll('.delete-item');
+                //     // console.log(delbtns);
+                //     for (let i = 0; i < delbtns.length; i++) {
+                //         delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                //     }
+                // });
 
                 // let ssTimer = setTimeout(() => {
                 // 让当前输入框变色
@@ -3377,9 +4087,18 @@
                             order1.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             order2.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             order3.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            resTiquBtn.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            resFenxiBtn.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             // 为避免标题冲突，标题 input 只能在全部释放后才能修改
                             inputs[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             inputs2[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            res1choice1.disabled = false;
+                            res1choice2.disabled = false;
+                            isCreate1 = true;
+                            delbtns=document.querySelectorAll('.delete-item');
+                            for (let i = 0; i < delbtns.length; i++) {
+                                delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            }
                         })
                     `;
                 }
@@ -3440,9 +4159,18 @@
                             order1.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             order2.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             order3.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            resTiquBtn.disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            resFenxiBtn.disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             // 为避免标题冲突，标题 input 只能在全部释放后才能修改
                             inputs[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
                             inputs2[0].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            res2choice1.disabled = false;
+                            res2choice2.disabled = false;
+                            isCreate2 = true;
+                            delbtns=document.querySelectorAll('.delete-item');
+                            for (let i = 0; i < delbtns.length; i++) {
+                                delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                            }
                         })
                     `;
                 }
@@ -3481,7 +4209,7 @@
             // questionArr = [];
             localStorage.removeItem('questionArr');
             // questionArr2 = [];
-            localStorage.removeItem('res');
+            // localStorage.removeItem('res');
             localStorage.removeItem('tianshiArr');
         });
 
@@ -3501,29 +4229,64 @@
             // 先清空页面
             tianshi.innerHTML = '';
             // 不改变原数组
-            let tpArr = [];
+            let tpArr1 = [];
+            tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
             for (let i = 0; i < tianshiArr.length; i++) {
-                tpArr[i] = tianshiArr[i];
+                tpArr1[i] = tianshiArr[i];
             }
 
-            for (let i = 0; i < tpArr.length; i++) {
+            for (let i = 0; i < tpArr1.length; i++) {
                 // 排序
-                tpArr[i].content.sort(function (a, b) {
+                tpArr1[i].content.sort(function (a, b) {
                     return a - b;
                 });
                 // 创建 dl
                 let dl = document.createElement('dl');
                 // 创建 dt
                 let dt = document.createElement('dt');
-                dt.innerHTML = tpArr[i].title;
+                dt.innerHTML = tpArr1[i].title;
+
+
+                let btn = deleteItemBtn(tpArr1[i].title);
+
+                // 给每个条目添加删除按钮
+                // let btn = document.createElement('button');
+                // btn.innerHTML = '删除';
+                // btn.className = 'delete-item';
+                // btn.disabled = true;
+
+                dl.appendChild(btn);
+
+
                 dl.appendChild(dt);
                 // 创建 dd
-                for (let j = 0; j < tpArr[i].content.length; j++) {
+                for (let j = 0; j < tpArr1[i].content.length; j++) {
                     let dd = document.createElement('dd');
-                    dd.innerHTML = tpArr[i].content[j];
+                    dd.innerHTML = tpArr1[i].content[j];
                     dl.appendChild(dd);
                 }
                 tianshi.appendChild(dl);
+
+                let index = questionArr.indexOf(tpArr1[i].title);
+                // tianshi.children[index].children[0].addEventListener('click', function () {
+                //     tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+                //     questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+                //     // let itemIndex = this.getAttribute('item');
+                //     // let index = questionArr.indexOf(tpArr1[i].title);
+                //     // console.log(tianshiArr[index].title);
+                //     tianshiArr = tianshiArr.filter((v, i) => i != index);
+                //     questionArr = questionArr.filter((v, i) => i != index);
+                //     // console.log(title);
+                //     localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
+                //     localStorage.setItem('questionArr', JSON.stringify(questionArr));
+                //     order3.click();
+
+                //     delbtns = document.querySelectorAll('.delete-item');
+                //     // console.log(delbtns);
+                //     for (let i = 0; i < delbtns.length; i++) {
+                //         delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                //     }
+                // });
             }
         });
 
@@ -3539,34 +4302,251 @@
             // 先清空页面
             tianshi.innerHTML = '';
             // 不改变原数组
-            let tpArr = [];
+            let tpArr2 = [];
+            tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
             for (let i = 0; i < tianshiArr.length; i++) {
-                tpArr[i] = tianshiArr[i];
+                tpArr2[i] = tianshiArr[i];
             }
 
-            for (let i = 0; i < tpArr.length; i++) {
+            for (let i = 0; i < tpArr2.length; i++) {
                 // 排序
-                tpArr[i].content.sort(function (a, b) {
+                tpArr2[i].content.sort(function (a, b) {
                     return b - a;
                 });
                 // 创建 dl
                 let dl = document.createElement('dl');
                 // 创建 dt
                 let dt = document.createElement('dt');
-                dt.innerHTML = tpArr[i].title;
+                dt.innerHTML = tpArr2[i].title;
+
+
+                let btn = deleteItemBtn(tpArr2[i].title);
+
+                // 给每个条目添加删除按钮
+                // let btn = document.createElement('button');
+                // btn.innerHTML = '删除';
+                // btn.className = 'delete-item';
+                // btn.disabled = true;
+
+                dl.appendChild(btn);
+
+
                 dl.appendChild(dt);
                 // 创建 dd
-                for (let j = 0; j < tpArr[i].content.length; j++) {
+                for (let j = 0; j < tpArr2[i].content.length; j++) {
                     let dd = document.createElement('dd');
-                    dd.innerHTML = tpArr[i].content[j];
+                    dd.innerHTML = tpArr2[i].content[j];
                     dl.appendChild(dd);
                 }
                 tianshi.appendChild(dl);
+
+
+                let index = questionArr.indexOf(tpArr2[i].title);
+                // tianshi.children[index].children[0].addEventListener('click', function () {
+                //     tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+                //     questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+                //     // let itemIndex = this.getAttribute('item');
+                //     // let index = questionArr.indexOf(tpArr2[i].title);
+                //     // console.log(tianshiArr[index].title);
+                //     tianshiArr = tianshiArr.filter((v, i) => i != index);
+                //     questionArr = questionArr.filter((v, i) => i != index);
+                //     // console.log(title);
+                //     localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
+                //     localStorage.setItem('questionArr', JSON.stringify(questionArr));
+                //     order3.click();
+
+                //     delbtns = document.querySelectorAll('.delete-item');
+                //     // console.log(delbtns);
+                //     for (let i = 0; i < delbtns.length; i++) {
+                //         delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                //     }
+                // });
             }
         });
 
         // 还原：清空生成区域，将 res 展示到页面中
         order3.addEventListener('click', function () {
+            // 采用字符串形式存储
+            // if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
+            //     // alert('没有需要排序的内容');
+            //     pageMask2.style.display = 'block';
+            //     tipBox.style.display = 'block';
+            //     tipContent.innerHTML = '没有需要排序的内容';
+            //     return;
+            // }
+            // // 先清空页面
+            // tianshi.innerHTML = '';
+            // // 将 res 展示到页面中
+            // tianshi.innerHTML = localStorage.getItem('res') || '';
+
+
+            // 采用数组形式存储
+            // if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
+            //     // alert('没有需要排序的内容');
+            //     pageMask2.style.display = 'block';
+            //     tipBox.style.display = 'block';
+            //     tipContent.innerHTML = '没有需要排序的内容';
+            //     return;
+            // }
+
+            tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+
+            // console.log('order3');
+            // 先清空页面
+            tianshi.innerHTML = '';
+            // 不改变原数组
+            let tpArr3 = [];
+            // console.log(tianshiArr);
+            for (let i = 0; i < tianshiArr.length; i++) {
+                tpArr3[i] = tianshiArr[i];
+            }
+            // console.log(tpArr3);
+
+            for (let i = 0; i < tpArr3.length; i++) {
+                // 排序
+                // tpArr3[i].content.sort(function (a, b) {
+                //     return b - a;
+                // });
+                // 创建 dl
+                let dl = document.createElement('dl');
+                // 创建 dt
+                let dt = document.createElement('dt');
+                dt.innerHTML = tpArr3[i].title;
+
+
+                let btn = deleteItemBtn(tpArr3[i].title);
+
+                // 给每个条目添加删除按钮
+                // let btn = document.createElement('button');
+                // btn.innerHTML = '删除';
+                // btn.className = 'delete-item';
+                // btn.disabled = true;
+
+                dl.appendChild(btn);
+
+
+                dl.appendChild(dt);
+                // 创建 dd
+                for (let j = 0; j < tpArr3[i].content.length; j++) {
+                    let dd = document.createElement('dd');
+                    dd.innerHTML = tpArr3[i].content[j];
+                    dl.appendChild(dd);
+                }
+                tianshi.appendChild(dl);
+
+
+                let index = questionArr.indexOf(tpArr3[i].title);
+                // tianshi.children[index].children[0].addEventListener('click', function () {
+                //     tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+                //     questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
+                //     // let itemIndex = this.getAttribute('item');
+                //     // let index = questionArr.indexOf(tpArr3[i].title);
+                //     // console.log(tianshiArr[index].title);
+                //     tianshiArr = tianshiArr.filter((v, i) => i != index);
+                //     questionArr = questionArr.filter((v, i) => i != index);
+                //     // console.log(title);
+                //     localStorage.setItem('tianshiArr', JSON.stringify(tianshiArr));
+                //     localStorage.setItem('questionArr', JSON.stringify(questionArr));
+                //     order3.click();
+
+                //     delbtns = document.querySelectorAll('.delete-item');
+                //     // console.log(delbtns);
+                //     for (let i = 0; i < delbtns.length; i++) {
+                //         delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+                //     }
+                // });
+
+            }
+
+
+            delbtns = document.querySelectorAll('.delete-item');
+            // console.log(delbtns);
+            for (let i = 0; i < delbtns.length; i++) {
+                delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+            }
+
+
+        });
+        order3.click();
+
+
+        // 提取次数
+        let tiquResTimes = localStorage.getItem('tiquResTimes') || 0;
+        // 分析次数
+        let fenxiResTimes = localStorage.getItem('fenxiResTimes') || 0;
+        // 提取结果
+        let tiquRes = localStorage.getItem('tiquRes') || '';
+        // 分析结果
+        let fenxiRes = localStorage.getItem('fenxiRes') || '';
+
+        // 放在生成功能上方
+        // 结果 提取 按钮
+        // let resTiquBtn = document.querySelector('.res-tiqu-btn');
+        // 结果 分析 按钮
+        // let resFenxiBtn = document.querySelector('.res-fenxi-btn');
+
+        // 结果 提取窗口
+        let tiquBoxRes = document.querySelector('.tiqu-box-res');
+        // 提取窗口中的清空按钮
+        let tiquBoxClear = document.querySelector('.tiqu-box-res-btn-clear');
+        // 提取窗口中的关闭按钮
+        let tiquBoxClose = document.querySelector('.tiqu-box-res-btn-close');
+        // 提取窗口中的文本域
+        let tiquBoxTxt = document.querySelector('.tiqu-box-res-textarea');
+
+        // 结果 分析窗口
+        let fenxiBoxRes = document.querySelector('.fenxi-box-res');
+        // 分析窗口中的清空按钮
+        let fenxiBoxClear = document.querySelector('.fenxi-box-res-btn-clear');
+        // 分析窗口中的关闭按钮
+        let fenxiBoxClose = document.querySelector('.fenxi-box-res-btn-close');
+        // 提取窗口中的文本域
+        let fenxiBoxTxt = document.querySelector('.fenxi-box-res-textarea');
+
+
+        // 初始化提取结果和分析结果
+        tiquBoxTxt.value = tiquRes;
+        fenxiBoxTxt.value = fenxiRes;
+
+
+
+        // 关闭窗口
+        tiquBoxClose.addEventListener('click', function () {
+            pageMask.style.display = 'none';
+            tiquBoxRes.style.display = 'none';
+        });
+        fenxiBoxClose.addEventListener('click', function () {
+            pageMask.style.display = 'none';
+            fenxiBoxRes.style.display = 'none';
+        });
+
+        // 清空页面、字符串、次数
+        tiquBoxClear.addEventListener('click', function () {
+            tiquBoxTxt.value = '';
+            localStorage.removeItem('tiquRes');
+            localStorage.removeItem('tiquResTimes');
+        });
+        fenxiBoxClear.addEventListener('click', function () {
+            fenxiBoxTxt.value = '';
+            localStorage.removeItem('fenxiRes');
+            localStorage.removeItem('fenxiResTimes');
+        });
+
+
+
+
+        /*
+            提取、分析功能：不影响源数组
+            点击生成按钮 --- res --- 本地 --- 还原、页面初始展示
+            点击生成按钮 --- tianshiArr[{title,content}] --- 本地 --- 排序、提取、分析
+ 
+            选择 tianshiArr[{title,content}] 更合适，不影响源数组
+            提取 --- tiquResArr
+            分析 --- fenxiResArr
+        */
+
+        // 提取功能
+        resTiquBtn.addEventListener('click', function () {
             if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
                 // alert('没有需要排序的内容');
                 pageMask2.style.display = 'block';
@@ -3574,11 +4554,116 @@
                 tipContent.innerHTML = '没有需要排序的内容';
                 return;
             }
-            // 先清空页面
-            tianshi.innerHTML = '';
-            // 将 res 展示到页面中
-            tianshi.innerHTML = localStorage.getItem('res') || '';
+
+
+
+            tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+            // 提取次数
+            tiquResTimes = localStorage.getItem('tiquResTimes') || 0;
+            // 提取结果
+            tiquRes = localStorage.getItem('tiquRes') || '';
+
+            tiquResTimes++;
+
+            // 显示遮罩、提取窗口
+            pageMask.style.display = 'block';
+            tiquBoxRes.style.display = 'block';
+
+            // 不改变原数组
+            let tpArr = [];
+            for (let i = 0; i < tianshiArr.length; i++) {
+                tpArr[i] = tianshiArr[i];
+            }
+
+            // 存储提取结果
+            // --------------------------------------
+            // ************************************
+            let strRes = '************************************\n';
+            strRes += '第 ' + tiquResTimes + ' 次提取：\n时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '************************************\n';
+
+            for (let i = 0; i < tpArr.length; i++) {
+                strRes += '- 标题：' + tpArr[i].title + '\n- 内容：| ';
+                for (let j = 0; j < tpArr[i].content.length; j++) {
+                    strRes += tpArr[i].content[j] + ' | ';
+                }
+                strRes += '\n--------------------------------------\n';
+            }
+            strRes += '\n';
+
+            // 将结果汇总到汇总字符串
+            tiquRes += strRes;
+            tiquBoxTxt.value = tiquRes;
+
+            localStorage.setItem('tiquResTimes', tiquResTimes);
+            localStorage.setItem('tiquRes', tiquRes);
         });
+
+        // 分析功能
+        resFenxiBtn.addEventListener('click', function () {
+            if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
+                // alert('没有需要排序的内容');
+                pageMask2.style.display = 'block';
+                tipBox.style.display = 'block';
+                tipContent.innerHTML = '没有需要排序的内容';
+                return;
+            }
+
+
+
+            tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
+            // 提取次数
+            fenxiResTimes = localStorage.getItem('fenxiResTimes') || 0;
+            // 提取结果
+            fenxiRes = localStorage.getItem('fenxiRes') || '';
+
+            fenxiResTimes++;
+
+            // 显示遮罩、提取窗口
+            pageMask.style.display = 'block';
+            fenxiBoxRes.style.display = 'block';
+
+            // 不改变原数组
+            let tpArr = [];
+            for (let i = 0; i < tianshiArr.length; i++) {
+                tpArr[i] = tianshiArr[i];
+            }
+
+            // 存储提取结果
+            // --------------------------------------
+            // ************************************
+            let strRes = '************************************\n';
+            strRes += '第 ' + fenxiResTimes + ' 次分析：\n时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '************************************\n';
+
+            for (let i = 0; i < tpArr.length; i++) {
+                strRes += '- 标题：' + tpArr[i].title + '\n- 分析：\n';
+
+                // 分析部分
+                let tempFenxiArr = tongjiItemsTimes(tpArr[i].content);
+                // console.log('@@@', tempFenxiArr);
+                for (let k = 0; k < tempFenxiArr.length; k++) {
+                    // strRes += '\t    '+ '[ 出现过 ' +  tempFenxiArr[k].num + ' 次 ' + tempFenxiArr[k].title +' ]\n';
+                    strRes += '\t    ' + ' 出现 ' + tempFenxiArr[k].num + ' 次：' + tempFenxiArr[k].title + '\n';
+                }
+
+                strRes += '\n- 内容：| ';
+
+                // 内容部分
+                for (let j = 0; j < tpArr[i].content.length; j++) {
+                    strRes += tpArr[i].content[j] + ' | ';
+                }
+                strRes += '\n--------------------------------------\n';
+            }
+            strRes += '\n';
+
+            // 将结果汇总到汇总字符串
+            fenxiRes += strRes;
+            fenxiBoxTxt.value = fenxiRes;
+
+            localStorage.setItem('fenxiResTimes', fenxiResTimes);
+            localStorage.setItem('fenxiRes', fenxiRes);
+        });
+
+
     </script>
 
 
@@ -3608,7 +4693,7 @@
         let piliangBtn1 = document.querySelector('.piliang-btn1');
         let piliangBtn2 = document.querySelector('.piliang-btn2');
         // 获取遮罩层
-        let pageMask = document.querySelector('.page-mask');
+        // let pageMask = document.querySelector('.page-mask');
         // 获取对应的录入窗口
         let inputBox1 = document.querySelector('.input-box');
         let inputBox2 = document.querySelector('.input-box2');
@@ -3663,7 +4748,7 @@
             // 将录入内容转为数组，追加到原始数组
             // 从 Excel 中复制过来的数据，分隔符为：回车符、Tab符
             // 其它分隔符：逗号、空格
-            let nowArr = tempInputContent.replace(/\s+|\n+|\t+|,|，|;|；|&/g, ',').split(',');
+            let nowArr = tempInputContent.replace(/\s+|\n+|\t+|,|，|;|；|&|、|\||\/|\\/g, ',').split(',');
             // console.log(nowArr);
 
             // 遍历生成的数组，追加到原始数组
@@ -3854,7 +4939,7 @@
             // 将录入内容转为数组，追加到原始数组
             // 从 Excel 中复制过来的数据，分隔符为：回车符、Tab符
             // 其它分隔符：逗号、空格
-            let nowArr = tempInputContent.replace(/\s+|\n+|\t+|,|，|;|；|&/g, ',').split(',');
+            let nowArr = tempInputContent.replace(/\s+|\n+|\t+|,|，|;|；|&|、|\||\/|\\/g, ',').split(',');
             // console.log(nowArr);
 
             // 遍历生成的数组，追加到原始数组
@@ -4046,7 +5131,7 @@
             // 将录入内容转为数组，替换原始数组
             // 从 Excel 中复制过来的数据，分隔符为：回车符、Tab符
             // 其它分隔符：逗号、空格
-            let nowArr = tempInputContent.replace(/\s+|\n+|\t+|,|，|;|；|&/g, ',').split(',');
+            let nowArr = tempInputContent.replace(/\s+|\n+|\t+|,|，|;|；|&|、|\||\/|\\/g, ',').split(',');
             for (let i = 0; i < nowArr.length; i++) {
                 nowArr[i] = nowArr[i].slice(0, 4);
             }
@@ -4238,7 +5323,8 @@
             // 将录入内容转为数组，替换原始数组
             // 从 Excel 中复制过来的数据，分隔符为：回车符、Tab符
             // 其它分隔符：逗号、空格
-            let nowArr = tempInputContent.replace(/\s+|\n+|\t+|,|，|;|；|&/g, ',').split(',');
+            // 空格 换行符 制表符 逗号 分号 & 、| / \
+            let nowArr = tempInputContent.replace(/\s+|\n+|\t+|,|，|;|；|&|、|\||\/|\\/g, ',').split(',');
             for (let i = 0; i < nowArr.length; i++) {
                 nowArr[i] = nowArr[i].slice(0, 4);
             }
@@ -4488,9 +5574,10 @@
             // let str = tiquArr1.join(' ');
             // tiquText1.value = str;
 
-            tiquStr1 += '第' + tiquNum1 + '次提取：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            tiquStr1 += '第 ' + tiquNum1 + ' 次提取：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            tiquStr1 += '- 标题：' + document.querySelector('.question input').value + '\n- 内容：| ';
             for (let i = 0; i < ul.children.length; i++) {
-                tiquStr1 += ul.children[i].children[0].value + ' ';
+                tiquStr1 += ul.children[i].children[0].value + ' | ';
             }
             tiquStr1 += '\n\n';
             tiquText1.value = tiquStr1;
@@ -4521,9 +5608,10 @@
             // let str = tiquArr2.join(' ');
             // tiquText2.value = str;
 
-            tiquStr2 += '第' + tiquNum2 + '次提取：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            tiquStr2 += '第 ' + tiquNum2 + ' 次提取：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            tiquStr2 += '- 标题：' + document.querySelector('.question2 input').value + '\n- 内容：| ';
             for (let i = 0; i < ul2.children.length; i++) {
-                tiquStr2 += ul2.children[i].children[0].value + ' ';
+                tiquStr2 += ul2.children[i].children[0].value + ' | ';
             }
             tiquStr2 += '\n\n';
             tiquText2.value = tiquStr2;
