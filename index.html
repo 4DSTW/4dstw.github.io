@@ -4,8 +4,8 @@
 <head>
     <!-- 
         作者：ICAN
-        开始时间：20231006
-        结束时间：20231016
+        开始时间：20231007
+        结束时间：20231017
         邮箱：1873063962@qq.com、17602640523@163.com
     -->
     <!-- 
@@ -805,8 +805,8 @@
             margin: 2px;
             display: inline-block;
             /* background-color: #bbd5ff; */
-            border-bottom: 1px solid #c76ec7;
-            border-bottom: 1px solid #ddd;
+            /* border-bottom: 1px solid #c76ec7; */
+            border-bottom: 1px solid #eee;
             width: 66px;
             height: 24px;
             line-height: 24px;
@@ -976,7 +976,7 @@
         .question input,
         .question2 input {
             border: none;
-            border-bottom: 1px solid #d9b8b8;
+            border-bottom: 1px solid #eee;
             border-radius: 0px;
             font-size: 16px;
             margin: 3px 0;
@@ -985,7 +985,7 @@
         ul li input {
             margin: 0px;
             border: none;
-            border-bottom: 1px solid #d9b8b8;
+            border-bottom: 1px solid #eee;
             border-radius: 0px;
             font-size: 16px;
             padding: 0px;
@@ -1686,7 +1686,8 @@
                                 // console.log('&&&&&&&&&&&& 生成任意范围内的随机数');
 
                                 // 存储当前随机数
-                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min.value) + ', ' + parseInt(max.value) + '] -> ' + v + '\n\n');
+                                tiquRandom = JSON.parse(localStorage.getItem('tiquRandom')) || [];
+                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min.value) + ', ' + parseInt(max.value) + '] -> ' + v + '\n');
                                 localStorage.setItem('tiquRandom', JSON.stringify(tiquRandom));
                             });
                         });
@@ -1828,7 +1829,8 @@
 
 
                                 // 存储当前随机数
-                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min2.value) + ', ' + parseInt(max2.value) + '] -> ' + v + '\n\n');
+                                tiquRandom = JSON.parse(localStorage.getItem('tiquRandom')) || [];
+                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min2.value) + ', ' + parseInt(max2.value) + '] -> ' + v + '\n');
                                 localStorage.setItem('tiquRandom', JSON.stringify(tiquRandom));
                             });
                         });
@@ -1971,7 +1973,8 @@
 
 
                                 // 存储当前随机数
-                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min3.value) + ', ' + parseInt(max3.value) + '] -> ' + v + '\n\n');
+                                tiquRandom = JSON.parse(localStorage.getItem('tiquRandom')) || [];
+                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min3.value) + ', ' + parseInt(max3.value) + '] -> ' + v + '\n');
                                 localStorage.setItem('tiquRandom', JSON.stringify(tiquRandom));
                             });
                         });
@@ -2114,7 +2117,8 @@
 
 
                                 // 存储当前随机数
-                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min4.value) + ', ' + parseInt(max4.value) + '] -> ' + v + '\n\n');
+                                tiquRandom = JSON.parse(localStorage.getItem('tiquRandom')) || [];
+                                tiquRandom.push('时　间：' + '[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '随机数：' + '[' + parseInt(min4.value) + ', ' + parseInt(max4.value) + '] -> ' + v + '\n');
                                 localStorage.setItem('tiquRandom', JSON.stringify(tiquRandom));
                             });
                         });
@@ -2142,7 +2146,7 @@
                         return;
                     }
 
-                    let str = '------------- 幸运数汇总 ------------' + '\n\n';
+                    let str = '幸运数汇总：' + '\n';
 
                     if (tiquXingYun.length === 0) {
                         str = '';
@@ -2150,16 +2154,20 @@
 
                     // 遍历幸运数字数组
                     for (let i = 0; i < tiquXingYun.length; i++) {
-                        str += tiquXingYun[i] + '\n';
+                        // str += tiquXingYun[i] + '\n';
+                        str += tiquXingYun[i];
+                    }
+                    if (tiquXingYun.length !== 0) {
+                        str += '\n\n';
                     }
                     // str += '\n'+'<div class="mini-line"></div>';
                     // if (tiquRandom.length === 0) {
                     //     return;
                     // }
                     if (tiquXingYun.length === 0) {
-                        str += '------------- 随机数汇总 ------------' + '\n\n';
+                        str += '随机数汇总：' + '\n';
                     } else {
-                        str += '\n' + '------------- 随机数汇总 ------------' + '\n\n';
+                        str += '\n' + '随机数汇总：' + '\n';
                     }
 
                     // 遍历随机数数组
@@ -3360,6 +3368,15 @@
         */
         function delBtnClick(btn) {
             btn.addEventListener('click', function () {
+
+                delbtns = document.querySelectorAll('.delete-item');
+                // console.log(delbtns);
+                // 让所有的 btn 重排索引值
+                for (let i = 0; i < delbtns.length; i++) {
+                    delbtns[i].setAttribute('item-index', i);
+                }
+
+
                 tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
                 questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
                 let index = this.getAttribute('item-index');
@@ -3373,7 +3390,6 @@
                 order3.click();
 
                 delbtns = document.querySelectorAll('.delete-item');
-
                 // 让所有的 btn 重排索引值
                 for (let i = 0; i < delbtns.length; i++) {
                     delbtns[i].setAttribute('item-index', i);
@@ -3400,9 +3416,16 @@
             // questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
 
 
-            let index = questionArr.indexOf(title);
-            // console.log('btn-item0', index);
-            btn.setAttribute('item-index', index);
+            // delbtns = document.querySelectorAll('.delete-item');
+            // // console.log(delbtns);
+            // // 让所有的 btn 重排索引值
+            // for (let i = 0; i < delbtns.length; i++) {
+            //     delbtns[i].setAttribute('item-index', i);
+            // }
+
+            // let index = questionArr.indexOf(title);
+            // // console.log('btn-item0', index);
+            // btn.setAttribute('item-index', index);
 
             delBtnClick(btn);
 
@@ -4288,6 +4311,13 @@
                 //     }
                 // });
             }
+
+
+            delbtns = document.querySelectorAll('.delete-item');
+            // console.log(delbtns);
+            for (let i = 0; i < delbtns.length; i++) {
+                delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+            }
         });
 
         // 降序：清空生成区域，针对于 tianshiArr 进行降序，渲染到页面中
@@ -4362,18 +4392,26 @@
                 //     }
                 // });
             }
+
+
+            delbtns = document.querySelectorAll('.delete-item');
+            // console.log(delbtns);
+            for (let i = 0; i < delbtns.length; i++) {
+                delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
+            }
         });
 
         // 还原：清空生成区域，将 res 展示到页面中
         order3.addEventListener('click', function () {
-            // 采用字符串形式存储
             // if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
             //     // alert('没有需要排序的内容');
             //     pageMask2.style.display = 'block';
             //     tipBox.style.display = 'block';
-            //     tipContent.innerHTML = '没有需要排序的内容';
+            //     tipContent.innerHTML = '没有需要还原的内容';
             //     return;
             // }
+
+            // 采用字符串形式存储
             // // 先清空页面
             // tianshi.innerHTML = '';
             // // 将 res 展示到页面中
@@ -4381,14 +4419,6 @@
 
 
             // 采用数组形式存储
-            // if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
-            //     // alert('没有需要排序的内容');
-            //     pageMask2.style.display = 'block';
-            //     tipBox.style.display = 'block';
-            //     tipContent.innerHTML = '没有需要排序的内容';
-            //     return;
-            // }
-
             tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
 
             // console.log('order3');
@@ -4464,8 +4494,6 @@
             for (let i = 0; i < delbtns.length; i++) {
                 delbtns[i].disabled = chooseBtn.disabled || chooseBtn2.disabled;
             }
-
-
         });
         order3.click();
 
@@ -4547,13 +4575,13 @@
 
         // 提取功能
         resTiquBtn.addEventListener('click', function () {
-            if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
-                // alert('没有需要排序的内容');
-                pageMask2.style.display = 'block';
-                tipBox.style.display = 'block';
-                tipContent.innerHTML = '没有需要排序的内容';
-                return;
-            }
+            // if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
+            //     // alert('没有需要排序的内容');
+            //     pageMask2.style.display = 'block';
+            //     tipBox.style.display = 'block';
+            //     tipContent.innerHTML = '没有需要提取的内容';
+            //     return;
+            // }
 
 
 
@@ -4563,11 +4591,20 @@
             // 提取结果
             tiquRes = localStorage.getItem('tiquRes') || '';
 
-            tiquResTimes++;
+
 
             // 显示遮罩、提取窗口
             pageMask.style.display = 'block';
             tiquBoxRes.style.display = 'block';
+
+
+            if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
+                return;
+            }
+
+
+            tiquResTimes++;
+
 
             // 不改变原数组
             let tpArr = [];
@@ -4576,19 +4613,19 @@
             }
 
             // 存储提取结果
-            // --------------------------------------
-            // ************************************
-            let strRes = '************************************\n';
-            strRes += '第 ' + tiquResTimes + ' 次提取：\n时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '************************************\n';
+            // ===============
+            // ******************************
+            let strRes = '';
+            strRes += '第 ' + tiquResTimes + ' 次提取：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
 
             for (let i = 0; i < tpArr.length; i++) {
                 strRes += '- 标题：' + tpArr[i].title + '\n- 内容：| ';
                 for (let j = 0; j < tpArr[i].content.length; j++) {
                     strRes += tpArr[i].content[j] + ' | ';
                 }
-                strRes += '\n--------------------------------------\n';
+                strRes += '\n';
             }
-            strRes += '\n';
+            strRes += '\n\n';
 
             // 将结果汇总到汇总字符串
             tiquRes += strRes;
@@ -4600,13 +4637,13 @@
 
         // 分析功能
         resFenxiBtn.addEventListener('click', function () {
-            if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
-                // alert('没有需要排序的内容');
-                pageMask2.style.display = 'block';
-                tipBox.style.display = 'block';
-                tipContent.innerHTML = '没有需要排序的内容';
-                return;
-            }
+            // if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
+            //     // alert('没有需要排序的内容');
+            //     pageMask2.style.display = 'block';
+            //     tipBox.style.display = 'block';
+            //     tipContent.innerHTML = '没有需要排序的内容';
+            //     return;
+            // }
 
 
 
@@ -4616,11 +4653,18 @@
             // 提取结果
             fenxiRes = localStorage.getItem('fenxiRes') || '';
 
-            fenxiResTimes++;
+
 
             // 显示遮罩、提取窗口
             pageMask.style.display = 'block';
             fenxiBoxRes.style.display = 'block';
+
+
+            if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
+                return;
+            }
+
+            fenxiResTimes++;
 
             // 不改变原数组
             let tpArr = [];
@@ -4629,10 +4673,10 @@
             }
 
             // 存储提取结果
-            // --------------------------------------
-            // ************************************
-            let strRes = '************************************\n';
-            strRes += '第 ' + fenxiResTimes + ' 次分析：\n时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']\n' + '************************************\n';
+            // -----------------------
+            // ******************************
+            let strRes = '';
+            strRes += '第 ' + fenxiResTimes + ' 次分析：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
 
             for (let i = 0; i < tpArr.length; i++) {
                 strRes += '- 标题：' + tpArr[i].title + '\n- 分析：\n';
@@ -4645,15 +4689,15 @@
                     strRes += '\t    ' + ' 出现 ' + tempFenxiArr[k].num + ' 次：' + tempFenxiArr[k].title + '\n';
                 }
 
-                strRes += '\n- 内容：| ';
+                strRes += '- 内容：| ';
 
                 // 内容部分
                 for (let j = 0; j < tpArr[i].content.length; j++) {
                     strRes += tpArr[i].content[j] + ' | ';
                 }
-                strRes += '\n--------------------------------------\n';
+                strRes += '\n';
             }
-            strRes += '\n';
+            strRes += '\n\n';
 
             // 将结果汇总到汇总字符串
             fenxiRes += strRes;
@@ -5579,7 +5623,7 @@
             for (let i = 0; i < ul.children.length; i++) {
                 tiquStr1 += ul.children[i].children[0].value + ' | ';
             }
-            tiquStr1 += '\n\n';
+            tiquStr1 += '\n\n\n';
             tiquText1.value = tiquStr1;
 
 
@@ -5613,7 +5657,7 @@
             for (let i = 0; i < ul2.children.length; i++) {
                 tiquStr2 += ul2.children[i].children[0].value + ' | ';
             }
-            tiquStr2 += '\n\n';
+            tiquStr2 += '\n\n\n';
             tiquText2.value = tiquStr2;
 
             localStorage.setItem('tiquNum2', tiquNum2);
