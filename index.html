@@ -61,8 +61,8 @@
     <!-- 统计数组中元素的个数 -->
     <script>
         // 返回一个新数组作为统计数组
-        function tongjiItemsTimes(arr) {
-            let objArr = [];
+        function tongjiItemsTimes(arr) { // 1,3,2
+            let objArr = []; // []
             // 遍历源数组，一个一个对比、添加
             for (let i = 0; i < arr.length; i++) {
                 // 找到就增加次数，找不到就添加
@@ -568,7 +568,8 @@
 
         .main-content {
             width: 96%;
-            margin: 10px auto;
+            /* margin: 10px auto; */
+            margin: auto;
             /* background-color: pink; */
         }
 
@@ -593,11 +594,11 @@
         .main-content h3 {
             /* color: deeppink; */
             text-align: center;
-            margin: 20px 0 6px;
+            margin: 16px 0 6px;
             font-size: 20px;
             letter-spacing: 2px;
             font-weight: 400;
-            /* color: #eee; */
+            color: #eee;
         }
 
         /* .main-content>h3 {
@@ -756,7 +757,7 @@
 
         .tianshi dl {
             position: relative;
-            padding: 5px 12px 13px;
+            padding: 6px 12px 12px;
             /* padding-right: 12px; */
             border-bottom: 1px dashed #ccc;
         }
@@ -1065,7 +1066,12 @@
         .common-tips button,
         .tiqu-random-box12 button,
         .tiqu-random-box1 button,
-        .tiqu-random-box2 button {
+        .tiqu-random-box2 button,
+        .box-fenxi-content1 button,
+        .box-fenxi-content2 button,
+        .box-fenxi-random1 button,
+        .box-fenxi-random2 button,
+        .box-fenxi-random12 button {
             width: 72px;
             height: 24px;
             line-height: 19px;
@@ -1083,11 +1089,16 @@
         .tiqu-box-random button,
         .tiqu-random-box12 button,
         .tiqu-random-box1 button,
-        .tiqu-random-box2 button {
+        .tiqu-random-box2 button,
+        .box-fenxi-content1 button,
+        .box-fenxi-content2 button,
+        .box-fenxi-random1 button,
+        .box-fenxi-random2 button,
+        .box-fenxi-random12 button {
             margin: 0 20px;
         }
 
-        .input-box button:hover,
+        /* .input-box button:hover,
         .input-box2 button:hover,
         .tiqu-box1 button:hover,
         .tiqu-box2 button:hover,
@@ -1097,7 +1108,13 @@
         .common-tips button:hover,
         .tiqu-random-box12 button:hover,
         .tiqu-random-box1 button:hover,
-        .tiqu-random-box2 button:hover {
+        .tiqu-random-box2 button:hover,
+        .box-fenxi-content1 button:hover,
+        .box-fenxi-content2 button:hover,
+        .box-fenxi-random1 button:hover,
+        .box-fenxi-random2 button:hover,
+        .box-fenxi-random12 button:hover { */
+        button:hover {
             background-color: rgba(219, 27, 101, 0.7);
         }
 
@@ -1112,7 +1129,12 @@
         .common-tips,
         .tiqu-random-box12,
         .tiqu-random-box1,
-        .tiqu-random-box2 {
+        .tiqu-random-box2,
+        .box-fenxi-content1,
+        .box-fenxi-content2,
+        .box-fenxi-random1,
+        .box-fenxi-random2,
+        .box-fenxi-random12 {
             display: none;
             position: fixed;
             left: 50%;
@@ -1148,7 +1170,12 @@
         .tiqu-box-random,
         .tiqu-random-box12,
         .tiqu-random-box1,
-        .tiqu-random-box2 {
+        .tiqu-random-box2,
+        .box-fenxi-content1,
+        .box-fenxi-content2,
+        .box-fenxi-random1,
+        .box-fenxi-random2,
+        .box-fenxi-random12 {
             height: 403px;
         }
 
@@ -1175,7 +1202,12 @@
         .common-tips h3,
         .tiqu-random-box12 h3,
         .tiqu-random-box1 h3,
-        .tiqu-random-box2 h3 {
+        .tiqu-random-box2 h3,
+        .box-fenxi-content1 h3,
+        .box-fenxi-content2 h3,
+        .box-fenxi-random1 h3,
+        .box-fenxi-random2 h3,
+        .box-fenxi-random12 h3 {
             margin: 7px auto;
             color: #eee;
         }
@@ -1216,7 +1248,12 @@
         .tiqu-box2-textarea,
         .tiqu-random-box12-textarea,
         .tiqu-random-box1-textarea,
-        .tiqu-random-box2-textarea {
+        .tiqu-random-box2-textarea,
+        .box-fenxi-content1-textarea,
+        .box-fenxi-content2-textarea,
+        .box-fenxi-random1-textarea,
+        .box-fenxi-random2-textarea,
+        .box-fenxi-random12-textarea {
             margin: 6px 0;
             width: 100%;
             height: 306px;
@@ -1236,12 +1273,12 @@
 
         .mod {
             position: relative;
-            padding: 20px 10px;
+            /* padding: 20px 10px; */
             padding: 14px 10px;
             border: 1px dashed #ccc;
             /* border: 1px dashed rgba(255, 255, 255, 0.6); */
             border-radius: 3px;
-            margin-bottom: 20px;
+            /* margin-bottom: 20px; */
         }
 
         /* .tiqu-box-random {
@@ -1272,7 +1309,7 @@
         }
 
         .mod h3 {
-            font-size: 18px;
+            font-size: 17px;
             margin-top: 20px;
         }
 
@@ -1401,7 +1438,7 @@
             height: 12px;
         }
 
-        /* 生成按钮、汇总按钮 */
+        /* 生成按钮、提取按钮 */
         .random-box1 .get-random-1,
         .random-box1 .get-random-history-1,
         .random-box1 .get-random-clear-1,
@@ -1430,7 +1467,7 @@
             border-radius: 3px;
         }
 
-        /* 同时生成和同时汇总按钮 */
+        /* 同时生成和同时提取按钮 */
         .btn-get-random12,
         .btn-collect-random12 {
             position: absolute;
@@ -1454,7 +1491,7 @@
 
         .xuan1 h3,
         .xuan2 h3 {
-            margin-top: 10px;
+            margin-top: 9px;
         }
 
         #logo {
@@ -1485,6 +1522,11 @@
             /* font-size: 41px; */
             /* transform: scale(1.1); */
             letter-spacing: 2px;
+        }
+
+        .answers ul li:first-child,
+        .answers2 ul li:first-child {
+            margin-right: -3px;
         }
     </style>
     <link rel="shortcut icon" href="./images/logo.ico">
@@ -1528,6 +1570,123 @@
 
 
 
+            <!-- 结果分析窗口 -->
+            <div class="fenxi-box-res">
+                <!-- 标题 -->
+                <h3>生成结果分析</h3>
+                <!-- 录入框 -->
+                <textarea name="" id="" cols="" rows="" class="fenxi-box-res-textarea content_box2" disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="fenxi-box-res-btn-clear">清空内容</button>
+                <button class="fenxi-box-res-btn-close">关闭窗口</button>
+            </div>
+            <!-- 内容1分析窗口 -->
+            <div class="box-fenxi-content1">
+                <!-- 标题 -->
+                <h3>内容1分析</h3>
+                <!-- 录入框 -->
+                <textarea class="box-fenxi-content1-textarea content_box2" disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="btn-clear-fenxi-content1">清空内容</button>
+                <button class="btn-close-fenxi-content1">关闭窗口</button>
+            </div>
+            <!-- 内容2分析窗口 -->
+            <div class="box-fenxi-content2">
+                <!-- 标题 -->
+                <h3>内容2分析</h3>
+                <!-- 录入框 -->
+                <textarea class="box-fenxi-content2-textarea content_box2" disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="btn-clear-fenxi-content2">清空内容</button>
+                <button class="btn-close-fenxi-content2">关闭窗口</button>
+            </div>
+            <!-- 随机数1分析窗口 -->
+            <div class="box-fenxi-random1">
+                <!-- 标题 -->
+                <h3>随机数1分析</h3>
+                <!-- 录入框 -->
+                <textarea class="box-fenxi-random1-textarea content_box2" disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="btn-clear-fenxi-random1">清空内容</button>
+                <button class="btn-close-fenxi-random1">关闭窗口</button>
+            </div>
+            <!-- 随机数2分析窗口 -->
+            <div class="box-fenxi-random2">
+                <!-- 标题 -->
+                <h3>随机数2分析</h3>
+                <!-- 录入框 -->
+                <textarea class="box-fenxi-random2-textarea content_box2" disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="btn-clear-fenxi-random2">清空内容</button>
+                <button class="btn-close-fenxi-random2">关闭窗口</button>
+            </div>
+            <!-- 随机数1和2分析窗口 -->
+            <div class="box-fenxi-random12">
+                <!-- 标题 -->
+                <h3>随机数1和2</h3>
+                <!-- 录入框 -->
+                <textarea class="box-fenxi-random12-textarea content_box2" disabled></textarea>
+                <!-- 关闭窗口按钮 -->
+                <button class="btn-clear-fenxi-random12">清空内容</button>
+                <button class="btn-close-fenxi-random12">关闭窗口</button>
+            </div>
+
+            <script>
+                // 获取其它分析窗口
+                let boxFenxiContent1 = document.querySelector('.box-fenxi-content1');
+                let boxFenxiContent2 = document.querySelector('.box-fenxi-content2');
+                let boxFenxiRandom1 = document.querySelector('.box-fenxi-random1');
+                let boxFenxiRandom2 = document.querySelector('.box-fenxi-random2');
+                let boxFenxiRandom12 = document.querySelector('.box-fenxi-random12');
+                // 获取其它文本域
+                let boxFenxiContent1Textarea = document.querySelector('.box-fenxi-content1-textarea');
+                let boxFenxiContent2Textarea = document.querySelector('.box-fenxi-content2-textarea');
+                let boxFenxiRandom1Textarea = document.querySelector('.box-fenxi-random1-textarea');
+                let boxFenxiRandom2Textarea = document.querySelector('.box-fenxi-random2-textarea');
+                let boxFenxiRandom12Textarea = document.querySelector('.box-fenxi-random12-textarea');
+                // 获取其它清空按钮
+                let btnClearFenxiContent1 = document.querySelector('.btn-clear-fenxi-content1');
+                let btnClearFenxiContent2 = document.querySelector('.btn-clear-fenxi-content2');
+                let btnClearFenxiRandom1 = document.querySelector('.btn-clear-fenxi-random1');
+                let btnClearFenxiRandom2 = document.querySelector('.btn-clear-fenxi-random2');
+                let btnClearFenxiRandom12 = document.querySelector('.btn-clear-fenxi-random12');
+                // 获取其它关闭按钮
+                let btnCloseFenxiContent1 = document.querySelector('.btn-close-fenxi-content1');
+                let btnCloseFenxiContent2 = document.querySelector('.btn-close-fenxi-content2');
+                let btnCloseFenxiRandom1 = document.querySelector('.btn-close-fenxi-random1');
+                let btnCloseFenxiRandom2 = document.querySelector('.btn-close-fenxi-random2');
+                let btnCloseFenxiRandom12 = document.querySelector('.btn-close-fenxi-random12');
+
+                // 点击关闭按钮关闭窗口
+                btnCloseFenxiContent1.addEventListener('click', function () {
+                    boxFenxiContent1.style.display = 'none';
+                    pageMask.style.display = 'none';
+                });
+                btnCloseFenxiContent2.addEventListener('click', function () {
+                    boxFenxiContent2.style.display = 'none';
+                    pageMask.style.display = 'none';
+                });
+                btnCloseFenxiRandom1.addEventListener('click', function () {
+                    boxFenxiRandom1.style.display = 'none';
+                    pageMask.style.display = 'none';
+                });
+                btnCloseFenxiRandom2.addEventListener('click', function () {
+                    boxFenxiRandom2.style.display = 'none';
+                    pageMask.style.display = 'none';
+                });
+                btnCloseFenxiRandom12.addEventListener('click', function () {
+                    boxFenxiRandom12.style.display = 'none';
+                    pageMask.style.display = 'none';
+                });
+
+
+
+            </script>
+
+
+
+
+
             <!-- <h1>天使选择器</h1> -->
             <div id="logo">
                 <h1>
@@ -1547,10 +1706,10 @@
                 <button style="width: 100px;" onclick="location.reload()">刷新页面</button>
             </div> -->
 
-            <!-- 幸运数字和随机数的汇总窗口 历史记录 -->
+            <!-- 幸运数字和随机数的提取窗口 历史记录 -->
             <div class="tiqu-box-random">
                 <!-- 标题 -->
-                <h3>幸运数和随机数汇总</h3>
+                <h3>幸运数和随机数提取</h3>
                 <!-- 分割线 -->
                 <!-- <div class="input-box-line"></div> -->
                 <!-- 录入框 -->
@@ -1562,18 +1721,18 @@
             </div>
 
             <script>
-                // 历史记录盒子 汇总随机数盒子
+                // 历史记录盒子 提取随机数盒子
                 let tiquRandomBox = document.querySelector('.tiqu-box-random');
-                // 汇总随机数的文本域
+                // 提取随机数的文本域
                 let tiquRandomTxt = document.querySelector('.tiqu-box-random-textarea');
-                // 汇总随机数盒子的 清空内容 按钮
+                // 提取随机数盒子的 清空内容 按钮
                 let tiquRandomClearBtn = document.querySelector('.tiqu-box-random-btn-clear');
-                // 汇总随机数盒子的 关闭窗口 按钮
+                // 提取随机数盒子的 关闭窗口 按钮
                 let tiquRandomCloseBtn = document.querySelector('.tiqu-box-random-btn-close');
 
-                // 存储汇总的幸运数字历史记录
+                // 存储提取的幸运数字历史记录
                 let tiquXingYun = JSON.parse(localStorage.getItem('tiquXingYun')) || [];
-                // 存储汇总的随机数历史记录
+                // 存储提取的随机数历史记录
                 let tiquRandom = JSON.parse(localStorage.getItem('tiquRandom')) || [];
 
 
@@ -1586,10 +1745,10 @@
                 // 显示内容写在随机数模块的后面
             </script>
 
-            <h3 style="text-align: center;margin: 12px 0 16px;height: 26px;line-height: 26px;" class="box-good-number">
+            <h3 style="text-align: center;margin: 9px 0 6px;height: 26px;line-height: 26px;" class="box-good-number">
                 当前幸运数字:<span class="goodNumber"></span>
             </h3>
-            <div class="today mod" style="padding: 10px;">
+            <div class="today mod" style="padding: 2px 4px 6px;">
                 <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 幸运数模块 -->
                 <script>
                     // 获取需要填入随机数的节点
@@ -1702,33 +1861,33 @@
 
 
             <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 随机数模块 -->
-            <!-- 随机数1和2 汇总窗口 -->
+            <!-- 随机数1和2 提取窗口 -->
             <div class="tiqu-random-box12">
                 <!-- 标题 -->
-                <h3>随机数1和2汇总</h3>
-                <!-- 汇总的内容 -->
+                <h3>随机数1和2提取</h3>
+                <!-- 提取的内容 -->
                 <textarea class="tiqu-random-box12-textarea content_box2" disabled></textarea>
                 <!-- 关闭窗口按钮 -->
                 <button class="tiqu-random-box12-clear">清空内容</button>
                 <button class="tiqu-random-box12-close">关闭窗口</button>
             </div>
 
-            <!-- 随机数1 汇总窗口 -->
+            <!-- 随机数1 提取窗口 -->
             <div class="tiqu-random-box1">
                 <!-- 标题 -->
-                <h3>随机数1汇总</h3>
-                <!-- 汇总的内容 -->
+                <h3>随机数1提取</h3>
+                <!-- 提取的内容 -->
                 <textarea class="tiqu-random-box1-textarea content_box2" disabled></textarea>
                 <!-- 关闭窗口按钮 -->
                 <button class="tiqu-random-box1-clear">清空内容</button>
                 <button class="tiqu-random-box1-close">关闭窗口</button>
             </div>
 
-            <!-- 随机数2 汇总窗口 -->
+            <!-- 随机数2 提取窗口 -->
             <div class="tiqu-random-box2">
                 <!-- 标题 -->
-                <h3>随机数2汇总</h3>
-                <!-- 汇总的内容 -->
+                <h3>随机数2提取</h3>
+                <!-- 提取的内容 -->
                 <textarea class="tiqu-random-box2-textarea content_box2" disabled></textarea>
                 <!-- 关闭窗口按钮 -->
                 <button class="tiqu-random-box2-clear">清空内容</button>
@@ -1736,7 +1895,7 @@
             </div>
 
             <script>
-                // 随机数1和随机数2 汇总窗口
+                // 随机数1和随机数2 提取窗口
                 let randomBox12 = document.querySelector('.tiqu-random-box12');
                 // 点击关闭窗口按钮，关闭窗口
                 let closeRandomBox12 = document.querySelector('.tiqu-random-box12-close');
@@ -1745,7 +1904,7 @@
                     randomBox12.style.display = 'none';
                 });
 
-                // 随机数1 汇总窗口
+                // 随机数1 提取窗口
                 let randomBox1 = document.querySelector('.tiqu-random-box1');
                 // 点击关闭窗口按钮，关闭窗口
                 let closeRandomBox1 = document.querySelector('.tiqu-random-box1-close');
@@ -1754,7 +1913,7 @@
                     randomBox1.style.display = 'none';
                 });
 
-                // 随机数2 汇总窗口
+                // 随机数2 提取窗口
                 let randomBox2 = document.querySelector('.tiqu-random-box2');
                 // 点击关闭窗口按钮，关闭窗口
                 let closeRandomBox2 = document.querySelector('.tiqu-random-box2-close');
@@ -1766,10 +1925,10 @@
             </script>
 
             <h3 style="color:#eee">随机数</h3>
-            <div class="mod">
+            <div class="mod" style="padding: 14px 9px 0px;">
                 <!-- <button class="showRandomBtn">幸运数和随机数</button> -->
 
-                <div class="btn-choose-line" style="margin: 10px 0 20px;border: none;"></div>
+                <div class="btn-choose-line" style="margin: 19px 0 14px;border: none;"></div>
 
                 <!-- <h4>随机数1</h4> -->
                 <div class="random-box1">
@@ -1779,7 +1938,7 @@
                     <!-- <h3 style="color:#FFF5E1">随机数1</h3> -->
 
                     <!-- <h4 style="text-align: center;margin-bottom: 20px;color:#e82424" class="randoms"> -->
-                    <h4 style="text-align: center;margin-bottom: 10px;color:#eee" class="get-randoms-1">
+                    <h4 style="text-align: center;margin-bottom: 9px;color:#eee" class="get-randoms-1">
                         <span style="color:#eee">范围 :</span>
                         <input type="text" class="get-random-min-1" value="1" maxlength="6" style="width: 70px;">
                         ~
@@ -1801,7 +1960,7 @@
                         </span>
                         <br>
                         <button class="get-random-1">生成</button>
-                        <button class="get-random-history-1">汇总</button>
+                        <button class="get-random-history-1">提取</button>
                         <button class="get-random-clear-1">清空</button>
                         <button class="randoms-order-up-1">升序</button>
                         <button class="randoms-order-down-1">降序</button>
@@ -1815,7 +1974,7 @@
                 </div>
 
 
-                <div class="btn-choose-line" style="margin: 20px 0 10px;"></div>
+                <div class="btn-choose-line" style="margin: 9px 0 9px;"></div>
 
 
                 <div class="random-box1">
@@ -1825,7 +1984,7 @@
                     <!-- <h3 style="color:#FFF5E1">随机数1</h3> -->
 
                     <!-- <h4 style="text-align: center;margin-bottom: 20px;color:#e82424" class="randoms"> -->
-                    <h4 style="text-align: center;margin-bottom: 10px;color:#eee" class="get-randoms-2">
+                    <h4 style="text-align: center;margin-bottom: 9px;color:#eee" class="get-randoms-2">
                         <span style="color:#eee">范围 :</span>
                         <input type="text" class="get-random-min-2" value="1" maxlength="6" style="width: 70px;">
                         ~
@@ -1847,7 +2006,7 @@
                         </span>
                         <br>
                         <button class="get-random-2">生成</button>
-                        <button class="get-random-history-2">汇总</button>
+                        <button class="get-random-history-2">提取</button>
                         <button class="get-random-clear-2">清空</button>
                         <button class="randoms-order-up-2">升序</button>
                         <button class="randoms-order-down-2">降序</button>
@@ -1864,7 +2023,7 @@
 
                 <!-- 随机数1 和 随机数2 同时生成和统计 -->
                 <button class="btn-get-random12">同时生成</button>
-                <button class="btn-collect-random12">同时汇总</button>
+                <button class="btn-collect-random12">同时提取</button>
 
                 <script>
                     // 对输入的范围进行校验
@@ -1941,7 +2100,7 @@
 
                     // 同时生成按钮
                     let btnGetRandom12 = document.querySelector('.btn-get-random12');
-                    // 同时汇总按钮
+                    // 同时提取按钮
                     let btnCollectRandom12 = document.querySelector('.btn-collect-random12');
 
                     // 生成随机数的按钮
@@ -2121,7 +2280,7 @@
 
 
 
-                    // 汇总按钮
+                    // 提取按钮
                     let getRandomHistory = document.querySelector('.get-random-history-1');
                     getRandomHistory.addEventListener('click', function () {
                         // 存储模块1中每次产生的随机数
@@ -2494,7 +2653,7 @@
 
 
 
-                    // 汇总按钮
+                    // 提取按钮
                     let getRandomHistory2 = document.querySelector('.get-random-history-2');
                     getRandomHistory2.addEventListener('click', function () {
                         // 存储模块1中每次产生的随机数
@@ -2869,7 +3028,7 @@
                         // }, 1000);
                     });
 
-                    // 点击汇总按钮，将存储的随机数1和随机数2同时汇总
+                    // 点击提取按钮，将存储的随机数1和随机数2同时提取
                     btnCollectRandom12.addEventListener('click', function () {
                         // [{ time, randoms1, randoms2}]
                         randomResArr12 = JSON.parse(localStorage.getItem('randomResArr12')) || [];
@@ -3523,9 +3682,9 @@
                 // 点击按钮才能触发当下时间下的显示 showRandomBtn
                 // let showRandomBtn = document.querySelector('.showRandomBtn');
                 // showRandomBtn.addEventListener('click', function () {
-                //     // 存储汇总的幸运数字历史记录
+                //     // 存储提取的幸运数字历史记录
                 //     tiquXingYun = JSON.parse(localStorage.getItem('tiquXingYun')) || [];
-                //     // 存储汇总的随机数历史记录
+                //     // 存储提取的随机数历史记录
                 //     tiquRandom = JSON.parse(localStorage.getItem('tiquRandom')) || [];
 
                 //     pageMask.style.display = 'block';
@@ -3535,7 +3694,7 @@
                 //         return;
                 //     }
 
-                //     let str = '幸运数汇总：' + '\n';
+                //     let str = '幸运数提取：' + '\n';
 
                 //     if (tiquXingYun.length === 0) {
                 //         str = '';
@@ -3554,9 +3713,9 @@
                 //     //     return;
                 //     // }
                 //     if (tiquXingYun.length === 0) {
-                //         str += '随机数汇总：' + '\n';
+                //         str += '随机数提取：' + '\n';
                 //     } else {
-                //         str += '\n' + '随机数汇总：' + '\n';
+                //         str += '\n' + '随机数提取：' + '\n';
                 //     }
 
                 //     // 遍历随机数数组
@@ -3584,22 +3743,23 @@
 
 
             <h3 style="color:#eee">抉择利器</h3>
-            <div class="mod">
+            <div class="mod" style="padding: 9px 6px 12px;">
                 <div class="xuan1">
-                    <h3 style="color:#eee;margin-top: 0px;">标题1(选填)</h3>
+                    <h3 style="color:#eee;margin-top: 0px;margin-bottom: 0px;">标题1(选填)</h3>
                     <div class="question">
                         <input type="text" name="" id="" value="" maxlength="17" placeholder="限17个字">
                     </div>
                     <h3 style="color:#eee;">内容1(必填)</h3>
                     <div class="answers">
                         <div class="btn-add">
-                            <button>追加</button>
-                            <button style="width: 90px;" class="piliang-btn1">批量录入</button>
-                            <button style="width: 60px;" class="tiqu-btn1">汇总</button>
-                            <button class="qingkong">清空</button>
+                            <button style="width: 54px;">追加</button>
+                            <button style="width: 78px;" class="piliang-btn1">批量录入</button>
+                            <button style="width: 54px;" class="tiqu-btn1">提取</button>
+                            <button style="width: 54px;" class="btn-input-fenxi1">分析</button>
+                            <button style="width: 54px;" class="qingkong">清空</button>
                         </div>
                         <ul>
-                            <li style="margin-right: 0px;">
+                            <li>
                                 <input type="text" name="" id="" value="" maxlength="4" placeholder="限4个字">
                                 <!-- <button>删除</button> -->
                             </li>
@@ -3608,23 +3768,24 @@
 
                 </div>
 
-                <div class="btn-choose-line" style="margin: 20px 0 10px;"></div>
+                <div class="btn-choose-line" style="margin: 12px 0px;"></div>
 
                 <div class="xuan2">
-                    <h3 style="color:#eee;">标题2(选填)</h3>
+                    <h3 style="color:#eee;margin-bottom: 0px;">标题2(选填)</h3>
                     <div class="question2">
                         <input type="text" name="" id="" value="" maxlength="17" placeholder="限17个字">
                     </div>
                     <h3 style="color:#eee;">内容2(必填)</h3>
                     <div class="answers2">
                         <div class="btn-add2">
-                            <button>追加</button>
-                            <button style="width: 90px;" class="piliang-btn2">批量录入</button>
-                            <button style="width: 60px;" class="tiqu-btn2">汇总</button>
-                            <button class="qingkong2">清空</button>
+                            <button style="width: 54px;">追加</button>
+                            <button style="width: 78px;" class="piliang-btn2">批量录入</button>
+                            <button style="width: 54px;" class="tiqu-btn2">提取</button>
+                            <button style="width: 54px;" class="btn-input-fenxi2">分析</button>
+                            <button style="width: 54px;" class="qingkong2">清空</button>
                         </div>
                         <ul>
-                            <li style="margin-right: 0px;">
+                            <li>
                                 <input type="text" name="" id="" value="" maxlength="4" placeholder="限4个字">
                                 <!-- <button>删除</button> -->
                             </li>
@@ -3685,10 +3846,10 @@
             </div>
 
 
-            <!-- 必填1 汇总窗口 -->
+            <!-- 必填1 提取窗口 -->
             <div class="tiqu-box1">
                 <!-- 标题 -->
-                <h3>内容1汇总</h3>
+                <h3>内容1提取</h3>
                 <!-- 分割线 -->
                 <!-- <div class="input-box-line"></div> -->
                 <!-- 录入框 -->
@@ -3698,10 +3859,10 @@
                 <button class="tiqu-box1-btn-close">关闭窗口</button>
             </div>
 
-            <!-- 必填2 汇总窗口 -->
+            <!-- 必填2 提取窗口 -->
             <div class="tiqu-box2">
                 <!-- 标题 -->
-                <h3>内容2汇总</h3>
+                <h3>内容2提取</h3>
                 <!-- 分割线 -->
                 <!-- <div class="input-box-line"></div> -->
                 <!-- 录入框 -->
@@ -3716,10 +3877,10 @@
             <h3 style="color:#eee;">结果生成区域</h3>
             <!-- <h3 style="color:#3679e3;">天使的建议(优选)</h3> -->
 
-            <!-- 幸运数字和随机数的汇总窗口 历史记录 -->
+            <!-- 幸运数字和随机数的提取窗口 历史记录 -->
             <div class="tiqu-box-res">
                 <!-- 标题 -->
-                <h3>生成结果汇总</h3>
+                <h3>生成结果提取</h3>
                 <!-- 录入框 -->
                 <textarea name="" id="" cols="" rows="" class="tiqu-box-res-textarea content_box2" disabled></textarea>
                 <!-- 关闭窗口按钮 -->
@@ -3727,19 +3888,17 @@
                 <button class="tiqu-box-res-btn-close">关闭窗口</button>
             </div>
 
-            <div class="fenxi-box-res">
-                <!-- 标题 -->
-                <h3>生成结果分析</h3>
-                <!-- 录入框 -->
-                <textarea name="" id="" cols="" rows="" class="fenxi-box-res-textarea content_box2" disabled></textarea>
-                <!-- 关闭窗口按钮 -->
-                <button class="fenxi-box-res-btn-clear">清空内容</button>
-                <button class="fenxi-box-res-btn-close">关闭窗口</button>
-            </div>
+
+
+
+
+
+
+
 
             <div class="tianshi-btn" style="width: 100%;">
-                <div class="btn-choose-1 btn-choose btn-choose-number btn-choose-choice">
-                    <button>
+                <div class="btn-choose-1 btn-choose btn-choose-number btn-choose-choice" style="margin-top: 0px;">
+                    <button style="margin-top: 6px;">
                         从内容1中生成
                     </button>
                     <span>
@@ -3764,10 +3923,10 @@
                     </span>
                 </div>
 
-                <div class="btn-choose-line"></div>
+                <div class="btn-choose-line" style="margin-bottom: 0px;"></div>
 
-                <div class="btn-choose-2 btn-choose btn-choose-number btn-choose-choice">
-                    <button>
+                <div class="btn-choose-2 btn-choose btn-choose-number btn-choose-choice" style="margin-top: 0px;">
+                    <button style="margin-top: 6px;">
                         从内容2中生成
                     </button>
                     <span>
@@ -3966,14 +4125,14 @@
                     <button style="width: 49px;" class="order1">升序</button>
                     <button style="width: 50px;" class="order2">降序</button>
                     <button style="width: 49px;" class="order3">还原</button>
-                    <button style="width: 49px;" class="res-tiqu-btn">汇总</button>
+                    <button style="width: 49px;" class="res-tiqu-btn">提取</button>
                     <button style="width: 50px;" class="res-fenxi-btn">分析</button>
                     <!-- <button style="margin-top: 12px;width: 60px;" onclick="location.reload()">重置</button> -->
                     <button style="margin-top: 0px;width: 50px;">清空</button>
                 </div>
             </div>
 
-            <div class="tianshi content_box3">
+            <div class="tianshi content_box3" style="padding-top: 0px;">
                 <div class="content">
                     <!-- <dl>
                         <dt>吃什么</dt>
@@ -4025,8 +4184,10 @@
         // 获取添加按钮
         let addBtn = document.querySelectorAll('.btn-add button')[0];
         let addBtn2 = document.querySelectorAll('.btn-add2 button')[0];
-        let qingkong = document.querySelectorAll('.btn-add button')[3];
-        let qingkong2 = document.querySelectorAll('.btn-add2 button')[3];
+        // let qingkong = document.querySelectorAll('.btn-add button')[3];
+        let qingkong = document.querySelector('.btn-add .qingkong');
+        // let qingkong2 = document.querySelectorAll('.btn-add2 button')[3];
+        let qingkong2 = document.querySelector('.btn-add2 .qingkong2');
         // 获取 ul
         let ul = document.querySelector('.answers ul');
         let ul2 = document.querySelector('.answers2 ul');
@@ -4863,7 +5024,7 @@
         // console.log(tianshiArr);
 
 
-        // 结果 汇总 按钮
+        // 结果 提取 按钮
         let resTiquBtn = document.querySelector('.res-tiqu-btn');
         // 结果 分析 按钮
         let resFenxiBtn = document.querySelector('.res-fenxi-btn');
@@ -4945,7 +5106,7 @@
                 questionArr = JSON.parse(localStorage.getItem('questionArr')) || [];
                 // tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
       
-                // let titleArr=[]; // 汇总 title
+                // let titleArr=[]; // 提取 title
                 // for (let i = 0; i < tianshiArr.length; i++) {
                 //     titleArr.push(tianshiArr[i].title);
                 // }
@@ -5001,7 +5162,7 @@
             order2.disabled = chooseBtn.disabled || chooseBtn2.disabled;
             // 还原按钮
             order3.disabled = chooseBtn.disabled || chooseBtn2.disabled;
-            // 汇总按钮
+            // 提取按钮
             resTiquBtn.disabled = chooseBtn.disabled || chooseBtn2.disabled;
             // 分析按钮
             resFenxiBtn.disabled = chooseBtn.disabled || chooseBtn2.disabled;
@@ -6252,28 +6413,28 @@
         order3.click();
 
 
-        // 汇总次数
+        // 提取次数
         let tiquResTimes = localStorage.getItem('tiquResTimes') || 0;
         // 分析次数
         let fenxiResTimes = localStorage.getItem('fenxiResTimes') || 0;
-        // 汇总结果
+        // 提取结果
         let tiquRes = localStorage.getItem('tiquRes') || '';
         // 分析结果
         let fenxiRes = localStorage.getItem('fenxiRes') || '';
 
         // 放在生成功能上方
-        // 结果 汇总 按钮
+        // 结果 提取 按钮
         // let resTiquBtn = document.querySelector('.res-tiqu-btn');
         // 结果 分析 按钮
         // let resFenxiBtn = document.querySelector('.res-fenxi-btn');
 
-        // 结果 汇总窗口
+        // 结果 提取窗口
         let tiquBoxRes = document.querySelector('.tiqu-box-res');
-        // 汇总窗口中的清空按钮
+        // 提取窗口中的清空按钮
         let tiquBoxClear = document.querySelector('.tiqu-box-res-btn-clear');
-        // 汇总窗口中的关闭按钮
+        // 提取窗口中的关闭按钮
         let tiquBoxClose = document.querySelector('.tiqu-box-res-btn-close');
-        // 汇总窗口中的文本域
+        // 提取窗口中的文本域
         let tiquBoxTxt = document.querySelector('.tiqu-box-res-textarea');
 
         // 结果 分析窗口
@@ -6282,11 +6443,11 @@
         let fenxiBoxClear = document.querySelector('.fenxi-box-res-btn-clear');
         // 分析窗口中的关闭按钮
         let fenxiBoxClose = document.querySelector('.fenxi-box-res-btn-close');
-        // 汇总窗口中的文本域
+        // 提取窗口中的文本域
         let fenxiBoxTxt = document.querySelector('.fenxi-box-res-textarea');
 
 
-        // 初始化汇总结果和分析结果
+        // 初始化提取结果和分析结果
         tiquBoxTxt.value = tiquRes;
         fenxiBoxTxt.value = fenxiRes;
 
@@ -6318,36 +6479,36 @@
 
 
         /*
-            汇总、分析功能：不影响源数组
+            提取、分析功能：不影响源数组
             点击生成按钮 --- res --- 本地 --- 还原、页面初始展示
-            点击生成按钮 --- tianshiArr[{title,content}] --- 本地 --- 排序、汇总、分析
+            点击生成按钮 --- tianshiArr[{title,content}] --- 本地 --- 排序、提取、分析
      
             选择 tianshiArr[{title,content}] 更合适，不影响源数组
-            汇总 --- tiquResArr
+            提取 --- tiquResArr
             分析 --- fenxiResArr
         */
 
-        // 汇总功能
+        // 提取功能
         resTiquBtn.addEventListener('click', function () {
             // if (tianshi.innerHTML.trim() === '' || tianshiArr.length === 0) {
             //     // alert('没有需要排序的内容');
             //     pageMask2.style.display = 'block';
             //     tipBox.style.display = 'block';
-            //     tipContent.innerHTML = '没有需要汇总的内容';
+            //     tipContent.innerHTML = '没有需要提取的内容';
             //     return;
             // }
 
 
 
             tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
-            // 汇总次数
+            // 提取次数
             tiquResTimes = localStorage.getItem('tiquResTimes') || 0;
-            // 汇总结果
+            // 提取结果
             tiquRes = localStorage.getItem('tiquRes') || '';
 
 
 
-            // 显示遮罩、汇总窗口
+            // 显示遮罩、提取窗口
             pageMask.style.display = 'block';
             tiquBoxRes.style.display = 'block';
 
@@ -6366,11 +6527,11 @@
                 tpArr[i] = tianshiArr[i];
             }
 
-            // 存储汇总结果
+            // 存储提取结果
             // ===============
             // ******************************
             let strRes = '';
-            strRes += '第 ' + tiquResTimes + ' 次汇总：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            strRes += '第 ' + tiquResTimes + ' 次提取：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
 
             for (let i = 0; i < tpArr.length; i++) {
                 strRes += '- 标题：' + tpArr[i].title + '\n- 内容：| ';
@@ -6381,7 +6542,7 @@
             }
             strRes += '\n\n';
 
-            // 将结果汇总到汇总字符串
+            // 将结果提取到提取字符串
             tiquRes += strRes;
             tiquBoxTxt.value = tiquRes;
 
@@ -6402,14 +6563,14 @@
 
 
             tianshiArr = JSON.parse(localStorage.getItem('tianshiArr')) || [];
-            // 汇总次数
+            // 提取次数
             fenxiResTimes = localStorage.getItem('fenxiResTimes') || 0;
-            // 汇总结果
+            // 提取结果
             fenxiRes = localStorage.getItem('fenxiRes') || '';
 
 
 
-            // 显示遮罩、汇总窗口
+            // 显示遮罩、提取窗口
             pageMask.style.display = 'block';
             fenxiBoxRes.style.display = 'block';
 
@@ -6426,17 +6587,21 @@
                 tpArr[i] = tianshiArr[i];
             }
 
-            // 存储汇总结果
+            // 存储提取结果
             // -----------------------
             // ******************************
             let strRes = '';
             strRes += '第 ' + fenxiResTimes + ' 次分析：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
 
             for (let i = 0; i < tpArr.length; i++) {
-                strRes += '- 标题：' + tpArr[i].title + '\n- 分析：\n';
-
                 // 分析部分
                 let tempFenxiArr = tongjiItemsTimes(tpArr[i].content);
+
+                strRes += '- 标题：' + tpArr[i].title + '\n';
+                strRes += '- 词条：共 ' + tpArr[i].content.length + ' 个\n';
+                strRes += '- 分析：共 ' + tempFenxiArr.length + ' 个不重复词条\n';
+
+
                 // console.log('@@@', tempFenxiArr);
                 for (let k = 0; k < tempFenxiArr.length; k++) {
                     // strRes += '\t    '+ '[ 出现过 ' +  tempFenxiArr[k].num + ' 次 ' + tempFenxiArr[k].title +' ]\n';
@@ -6453,7 +6618,7 @@
             }
             strRes += '\n\n';
 
-            // 将结果汇总到汇总字符串
+            // 将结果提取到提取字符串
             fenxiRes += strRes;
             fenxiBoxTxt.value = fenxiRes;
 
@@ -6462,10 +6627,11 @@
         });
 
 
+
     </script>
 
 
-    <!-- 增加 批量录入 功能 -->
+    <!-- 内容1和2：增加 批量录入 提取功能 功能 -->
     <script>
         /*
             1.点击 批量录入 按钮，显示对应的录入窗口
@@ -7327,7 +7493,7 @@
         });
 
 
-        // 汇总按钮
+        // 提取按钮
         let tiquBtn1 = document.querySelector('.tiqu-btn1');
         let tiquBtn2 = document.querySelector('.tiqu-btn2');
         // 收集内容的盒子
@@ -7340,17 +7506,17 @@
         let tiquClose1 = document.querySelector('.tiqu-box1-btn-close');
         let tiquClose2 = document.querySelector('.tiqu-box2-btn-close');
 
-        // 所有汇总的内容
+        // 所有提取的内容
         // let tiquArr1 = JSON.parse(localStorage.getItem('tiquArr1')) || [];
         // let tiquArr2 = JSON.parse(localStorage.getItem('tiquArr2')) || [];
         let tiquStr1 = localStorage.getItem('tiquStr1') || '';
         let tiquStr2 = localStorage.getItem('tiquStr2') || '';
-        // 汇总次数
+        // 提取次数
         let tiquNum1 = localStorage.getItem('tiquNum1') || 0;
         let tiquNum2 = localStorage.getItem('tiquNum2') || 0;
 
 
-        // 点击汇总按钮，显示窗口，将内容展示
+        // 点击提取按钮，显示窗口，将内容展示
         tiquBtn1.addEventListener('click', function () {
             // tiquArr1 = JSON.parse(localStorage.getItem('tiquArr1')) || [];
             tiquStr1 = localStorage.getItem('tiquStr1') || '';
@@ -7364,7 +7530,7 @@
             tiquNum1 = localStorage.getItem('tiquNum1') || 0;
             tiquNum1++;
 
-            // tiquArr1.push('第' + tiquNum1 + '次汇总：\n');
+            // tiquArr1.push('第' + tiquNum1 + '次提取：\n');
             // for (let i = 0; i < ul.children.length; i++) {
             //     tiquArr1.push(ul.children[i].children[0].value);
             // }
@@ -7372,10 +7538,12 @@
             // let str = tiquArr1.join(' ');
             // tiquText1.value = str;
 
-            tiquStr1 += '第 ' + tiquNum1 + ' 次汇总：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            tiquStr1 += '第 ' + tiquNum1 + ' 次提取：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
             tiquStr1 += '- 标题：' + document.querySelector('.question input').value + '\n- 内容：| ';
             for (let i = 0; i < ul.children.length; i++) {
-                tiquStr1 += ul.children[i].children[0].value + ' | ';
+                if (ul.children[i].children[0].value.trim() != '') {
+                    tiquStr1 += ul.children[i].children[0].value.trim() + ' | ';
+                }
             }
             tiquStr1 += '\n\n\n';
             tiquText1.value = tiquStr1;
@@ -7398,7 +7566,7 @@
             tiquNum2 = localStorage.getItem('tiquNum2') || 0;
             tiquNum2++;
 
-            // tiquArr2.push('第' + tiquNum2 + '次汇总：\n');
+            // tiquArr2.push('第' + tiquNum2 + '次提取：\n');
             // for (let i = 0; i < ul2.children.length; i++) {
             //     tiquArr2.push(ul2.children[i].children[0].value);
             // }
@@ -7406,10 +7574,12 @@
             // let str = tiquArr2.join(' ');
             // tiquText2.value = str;
 
-            tiquStr2 += '第 ' + tiquNum2 + ' 次汇总：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            tiquStr2 += '第 ' + tiquNum2 + ' 次提取：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
             tiquStr2 += '- 标题：' + document.querySelector('.question2 input').value + '\n- 内容：| ';
             for (let i = 0; i < ul2.children.length; i++) {
-                tiquStr2 += ul2.children[i].children[0].value + ' | ';
+                if (ul2.children[i].children[0].value.trim() != '') {
+                    tiquStr2 += ul2.children[i].children[0].value.trim() + ' | ';
+                }
             }
             tiquStr2 += '\n\n\n';
             tiquText2.value = tiquStr2;
@@ -7421,28 +7591,28 @@
 
 
         // 初始化
-        tiquText1.value = localStorage.getItem('tiqu1') || '';
-        tiquText2.value = localStorage.getItem('tiqu2') || '';
+        tiquText1.value = localStorage.getItem('tiquStr1') || '';
+        tiquText2.value = localStorage.getItem('tiquStr2') || '';
 
 
         // 清空按钮
         let tiquClear1 = document.querySelector('.tiqu-box1-btn-clear');
         let tiquClear2 = document.querySelector('.tiqu-box2-btn-clear');
         // 点击清空按钮
-        // 文本域为空，清除汇总次数、清除存储数组、清除草稿
+        // 文本域为空，清除提取次数、清除存储数组、清除草稿
         tiquClear1.addEventListener('click', function () {
             tiquText1.value = '';
             localStorage.removeItem('tiquNum1');
             // localStorage.removeItem('tiquArr1');
             localStorage.removeItem('tiquStr1');
-            localStorage.removeItem('tiqu1');
+            // localStorage.removeItem('tiqu1');
         });
         tiquClear2.addEventListener('click', function () {
             tiquText2.value = '';
             localStorage.removeItem('tiquNum2');
             // localStorage.removeItem('tiquArr2');
             localStorage.removeItem('tiquStr2');
-            localStorage.removeItem('tiqu2');
+            // localStorage.removeItem('tiqu2');
         });
 
 
@@ -7450,13 +7620,190 @@
         tiquClose1.addEventListener('click', function () {
             pageMask.style.display = 'none';
             tiquBox1.style.display = 'none';
-            localStorage.setItem('tiqu1', tiquText1.value);
+            // localStorage.setItem('tiqu1', tiquText1.value);
         });
         tiquClose2.addEventListener('click', function () {
             pageMask.style.display = 'none';
             tiquBox2.style.display = 'none';
-            localStorage.setItem('tiqu2', tiquText2.value);
+            // localStorage.setItem('tiqu2', tiquText2.value);
         });
+
+    </script>
+
+
+    <!-- 内容1和2：增加 分析 功能 -->
+    <script>
+        // 内容中的分析按钮
+        let btnInputFenxi1 = document.querySelector('.btn-input-fenxi1');
+        let btnInputFenxi2 = document.querySelector('.btn-input-fenxi2');
+        // 内容的分析次数
+        let content1fenxiNum = parseInt(localStorage.getItem('content1fenxiNum')) || 0;
+        let content2fenxiNum = parseInt(localStorage.getItem('content2fenxiNum')) || 0;
+        // 内容的分析内容
+        let content1fenxiContent = localStorage.getItem('content1fenxiContent') || '';
+        let content2fenxiContent = localStorage.getItem('content2fenxiContent') || '';
+
+        // 初始化分析内容
+        boxFenxiContent1Textarea.value = content1fenxiContent;
+        boxFenxiContent2Textarea.value = content2fenxiContent;
+
+        // 点击内容中的分析按钮，显示遮罩1和分析窗口，处理分析数据并显示
+        btnInputFenxi1.addEventListener('click', function () {
+            // 获取分析内容
+            content1fenxiContent = localStorage.getItem('content1fenxiContent') || '';
+            // 获取分析次数
+            content1fenxiNum = parseInt(localStorage.getItem('content1fenxiNum')) || 0;
+            // 获取需要分析的数组
+            xuan1arr = JSON.parse(localStorage.getItem('xuan1arr')) || [];
+
+            // 显示遮罩、分析窗口
+            pageMask.style.display = 'block';
+            boxFenxiContent1.style.display = 'block';
+
+            // 如果只有一个 li 且没有内容，就返回
+            if (ul.children.length <= 1 && ul.children[0].children[0].value.trim() === '') {
+                return;
+            }
+
+            // 分析次数 + 1
+            content1fenxiNum++;
+
+            // 用于存储被分析的数组，不改变原数组
+            let tpArr = [];
+            for (let i = 0; i < xuan1arr.length; i++) {
+                if (xuan1arr[i].trim() !== '') {
+                    tpArr[i] = xuan1arr[i].trim();
+                }
+            }
+
+            // 升序
+            tpArr.sort(function (a, b) {
+                return a - b;
+            });
+
+            // 存储分析后的数组
+            // [{ title, num }] 内容title 出现次数num
+            let tempFenxiArr = tongjiItemsTimes(tpArr);
+
+            // 存储分析结果
+            let strRes = '';
+
+            // 开始分析，并存储到分析结果
+            strRes += '第 ' + content1fenxiNum + ' 次分析：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            strRes += '- 词条：共 ' + tpArr.length + ' 个\n';
+            strRes += '- 分析：共 ' + tempFenxiArr.length + ' 个不重复词条\n';
+            for (let k = 0; k < tempFenxiArr.length; k++) {
+                strRes += '\t    ' + ' 出现 ' + tempFenxiArr[k].num + ' 次：' + tempFenxiArr[k].title + '\n';
+            }
+
+            // 被分析的数组内容
+            strRes += '- 内容：| ';
+            for (let j = 0; j < tpArr.length; j++) {
+                strRes += tpArr[j] + ' | ';
+            }
+            strRes += '\n\n\n';
+
+            // 追加分析的所有内容
+            content1fenxiContent += strRes;
+
+            // 显示分析的所有内容
+            boxFenxiContent1Textarea.value = content1fenxiContent;
+
+            // 存储分析次数
+            localStorage.setItem('content1fenxiNum', content1fenxiNum);
+            // 存储分析的所有内容
+            localStorage.setItem('content1fenxiContent', content1fenxiContent);
+        });
+
+        btnInputFenxi2.addEventListener('click', function () {
+            // 获取分析内容
+            content2fenxiContent = localStorage.getItem('content2fenxiContent') || '';
+            // 获取分析次数
+            content2fenxiNum = parseInt(localStorage.getItem('content2fenxiNum')) || 0;
+            // 获取需要分析的数组
+            xuan2arr = JSON.parse(localStorage.getItem('xuan2arr')) || [];
+
+            // 显示遮罩、分析窗口
+            pageMask.style.display = 'block';
+            boxFenxiContent2.style.display = 'block';
+
+            // 如果只有一个 li 且没有内容，就返回
+            if (ul2.children.length <= 1 && ul2.children[0].children[0].value.trim() === '') {
+                return;
+            }
+
+            // 分析次数 + 1
+            content2fenxiNum++;
+
+            // 用于存储被分析的数组，不改变原数组
+            let tpArr = [];
+            for (let i = 0; i < xuan2arr.length; i++) {
+                if (xuan2arr[i].trim() !== '') {
+                    tpArr[i] = xuan2arr[i].trim();
+                }
+            }
+
+            // 升序
+            tpArr.sort(function (a, b) {
+                return a - b;
+            });
+
+            // 存储分析后的数组
+            // [{ title, num }] 内容title 出现次数num
+            let tempFenxiArr = tongjiItemsTimes(tpArr);
+
+            // 存储分析结果
+            let strRes = '';
+
+            // 开始分析，并存储到分析结果
+            strRes += '第 ' + content2fenxiNum + ' 次分析：\n- 时间：[' + year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ']' + '\n';
+            strRes += '- 词条：共 ' + tpArr.length + ' 个\n';
+            strRes += '- 分析：共 ' + tempFenxiArr.length + ' 个不重复词条\n';
+            for (let k = 0; k < tempFenxiArr.length; k++) {
+                strRes += '\t    ' + ' 出现 ' + tempFenxiArr[k].num + ' 次：' + tempFenxiArr[k].title + '\n';
+            }
+
+            // 被分析的数组内容
+            strRes += '- 内容：| ';
+            for (let j = 0; j < tpArr.length; j++) {
+                strRes += tpArr[j] + ' | ';
+            }
+            strRes += '\n\n\n';
+
+            // 追加分析的所有内容
+            content2fenxiContent += strRes;
+
+            // 显示分析的所有内容
+            boxFenxiContent2Textarea.value = content2fenxiContent;
+
+            // 存储分析次数
+            localStorage.setItem('content2fenxiNum', content2fenxiNum);
+            // 存储分析的所有内容
+            localStorage.setItem('content2fenxiContent', content2fenxiContent);
+        });
+
+
+
+
+        // 点击内容中分析窗口中的清空按钮
+        // 文本域为空，清除提取次数、清除存储数组、清除草稿
+        btnClearFenxiContent1.addEventListener('click', function () {
+            // 清空页面
+            boxFenxiContent1Textarea.value = '';
+            // 清除分析次数
+            localStorage.removeItem('content1fenxiNum');
+            // 清除分析结果
+            localStorage.removeItem('content1fenxiContent');
+        });
+        btnClearFenxiContent2.addEventListener('click', function () {
+            // 清空页面
+            boxFenxiContent2Textarea.value = '';
+            // 清除分析次数
+            localStorage.removeItem('content2fenxiNum');
+            // 清除分析结果
+            localStorage.removeItem('content2fenxiContent');
+        });
+
 
     </script>
 </body>
