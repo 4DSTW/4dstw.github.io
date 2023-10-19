@@ -283,10 +283,55 @@
             font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
         }
 
-        body {
-            background: linear-gradient(to bottom right, #300055, #530024);
-            background-color: #222;
+
+
+
+
+        /* 添加背景图 */
+        /* ******************************************************************** */
+        /* 去掉 body 背景色 */
+        /* body { */
+        /* position: absolute; */
+        /* background: linear-gradient(to bottom right, #300055, #530024); */
+        /* background-color: #222; */
+        /* background: url(./imgs/shanding.jpg); */
+        /* background: url(./imgs/shanding.jpg) center top no-repeat; */
+        /* } */
+
+        /* 添加背景图 */
+        .bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
+
+        /* 添加背景图 */
+        .bg img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 2000px;
+        }
+
+        .bg-color {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        /* ******************************************************************** */
+
+
+
+
+
+        .container {
+            position: absolute;
+            width: 100%;
+        }
+
 
 
         /*
@@ -306,6 +351,7 @@
             background-color: #5f0024;
             background-color: #74002D;
             background-color: #4b002e;
+            background-color: #00374b;
             background-image: -webkit-linear-gradient(45deg,
                     rgba(201, 201, 201, 0.2) 25%,
                     transparent 25%,
@@ -322,9 +368,9 @@
             box-shadow: inset 0 0 5px rgba(102, 81, 92, 0.7);
             /* background: #ededed80; */
             /* background: #989898; */
-            background: rgba(255, 255, 255, 0.1);
-            background: rgba(125, 103, 112, 0.7);
-            border-radius: 5px;
+            /* background: rgba(255, 255, 255, 0.7); */
+            background: rgba(67, 79, 82, 0.8);
+            /* border-radius: 5px; */
         }
 
         .content_box2::-webkit-scrollbar {
@@ -343,6 +389,7 @@
             background-color: #3c0026;
             background-color: #28005c;
             background-color: #240054;
+            background-color: #003e54;
             background-image: -webkit-linear-gradient(45deg,
                     rgba(204, 204, 204, 0.2) 25%,
                     transparent 25%,
@@ -385,6 +432,7 @@
             background-color: #720046; */
             background-color: #70003c;
             background-color: #5d0039;
+            background-color: #00445d;
             /* background-color: #7e0918; */
             /* background-color: #59097e; */
             /* background-image: -webkit-linear-gradient(45deg,
@@ -426,8 +474,8 @@
             box-shadow: inset 0 0 5px rgba(132, 108, 132, 0.7);
             /* background: #ededed80; */
             /* background: #989898; */
-            background: rgba(255, 255, 255, 0.1);
-            background: rgba(120, 105, 113, 0.7);
+            /* background: rgba(255, 255, 255, 0.1); */
+            background: rgba(129, 143, 149, 0.7);
             border-radius: 5px;
         }
 
@@ -478,7 +526,9 @@
             height: 24px;
             /* line-height: 24px; */
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             color: #eee;
+            color: #fff;
             text-align: center;
             font-size: 16px;
             border: none;
@@ -488,6 +538,7 @@
 
         button:hover {
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         button[disabled],
@@ -554,6 +605,7 @@
             margin: 6px 0;
             background-color: rgba(255, 255, 255, 0);
             color: #eee;
+            color: #fff;
         }
 
         /* .question input {
@@ -589,6 +641,7 @@
             /* color: deeppink; */
             text-align: center;
             margin: 6px 0;
+            opacity: 0.9;
         }
 
         .main-content h3 {
@@ -599,6 +652,7 @@
             letter-spacing: 2px;
             font-weight: 400;
             color: #eee;
+            color: #fff;
         }
 
         /* .main-content>h3 {
@@ -646,8 +700,8 @@
             /* background-color: #315794; */
             border: none;
             /* font-weight: 700; */
-            color: #222;
             color: #eee;
+            color: #fff;
             letter-spacing: 1px;
         }
 
@@ -662,6 +716,7 @@
         .btn-clear button {
             /* background-color: #630081; */
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             /* background-color: #ab108f; */
             /* background-color: #981dd2; */
             height: 24px;
@@ -669,12 +724,14 @@
             line-height: 24px;
             /* margin-top: 6px !important; */
             color: #eee;
+            color: #fff;
         }
 
         .reset-page button:hover,
         .btn-clear button:hover {
             background-color: #560071;
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
             /* background-color: #4e0b9f; */
         }
 
@@ -682,20 +739,21 @@
         .btn-clear button:active {
             background-color: #560071;
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         .btn-add button,
         .btn-add2 button {
             background-color: #630081;
             background-color: rgba(219, 27, 101, 0.6);
-            /* background-color: rgba(255, 255, 255, 0); */
-            /* border: 1px solid #eee; */
+            background-color: rgba(32, 114, 146, 0.6);
             height: 24px;
             line-height: 24px;
             font-size: 16px;
             width: 60px;
             margin-bottom: 6px;
             color: #eee;
+            color: #fff;
             transition: all .3s;
         }
 
@@ -703,12 +761,14 @@
         .btn-add2 button:hover {
             background-color: #560071;
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         .btn-add button:active,
         .btn-add button:active {
             background-color: #560071;
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         .btn-choose button {
@@ -723,6 +783,7 @@
             transition: all .2s;
             background-color: #630081;
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             /* color: #000; */
             /* font-weight: 700; */
         }
@@ -731,11 +792,13 @@
             /* animation-play-state: paused; */
             background-color: #560071;
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         .btn-choose button:active {
             background-color: #560071;
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         .tianshi {
@@ -770,17 +833,20 @@
             width: 20px;
             height: 42px;
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             border: none;
             /* border-radius: 3px; */
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
             color: #eee;
+            color: #fff;
             opacity: .9;
             font-size: 14px;
         }
 
         .tianshi .delete-item:hover {
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
             opacity: 1;
         }
 
@@ -793,6 +859,7 @@
             /* color: #2162ca; */
             padding: 3px 0 4px;
             color: #eee;
+            color: #fff;
             /* border-radius: 3px; */
             /* border-top: 1px dashed #ccc; */
             font-weight: 400;
@@ -805,11 +872,13 @@
             /* background-color: #bbd5ff; */
             /* border-bottom: 1px solid #c76ec7; */
             border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #fff;
             width: 66px;
             height: 24px;
             line-height: 24px;
             text-align: center;
             color: #eee;
+            color: #fff;
             font-size: 16px;
         }
 
@@ -827,21 +896,25 @@
 
         .blue {
             color: #3683ff;
+            color: #1c59ba;
         }
 
         .red {
             color: #e93434;
+            color: #c72424;
         }
 
         .orange {
             color: #FBBC05;
             color: #eabd34;
+            color: #ddac18;
             /* color: #903ff4; */
             /* color: deeppink; */
         }
 
         .green {
             color: #28ba4f;
+            color: #239842;
         }
 
         /* @keyframes btnChange {
@@ -869,6 +942,7 @@
         .random-box4 input {
             border: none;
             border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #fff;
             width: 24px;
             border-radius: 0px;
             /* background-color: #fff; */
@@ -882,6 +956,7 @@
         .random-box3 input,
         .random-box4 input {
             border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #fff;
         }
 
         .today .maxlength-four {
@@ -896,9 +971,11 @@
             width: 120px;
             height: 24px;
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             border: none;
             border-radius: 3px;
             color: #eee;
+            color: #fff;
             font-size: 16px;
             transition: all .2s;
             letter-spacing: 1px;
@@ -912,40 +989,25 @@
         .random-box3 button:hover,
         .random-box4 button:hover {
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         .box-good-number {
-            /* color: #33A351; */
-            color: #edc754;
             color: #eee;
-            /* color: #b9c2f1; */
+            color: #fff;
             margin: 20px 0 6px;
-            /* font-weight: 700; */
         }
 
         .date,
-        .time {
-            /* color: #33A351; */
-            color: #eee;
-        }
-
+        .time,
         .date input,
-        .time input {
-            /* color: #33A351; */
-            color: #b9c2f1;
-            color: #eee;
-        }
-
-        /* .date input,
-        .time input {
-            border-color: #8133a3;
-        } */
-
+        .time input,
         .randoms input,
         .randoms2 input,
         .randoms3 input,
         .randoms4 input {
-            border-color: #eee;
+            color: #eee;
+            color: #fff;
         }
 
         .answers,
@@ -958,6 +1020,7 @@
 
         h4 {
             font-weight: 400;
+            color: #fff;
         }
 
         h1 {
@@ -979,6 +1042,7 @@
         .question2 input {
             border: none;
             border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #fff;
             border-radius: 0px;
             font-size: 16px;
             margin: 3px 0;
@@ -988,6 +1052,7 @@
             margin: 0px;
             border: none;
             border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #fff;
             border-radius: 0px;
             font-size: 16px;
             padding: 0px;
@@ -1003,10 +1068,11 @@
             padding: 3px;
             /* background-color: pink; */
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             border: none;
             border-radius: 3px;
             color: #eee;
-            /* color: #000; */
+            color: #fff;
             font-size: 16px;
             transition: all .2s;
             letter-spacing: 1px;
@@ -1031,6 +1097,7 @@
             box-sizing: border-box;
             background-color: rgba(255, 255, 255, 0);
             color: #eee;
+            color: #fff;
             line-height: 22px;
         }
 
@@ -1045,8 +1112,9 @@
             width: 100%;
             height: 100%;
             /* background-color: pink; */
-            background-color: rgba(0, 0, 0, 0.5);
-            /* background-color: rgba(255, 255, 255, 0.1); */
+            /* background-color: rgba(0, 0, 0, 0.5); */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* background-color: rgba(255, 255, 255, 0.3); */
             /* transition: all .2s; */
         }
 
@@ -1076,7 +1144,9 @@
             height: 24px;
             line-height: 19px;
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             color: #eee;
+            color: #fff;
             border: none;
             border-radius: 3px;
             transition: all .3s;
@@ -1116,6 +1186,8 @@
         .box-fenxi-random12 button:hover { */
         button:hover {
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(20, 81, 105, 0.9);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         /* 必填1 批量录入窗口 */
@@ -1148,6 +1220,9 @@
             /* background-color: rgba(255, 255, 255, 0.4); */
             /* background: linear-gradient(to bottom right, #a00b6c, #2b008e); */
             background: linear-gradient(to bottom right, #59001c, #1f0065);
+            background: linear-gradient(to bottom right, #59001c, #1f0065);
+            background: rgba(1, 20, 38, 0.8);
+            background: rgba(0, 20, 36, 0.8);
             border-radius: 3px;
             padding: 8px;
             text-align: center;
@@ -1192,6 +1267,7 @@
             line-height: 20px;
             margin: 10px auto 7px;
             color: #eee;
+            color: #fff;
         }
 
         .tiqu-box1 h3,
@@ -1210,6 +1286,7 @@
         .box-fenxi-random12 h3 {
             margin: 7px auto;
             color: #eee;
+            color: #fff;
         }
 
         .common-tips-content {
@@ -1221,6 +1298,7 @@
             border-radius: 3px;
             text-align: center;
             color: #eee;
+            color: #fff;
             font-size: 17px;
         }
 
@@ -1229,6 +1307,7 @@
         .input-box2-shuoming {
             font-size: 12px;
             color: #eee;
+            color: #fff;
         }
 
         /* 批量录入窗口中标题下面的分割线 */
@@ -1258,6 +1337,7 @@
             width: 100%;
             height: 306px;
             color: #eee;
+            color: #fff;
             /* border: 1px solid #a35b74; */
             border: none;
             background-color: rgba(255, 255, 255, 0.1);
@@ -1295,17 +1375,21 @@
             font-size: 16px;
             border: none;
             color: #eee;
+            color: #fff;
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
         }
 
         .showRandomBtn:hover {
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         .showRandomBtn:active {
             background-color: rgba(219, 27, 101, 0.7);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         .mod h3 {
@@ -1319,6 +1403,7 @@
         .btn-choose-repeat {
             /* position: relative; */
             color: #eee;
+            color: #fff;
             margin-top: 6px;
         }
 
@@ -1327,12 +1412,20 @@
         .btn-choose-repeat span {
             display: inline-block;
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             border-radius: 3px;
             text-align: center;
             width: 158px;
             height: 24px;
             line-height: 24px;
             font-size: 16px;
+        }
+
+        .btn-choose-number span:hover,
+        .btn-choose-choice span:hover,
+        .btn-choose-repeat span:hover {
+            background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.9);
         }
 
         label {
@@ -1357,6 +1450,7 @@
             /* background-color: pink; */
             border: none;
             border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #fff;
             border-radius: 0px;
             height: 18px;
             line-height: 17px;
@@ -1388,6 +1482,7 @@
             /* margin: 6px 0 0; */
             margin: 6px 0;
             border-bottom: 1px dashed #eee;
+            border-bottom: 1px dashed #fff;
         }
 
         /* .mini-line {
@@ -1413,6 +1508,7 @@
             line-height: 24px;
             width: 104px;
             background-color: rgba(219, 27, 101, 0.6);
+            background-color: rgba(32, 114, 146, 0.6);
             border-radius: 3px;
             font-size: 16px;
         }
@@ -1464,6 +1560,7 @@
             /* height: 30px; */
             /* border-bottom: 1px solid #eee; */
             border: 1px solid #eee;
+            border: 1px solid #fff;
             border-radius: 3px;
         }
 
@@ -1476,11 +1573,13 @@
             line-height: 23px;
             /* border-radius: 3px; */
             border-bottom: 1px dashed #eee;
+            border-bottom: 1px dashed #fff;
         }
 
         .btn-get-random12 {
             left: 0;
             border-right: 1px dashed #eee;
+            border-right: 1px dashed #fff;
             border-top-left-radius: 3px;
         }
 
@@ -1533,6 +1632,28 @@
 </head>
 
 <body class="content_box">
+    <!-- 添加背景图 -->
+    <div class="bg">
+        <img src="./images/shanding2.jpg" alt="">
+    </div>
+    <!-- 添加背景图 -->
+    <div class="bg-color"></div>
+
+    <script>
+        let bgImg = document.querySelector('.bg img');
+        let imgsArr = ['dahai', 'riquanshi', 'xingyun', 'shanding', 'shanding2'];
+        let imgsIndex = 0;
+        setInterval(() => {
+            if (imgsIndex >= imgsArr.length - 1) {
+                imgsIndex = 0;
+            }
+            bgImg.src = './images/' + imgsArr[imgsIndex] + '.jpg';
+            imgsIndex++;
+        }, 60000);
+    </script>
+
+
+
     <div class="container">
         <div class="main-content">
             <!-- 页面遮罩层 -->
@@ -1696,6 +1817,7 @@
                         <span class="red">C</span>
                         <span class="green">A</span>
                         <span class="orange">N</span>
+                        <!-- <span style="color: #00374b;">ICAN</span> -->
                     </a>
                 </h1>
             </div>
@@ -1924,7 +2046,7 @@
 
             </script>
 
-            <h3 style="color:#eee">随机数</h3>
+            <h3>随机数</h3>
             <div class="mod" style="padding: 14px 9px 0px;">
                 <!-- <button class="showRandomBtn">幸运数和随机数</button> -->
 
@@ -1938,8 +2060,8 @@
                     <!-- <h3 style="color:#FFF5E1">随机数1</h3> -->
 
                     <!-- <h4 style="text-align: center;margin-bottom: 20px;color:#e82424" class="randoms"> -->
-                    <h4 style="text-align: center;margin-bottom: 9px;color:#eee" class="get-randoms-1">
-                        <span style="color:#eee">范围 :</span>
+                    <h4 style="text-align: center;margin-bottom: 9px;" class="get-randoms-1">
+                        <span>范围 :</span>
                         <input type="text" class="get-random-min-1" value="1" maxlength="6" style="width: 70px;">
                         ~
                         <input type="text" class="get-random-max-1" value="35" maxlength="5" style="width: 70px;">
@@ -1984,8 +2106,8 @@
                     <!-- <h3 style="color:#FFF5E1">随机数1</h3> -->
 
                     <!-- <h4 style="text-align: center;margin-bottom: 20px;color:#e82424" class="randoms"> -->
-                    <h4 style="text-align: center;margin-bottom: 9px;color:#eee" class="get-randoms-2">
-                        <span style="color:#eee">范围 :</span>
+                    <h4 style="text-align: center;margin-bottom: 9px;" class="get-randoms-2">
+                        <span>范围 :</span>
                         <input type="text" class="get-random-min-2" value="1" maxlength="6" style="width: 70px;">
                         ~
                         <input type="text" class="get-random-max-2" value="12" maxlength="5" style="width: 70px;">
@@ -3742,14 +3864,14 @@
 
 
 
-            <h3 style="color:#eee">抉择利器</h3>
+            <h3>抉择利器</h3>
             <div class="mod" style="padding: 9px 6px 12px;">
                 <div class="xuan1">
-                    <h3 style="color:#eee;margin-top: 0px;margin-bottom: 0px;">标题1(选填)</h3>
+                    <h3 style="margin-top: 0px;margin-bottom: 0px;">标题1(选填)</h3>
                     <div class="question">
                         <input type="text" name="" id="" value="" maxlength="17" placeholder="限17个字">
                     </div>
-                    <h3 style="color:#eee;">内容1(必填)</h3>
+                    <h3>内容1(必填)</h3>
                     <div class="answers">
                         <div class="btn-add">
                             <button style="width: 54px;">追加</button>
@@ -3771,11 +3893,11 @@
                 <div class="btn-choose-line" style="margin: 12px 0px;"></div>
 
                 <div class="xuan2">
-                    <h3 style="color:#eee;margin-bottom: 0px;">标题2(选填)</h3>
+                    <h3 style="margin-bottom: 0px;">标题2(选填)</h3>
                     <div class="question2">
                         <input type="text" name="" id="" value="" maxlength="17" placeholder="限17个字">
                     </div>
-                    <h3 style="color:#eee;">内容2(必填)</h3>
+                    <h3>内容2(必填)</h3>
                     <div class="answers2">
                         <div class="btn-add2">
                             <button style="width: 54px;">追加</button>
@@ -3874,7 +3996,7 @@
 
 
 
-            <h3 style="color:#eee;">结果生成区域</h3>
+            <h3>结果生成区域</h3>
             <!-- <h3 style="color:#3679e3;">天使的建议(优选)</h3> -->
 
             <!-- 幸运数字和随机数的提取窗口 历史记录 -->
@@ -4145,7 +4267,7 @@
                 </div>
             </div>
             <div class="write">
-                <h3 class="red" style="color:#eee;">草稿</h3>
+                <h3 class="red">草稿</h3>
                 <textarea name="" id="" cols="30" rows="10" class="content_box3"></textarea>
             </div>
             <script>
